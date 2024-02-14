@@ -22,7 +22,7 @@ import { NavLink, Link, useNavigate } from "react-router-dom";
 import Context from "./Context";
 export default function Navbar() {
   const { profileImage, setProfileImage } = useContext(Context);
-
+ const [category,setCategory] = useState("")
   // const id=GetID()
   const profile = Getprofile();
   const nav = useNavigate();
@@ -46,9 +46,7 @@ export default function Navbar() {
     setProfileImage("");
   };
 
-  const Search = () => {
-    nav("/Search");
-  };
+
   const Close = () => {
     ref.current.style.display = "none";
   };
@@ -60,17 +58,16 @@ export default function Navbar() {
       <nav className="nav">
         <label className="lbl">Timex</label>
         <div className="search">
-          <input className="input-search" placeholder="Search here..." />
-          <button
+          <input className="input-search" onChange={(e)=>setCategory(e.target.value)} placeholder="Search here..." />
+          {category &&<Link
+          to={`/Search/${category}`}
             className="magnify-btn"
-            onClick={() => {
-              Search();
-            }}
+           
           >
             <div className="sub-div">
               <FontAwesomeIcon icon={faMagnifyingGlass} className="glass" />
             </div>
-          </button>
+          </Link>}
         </div>
         <ul className="ul mb-0">
           {Cookies.token ? (

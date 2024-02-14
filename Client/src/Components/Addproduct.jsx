@@ -13,9 +13,6 @@ export default function Addproduct() {
   const [photourl, setphotourl] = useState("");
   const [Cookies] = useCookies(["admintoken"]);
   const adminID = GetadminID()
-  // console.log("quantity",typeof quantity)
-  // console.log("stoke",typeof stoke)
-  // console.log("token",Cookies.token)
   const [loginid,]=useState(adminID)
   const [price, setPrice] = useState("");
   const addProduct = async () => {

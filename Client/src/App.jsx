@@ -67,7 +67,7 @@ function App() {
            {cookies.token ? <> <Route path="/" element={<Home />} />
             <Route path="/Details/:productId" element={<Details />} />
             <Route path="/Cart" element={<Cart />} />
-            <Route path="/Search" element={<Searchresult />}/>
+            <Route path="/Search/:category" element={<Searchresult />}/>
             <Route path="/Sellerform" element={<Sellerform />} />
             <Route path="/profile" element={<Profile />} /></>:<></>}
             <Route path="/Adminlogin" element={<Adminlogin />} />
