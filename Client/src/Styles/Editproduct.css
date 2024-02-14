@@ -1,0 +1,16 @@
+.Edit-parent{
+    padding-top: 70px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    font: 18px;
+    letter-spacing: 3px;
+}
+.home-childs{
+    width: 250px;
+    padding: 15px;
+    box-shadow: 0px 0px 1px 0px slategray;
+    transition: 1s ease-in-out;
+    font-size: 18px;
+}

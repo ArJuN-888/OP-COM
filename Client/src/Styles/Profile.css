@@ -1,0 +1,349 @@
+*{
+    margin: 0;
+scroll-behavior: smooth;
+text-decoration: none;
+list-style-type: none;
+letter-spacing: 3px;
+font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.main{
+text-align: center;
+}
+.Parent{
+  display:flex;
+  justify-content: center;
+  flex-wrap: wrap;
+ gap: 6px;
+padding-left: 0;
+padding-top: 100px;
+
+}
+.Child1{
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 6px;
+max-width: 100%;
+
+
+}
+
+.Child2{
+    padding: 10px;
+    margin: 6px;
+    background-color: white;
+    font-size: 18px;
+    border-radius: 8px;
+    transition: 1s ease-in-out;
+    letter-spacing: 4px;
+    height:470px;
+    display: block;
+    justify-content: center;
+    border:  1px solid rgb(242, 234, 234);
+}
+
+/* ... Your existing styles ... */
+
+.overFlow {
+    overflow: scroll;
+    border: none;
+    width: 300px;
+    padding: 10px;
+    height: 405px;
+    display: block;
+    justify-content: center;
+    box-sizing: border-box;
+    /* Styles for WebKit browsers (Chrome, Safari, etc.) */
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: rgb(0,0,0,0) rgb(0, 0, 0, 0); /* For Firefox */
+
+    /* Styles for WebKit browsers (Chrome, Safari, etc.) */
+    &::-webkit-scrollbar {
+        width: 2px; /* Width of the scrollbar */
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: rgb(48, 46, 46); /* Color of the thumb */
+        border-radius: 6px; /* Radius of the thumb */
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: rgb(0, 0, 0, 0.1); /* Color of the track */
+        border-radius: 10px; /* Radius of the track */
+    }
+}
+.sub{
+    padding: 12px;
+    background-color: green;
+    
+}
+.img-contain {
+    width: 150px; /* Adjust this value based on your design */
+    box-shadow: 0px 0px 10px 0px;
+    padding: 4px;
+    height: 145px;
+    border-radius: 130px;
+   position: relative;
+  
+  
+}
+.pname{
+    color: maroon;
+}
+.ps{
+    color: darkmagenta;
+    font-family: 900;
+    
+}
+
+.image{
+    
+    border-radius: 120px;
+   width: 100%;
+   height: 137px;
+   object-fit: cover; /* or object-fit: contain; */
+}
+.id1{
+    font-size:25px;
+   text-align: center;
+   height: 55px;
+    
+}
+.id2{
+    font-size:18px;
+}
+@media screen and (max-width:347px) {
+    .edit{
+        margin: 10px 0px;
+    }
+    .overFlow{
+        width: auto;
+    }
+}
+.Childhold{
+    padding: 10px 20px;
+    margin: 6px;
+  gap: 6px;
+    border-radius: 8px;
+    transition: 1s ease-in-out;
+letter-spacing: 4px;
+}
+.edit{
+    display: flex;
+    margin: 10px 0px;
+    justify-content: center;
+}
+.inp-class{
+    display: grid;
+    
+}
+.inputs{
+    letter-spacing: 2px;
+    width: 100%;
+   border:none;
+    padding: 8.4px 18px;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+.Update{
+    letter-spacing: 2px;
+    margin: 0px 2px;
+    background-color:darkseagreen;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 1px 4px;
+    box-shadow: 0px 0px 4px 0px grey;
+}
+.Cancel{
+    letter-spacing: 2px;
+    margin: 0px 2px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    background-color: rgb(229, 176, 42);
+    padding: 1px 4px;
+    box-shadow: 0px 0px 4px 0px grey;
+}
+.btn-grp{
+   display: flex;
+   justify-content: start;
+   margin-top: 10px;
+  
+}
+.file{
+    display: none;
+}
+.lb{
+    background-color:rgb(233, 241, 241);
+    color: grey;
+   padding: 1px 3px;
+    border-radius: 20px;
+    position: absolute;
+    top: 4%;
+    left: 1%;
+   
+    border: 3px solid white;
+    box-shadow: 0px 0px 10px 0px grey;
+}
+.inp-lbl{
+    font-size: 18px;
+}
+.Edit{
+    letter-spacing: 2px;
+    padding: 2px 8px;
+    color: white;
+    background-color:rgb(245, 83, 83);
+    cursor: pointer;
+    border: 2px solid white;
+    margin: 0px 2px;
+    font-size: 18px;
+    box-shadow: 0px 0px 6px 0px grey;
+}
+.Edits{
+    letter-spacing: 2px;
+    padding: 2px 8px;
+    color: white;
+    background-color:rgb(229, 176, 42);
+    cursor: pointer;
+    border: 2px solid white;
+    margin: 0px 2px;
+    font-size: 18px;
+    box-shadow: 0px 0px 6px 0px grey;
+}
+.plus{
+   font-size: 22px;
+}
+.pluss{
+    font-size: 20px;
+   padding-bottom: 5px;
+ }
+.stat{
+    font-size: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 4px;
+}
+
+
+.passup-child{
+    display: grid;
+    
+}
+.passCancel{
+    letter-spacing: 2px;
+    margin: 5px 0px;
+    color: white;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(229, 176, 42);
+    padding: 3px 4px;
+    box-shadow: 0px 0px 4px 0px grey;
+}
+.Req{
+    letter-spacing: 2px;
+    margin: 0px 3px;
+    background-color:darkseagreen;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 3px 4px;
+    box-shadow: 0px 0px 4px 0px grey;
+}
+.status{
+    color: olivedrab;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.statu{
+    color: black;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 0px 30px;
+    
+}
+.profile-map{
+
+padding: 10px;
+margin: 2px 0px;
+display: grid;
+justify-content: center;
+background-color: white;
+transition: 1s ease-in-out;
+box-shadow: 0px 0px 1px 0px grey;
+
+}
+
+.img-profile-container{
+ padding: 3px ;
+border: 2px solid white;
+width: 256px;
+display: block;
+margin: auto;
+
+}
+.img-profile {
+    display: block;
+   margin: auto;
+    width: 100%;
+    height: 260px;
+    object-fit:contain;
+}
+@media screen and (max-width:410px) {
+    .img-profile-container{
+     
+     width:auto
+       
+       } 
+       .img-profile{
+        height: auto;
+       }
+}
+.prof-id{
+font-size: 10px;
+}
+@media screen and (max-width:416px) {
+    .img-profile-container{
+     
+     width:auto
+       
+       } 
+}
+
+.frm-child{
+    display: grid;
+}
+.Delete{
+    letter-spacing: 3px;
+    font-size: 18px;
+    border: none;
+    background-color: rgb(229, 176, 42);
+    color: white;
+   margin: 0px 3px;
+   padding:2px 10px;
+   border: 2px solid white;
+   box-shadow: 0px 0px 4px 0px grey;
+}
+.Editp{
+    letter-spacing: 3px;
+    font-size: 18px;
+    border: none;
+    background-color: darkseagreen;
+    color: white;
+   margin: 0px 3px;
+   padding:2px 10px;
+   border: 2px solid white;
+   box-shadow: 0px 0px 4px 0px grey;
+}
+.seller-link{
+ font-size: 18px;
+ letter-spacing: 2px;
+}
+.seller-links{
+  color: red;
+}

@@ -1,0 +1,295 @@
+
+.nav{
+    display: flex;
+    width: 100%;
+    position: fixed;
+   justify-content: space-between;
+   align-items: center;
+ height: auto;
+ z-index: 1;
+
+
+}
+.lbl{
+    font-size: 30px;
+    letter-spacing: 3px;
+color: black;
+    margin-left: 10px;
+   
+ 
+}
+.a{
+    animation: 6s infinite ;
+    animation-name: ab;
+}
+@keyframes ab {
+
+    10%{color:white}
+}
+.b{
+    animation: 6s infinite ;
+    animation-name: a;
+}
+@keyframes a {
+    20%{color:white}
+}
+.c{
+    animation: 6s infinite ;
+    animation-name: b;
+}
+@keyframes b {
+    30%{color:white}
+}
+.d{
+    animation: 6s infinite ;
+    animation-name: c;
+}
+@keyframes c {
+    40%{color:white}
+}
+.e{
+    animation: 6s infinite ;
+    animation-name: d;
+}
+@keyframes d {
+    50%{color:white}
+}
+.f{
+    animation: 6s infinite ;
+    animation-name: e;
+}
+@keyframes e {
+    60%{color:white}
+}
+.ul{
+display: flex;
+   font-size: 20px;
+   letter-spacing: 3px;
+   gap: 40px;
+  color: black;
+   align-items: center;
+   
+
+
+
+}
+.lk{
+    color: black;
+ text-decoration: none;
+ 
+ 
+
+}
+
+
+.img-contains {
+    width: 70px; /* Adjust this value based on your design */
+border: 3.2px solid rgb(213, 213, 213);
+    margin: 2px 0px 2px 0px;
+    padding: 2.5px;
+    height: 69px;
+    border-radius: 130px;
+
+  
+}
+.bt{
+    display: none;
+}
+
+@media screen and (max-width:959px) {
+    .ul{
+       display: none;
+    }
+   
+    .bt{
+        display: flex;
+     background-color: transparent;
+     color: rgb(153, 148, 148);
+     border: none;
+     margin-left: 55px;
+     
+      }
+    
+      .dropdown{
+        position: relative;
+       margin: 0px 55px 0px 0px;
+     
+    }
+ 
+}
+
+
+.images{
+   
+    border-radius: 120px;
+   width: 100%;
+   height: 57px;
+   object-fit: cover; /* or object-fit: contain; */
+}
+
+.a{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+.qs{
+   text-align: center;
+   color:ghostwhite;
+   
+}
+.ic{
+   font-size: 58px;
+  color: rgb(186, 183, 183);
+}
+.search{
+    display: flex;
+   
+position: relative;
+ flex-grow: 1;
+ margin: 5px 4px 5px 4px;
+ padding: 11px 11px;
+
+
+}
+
+@media screen and (max-width:584px) {
+  
+ .ul{
+    display: none;
+ } 
+
+  .lbl{
+  display: none;
+  }
+ 
+
+ 
+}
+
+
+.border-heart{
+    font-size: 26px;
+    color:rgb(243, 92, 92);
+   
+ }
+ .bars{
+    font-size: 26px;
+    
+ }
+.magnify-btn{
+    padding: 4px 10px;
+    margin:0px 10px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    background-color: transparent;
+ position: absolute;
+ right: 0.1%;
+ top: 24%;
+ 
+}
+.glass{
+    font-size: 25px;
+  color:grey;
+}
+.icon{
+
+padding-left:  0px;
+font-size: 28px;
+color:darkseagreen;
+margin: 0px 0px 4px 0px;
+
+}
+.cross{
+    padding-left:  0px;
+    font-size: 28px;
+    color:rgb(95, 88, 88);
+    
+    margin: 0px 0px 4px 0px; 
+}
+
+.input-search{
+    letter-spacing: 2px;
+    width: 100%;
+    border: none;
+    padding: 7px 18px;
+    box-sizing: border-box;
+    font-size: 20px;
+   border-radius: 20px;
+
+}
+
+.active{
+  
+   border-bottom: 3px solid darkgrey;
+  
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(0, 0, 0);
+    height: auto;
+    z-index: 1;
+    width: fit-content;
+    margin: 4px 0px 0px 36px;
+    text-align: center;
+    letter-spacing: 4px;
+    border-radius: 0px 35px 0px 35px;
+    border: 2px solid white;
+    box-shadow: 0px 0px 5px 0px;
+  
+}
+/* .dropdown:hover .dropdown-content {
+    display: block;
+   
+} */
+.u{
+display:block;
+padding: 1px;
+
+
+}
+
+.n{
+    text-decoration: none;
+    font-size: 26px;
+   margin: 30px 0px;
+   transition: 1s ease-in-out;
+   color: grey;
+}
+.n:hover{
+    transform: scale(1.5);
+    width: 100%;
+    
+}
+.img-container {
+    width: 68px; /* Adjust this value based on your design */
+border: 3.2px solid rgb(206, 199, 199);
+    height: 68px;
+    border-radius: 130px;
+   padding: 2.5px;
+
+  
+}
+
+@media screen and (max-width:446px) {
+    .bt{
+        margin-left: 24px;
+    }
+    .dropdown-content{
+        margin: 4px 0px 0px 0px;
+    }
+  
+}
+.sig{
+    margin: 30px 0px;
+    display: grid;
+    justify-content: center;
+
+    
+}
+.cls-btn{
+    border: none;
+    background-color:transparent;
+}

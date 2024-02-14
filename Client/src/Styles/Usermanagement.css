@@ -1,0 +1,23 @@
+.userman-parent{
+    padding-top: 80px ;
+    font-size: 20px;
+    margin: 0px 3px;
+}
+.table{
+    width: 100%;
+    border:1px solid black;
+            overflow-x:auto; /* Enable horizontal scrolling */
+}
+thead{
+    background-color: olivedrab;
+    color: white;
+}
+tbody{
+    background-color: grey;
+    color: white;
+    letter-spacing: 3px;
+   
+}
+.ad-link{
+    text-decoration: none;
+}
