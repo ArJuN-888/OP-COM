@@ -1,5 +1,5 @@
 const { Products } = require("../Model/ProductSchema");
-const { Users } = require("../Model/UserSchema");
+const { Users, Seller } = require("../Model/UserSchema");
 const { Admin } = require("../Model/AdminSchema");
 const adduserProduct = async (req, res) => {
   try {
@@ -26,6 +26,11 @@ const adduserProduct = async (req, res) => {
     }
     if (!loginid) {
       return res.status(400).json({ message: "Login required" });
+    }
+    const sellerdata = await Seller.find({userID:loginid})
+    if(sellerdata.category !==category )
+    {
+      return res.status(400).json({ message: "category you are trying to add is not permitted" });
     }
     console.log("reqbody", req.body);
     const data = new Products({

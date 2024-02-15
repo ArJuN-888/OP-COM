@@ -3,6 +3,7 @@ import axios from 'axios'
 import "../Styles/Home.css"
 import GetID from './Hooks/GetId';
 import { GoHeart } from "react-icons/go";
+import { Link } from 'react-router-dom';
 import { IoHeartSharp } from "react-icons/io5";
 import {  toast,Flip} from 'react-toastify';
 import { useCookies } from "react-cookie";
@@ -108,12 +109,14 @@ catch(error)
       
 {Likedproduct.map((product)=>(
 <div key={product._id} className='home-child'>
+<Link className='homelink' to={`/Details/${product._id}`} >
 <button onClick={()=>{checkLike(product._id)}} className='like'>{likedid.includes(product._id) ? <IoHeartSharp className='likeicons'/>:<GoHeart className='likeicon'/>}</button>
 {/* <div className="prof-id">{product.loginid}</div> */}
 <div className='imgs-container'><img className='imgs' src={product.photourl} /></div>
-<div className='pname'><mark>{product.brandname}</mark></div>
-<div className='pname'>{product.productname}</div>
+<div className='pname'><mark className='pname'>{product.brandname}</mark></div>
+<div className='pnam'>{product.productname}</div>
 <div className='pprice'>₹ {product.price}</div>
+</Link>
   </div>
 ))}
 </div>

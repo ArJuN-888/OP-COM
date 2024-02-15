@@ -6,9 +6,7 @@ list-style-type: none;
 letter-spacing: 3px;
 font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-.main{
-text-align: center;
-}
+
 .Parent{
   display:flex;
   justify-content: center;
@@ -40,6 +38,7 @@ max-width: 100%;
     letter-spacing: 4px;
     height:470px;
     display: block;
+    text-align: center;
     justify-content: center;
     border:  1px solid rgb(242, 234, 234);
 }
@@ -91,6 +90,8 @@ max-width: 100%;
 }
 .pname{
     color: maroon;
+  width: fit-content;
+
 }
 .ps{
     color: darkmagenta;

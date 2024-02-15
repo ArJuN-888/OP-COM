@@ -65,7 +65,7 @@ color: black;
 display: flex;
    font-size: 20px;
    letter-spacing: 3px;
-   gap: 40px;
+   gap: 50px;
   color: black;
    align-items: center;
    
@@ -82,6 +82,7 @@ display: flex;
 }
 
 
+
 .img-contains {
     width: 70px; /* Adjust this value based on your design */
 border: 3.2px solid rgb(213, 213, 213);
@@ -96,7 +97,7 @@ border: 3.2px solid rgb(213, 213, 213);
     display: none;
 }
 
-@media screen and (max-width:959px) {
+@media screen and (max-width:997px) {
     .ul{
        display: none;
     }
@@ -196,9 +197,15 @@ position: relative;
 
 padding-left:  0px;
 font-size: 28px;
-color:darkseagreen;
+color:black;
 margin: 0px 0px 4px 0px;
 
+}
+.icon-out{
+    padding-left:  0px;
+    font-size: 28px;
+    color:rgb(61, 49, 49);
+    margin: 0px 0px 4px 0px; 
 }
 .cross{
     padding-left:  0px;
@@ -228,7 +235,7 @@ margin: 0px 0px 4px 0px;
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: rgb(0, 0, 0);
+    background-color:white;
     height: auto;
     z-index: 1;
     width: fit-content;

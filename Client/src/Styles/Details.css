@@ -40,10 +40,18 @@ border: 1px solid rgb(205, 201, 201);
 .pd{
  padding-top: 60px;
 }
+.pp::before{
+    content: "∘";
+    padding: 0px 10px;
+}
 .pp{
-    padding-top: 23px;
-    font-size: 35px;
-    color: darkseagreen;
+    margin: 45px 0px 0px 0px;
+    font-size: 20px;
+    color: white;
+    width: 160px;
+    padding: 0px 5px;
+    border-radius: 50px 10px 10px 50px;
+    background-color: rgba(25, 27, 25, 0.778);
 }
 .imgs-details{
     padding: 4px ;

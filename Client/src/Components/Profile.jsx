@@ -352,7 +352,7 @@ export default function Profile() {
       });
       setFormtoggle(false);
     } catch (error) {
-      toast(error.response.data.message, {
+      toast.error(error.response.data.message, {
         transition: Flip,
       });
     }
@@ -648,7 +648,7 @@ export default function Profile() {
                   <div className="img-profile-container">
                     <img className="img-profile" src={product.photourl} />
                   </div>
-                  <div className="pname">
+                  <div>
                     <mark className="pname">{product.brandname}</mark>
                   </div>
                   <div>

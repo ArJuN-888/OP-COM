@@ -73,8 +73,8 @@ export default function Navbar() {
           {Cookies.token ? (
             <>
               <li>
-                <NavLink to="/" activeclassname="active">
-                  <FaHome className="icon" />
+                <NavLink to="/" className="lk" activeclassname="active">
+                  {/* <FaHome className="icon" /> */}Home
                 </NavLink>
               </li>
               <li>
@@ -92,8 +92,8 @@ export default function Navbar() {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/Cart" activeclassname="active">
-                  <FaCartPlus className="icon" />
+                <NavLink to="/Cart" className="lk" activeclassname="active">
+                  {/* <FaCartPlus className="icon" /> */}Cart
                 </NavLink>
               </li>
               <li>
@@ -103,18 +103,23 @@ export default function Navbar() {
                     handleLog();
                   }}
                 >
-                  <FaSignOutAlt className="icon" />
+                  <FaSignOutAlt className="icon-out" />
                 </Link>
               </li>
             </>
           ) : (
             <>
-              <Link to="/Adminlogin">
-                <RiAdminFill className="icon" />
-              </Link>
-              <Link to="/userlogin">
+            <li>
+              <NavLink to="/Adminlogin" activeclassname="active"  className="lk">
+                {/* <RiAdminFill className="icon" /> */}Admin
+               
+              </NavLink>
+              </li>
+              <li>
+              <Link to="/userlogin" activeclassname="active" className="lk" >
                 <FaSignInAlt className="icon" />
               </Link>
+              </li>
             </>
           )}
 

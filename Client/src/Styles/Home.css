@@ -27,6 +27,7 @@
 width: 220px;
  display: block;
    margin: auto;
+   
 }
 .imgs{
    display: block;
@@ -53,9 +54,24 @@ color: darkmagenta;
 font-weight: 500;
 }
 
+
+.pname{
+    background-color: rgb(188, 105, 105);
+    color: white;
+ font-size: 18px;
+}
+.pprice::before{
+    content: "∘";
+    padding:0px 10px;
+}
 .pprice{
-color: olivedrab;
-font-weight: 500;
+    font-size: 18px;
+    color: white;
+    width: 120px;
+    padding: 0px 5px;
+    border-radius: 50px 10px 10px 50px;
+    background-color: rgba(25, 27, 25, 0.778);
+
 }
 .like{
 border: none;

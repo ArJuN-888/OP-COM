@@ -70,7 +70,7 @@ function App() {
             <Route path="/Search/:category" element={<Searchresult />}/>
             <Route path="/Sellerform" element={<Sellerform />} />
             <Route path="/profile" element={<Profile />} /></>:<></>}
-            <Route path="/Adminlogin" element={<Adminlogin />} />
+            {!userID &&  <Route path="/Adminlogin" element={<Adminlogin />} />}
            
            
           {!userID &&  <Route path="/userlogin" element={<Userlogin />} />}

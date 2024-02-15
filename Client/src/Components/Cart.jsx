@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios';
+import { PiShoppingCart } from "react-icons/pi";
 import "../Styles/Cart.css"
 import { useEffect,useState } from 'react'
 import { TfiTrash } from "react-icons/tfi";
@@ -86,7 +87,7 @@ const total = () =>{
 
 </div>
 <div className='totals'><p className='ts'>₹ {total()}</p>
-<button className='buy'>Place Order</button>
+<button className='buy'>Place Order<PiShoppingCart className='i'/></button>
 </div>
 </>
   )
