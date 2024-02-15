@@ -152,7 +152,7 @@ export default function Details() {
       <div className='brand'><mark className='brand-sub'>{Details.brandname}</mark></div>
     <div className='pn'>{Details.productname}</div>
     <div className='pd'>{Details.description}</div>
-    <div className='st'>Available-Stoke-{Details.stoke}</div>
+    <div className='sto'>Available-Stoke-{Details.stoke}</div>
      <div className='pp'>₹ {Details.price}</div>
       </div>
     </div>

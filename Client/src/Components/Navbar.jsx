@@ -44,6 +44,7 @@ export default function Navbar() {
     });
     localStorage.removeItem("profile");
     setProfileImage("");
+    setCategory("")
   };
 
 
@@ -58,7 +59,7 @@ export default function Navbar() {
       <nav className="nav">
         <label className="lbl">Timex</label>
         <div className="search">
-          <input className="input-search" onChange={(e)=>setCategory(e.target.value)} placeholder="Search here..." />
+          <input className="input-search" value={category} onChange={(e)=>setCategory(e.target.value)} placeholder="Search here..." />
           {category &&<Link
           to={`/Search/${category}`}
             className="magnify-btn"

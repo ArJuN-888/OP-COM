@@ -11,6 +11,7 @@ export default function Liked() {
   const [likedid,setlikedid] = useState([])
   const [Likedproduct,setLikedproduct] = useState([])
   const [Cookies] = useCookies(["token"]);
+const [bannedid,setbannedID] = useState([])
   const userID = GetID()
   console.log("idfromcart",likedid)
   console.log("likedfull",Likedproduct)
@@ -18,10 +19,29 @@ export default function Liked() {
     if(Cookies.token)
     {
       fetchlikedid()
+      getbannedid()
       fetchliked()
+
     }
 
   },[])
+  const getbannedid = async() =>{
+      try{
+  const response = await axios.get("http://localhost:5000/User/UserRegistration/banned",{
+    headers:{
+      Authorization:`${Cookies.token}`
+    }
+  })
+  setbannedID(response.data.bannedids)
+
+}
+catch(error)
+{
+  toast(error.response.data.message,{
+    transition: Flip
+  })
+}
+    }
   const fetchlikedid = async() =>{
     try{
       const response = await axios.get(`http://localhost:5000/User/Liked/${userID}`,{
@@ -110,12 +130,13 @@ catch(error)
 {Likedproduct.map((product)=>(
 <div key={product._id} className='home-child'>
 <Link className='homelink' to={`/Details/${product._id}`} >
-<button onClick={()=>{checkLike(product._id)}} className='like'>{likedid.includes(product._id) ? <IoHeartSharp className='likeicons'/>:<GoHeart className='likeicon'/>}</button>
+<button onClick={(e)=>{checkLike(product._id);e.preventDefault()}} className='like'>{likedid.includes(product._id) ? <IoHeartSharp className='likeicons'/>:<GoHeart className='likeicon'/>}</button>
 {/* <div className="prof-id">{product.loginid}</div> */}
 <div className='imgs-container'><img className='imgs' src={product.photourl} /></div>
 <div className='pname'><mark className='pname'>{product.brandname}</mark></div>
 <div className='pnam'>{product.productname}</div>
 <div className='pprice'>₹ {product.price}</div>
+<div>{bannedid.includes(product.loginid) ? <label className='out-st'>Out of Stock</label>:""}</div>
 </Link>
   </div>
 ))}

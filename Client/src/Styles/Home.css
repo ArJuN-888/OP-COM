@@ -96,3 +96,6 @@ color: rgb(166, 165, 165);
     .homelink{
         text-decoration: none;
     }
+    .out-st{
+        color: red;
+    }

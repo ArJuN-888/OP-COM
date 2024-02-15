@@ -14,6 +14,10 @@
 .cart-bname {
   font-size: 30px;
 }
+.c5{
+  display: grid;
+  gap: 4px;
+}
 .bname {
   letter-spacing: 3px;
   color: darkmagenta;
@@ -76,6 +80,10 @@ option {
   width: 50px;
   border: 3px solid rgb(193, 190, 190);
 }
+.inp-qty:read-only{
+  background-color: #b6c0c1;
+  cursor: not-allowed;
+}
 .cart-b{
   background-color: red;
  border: none;
@@ -86,34 +94,73 @@ option {
  box-shadow: 0px 0px 4px 0px grey;
 }
 .cart-imgs-container{
-  width: 150px;
+  width: 160px;
   padding: 4px;
   border-radius: 110px;
 background-color: white;
 border: 2px solid rgb(183, 177, 177);
 
-
+position: relative;
 }
 .img-cart{
   display: block;
   margin: auto;
     width: 100%;
-    height: 140px;
+    height: 150px;
     object-fit:contain;
    border-radius: 110px;
+}
+.st-t{
+  color:white;
+  font-weight: 800;
+  font-size: 14.8px;
+  background-color: black;
 }
 @media screen and (max-width:253px){
   .cart-imgs-container{
     width:auto;
     box-shadow: none;
     border-radius:none;
+    border: none;
+
   }
   .img-cart{
     height: auto;
     border-radius:unset;
     object-fit:contain;
+
+  }
+  .st-t{
+    font-size: 25px;
+    background-color: transparent;
+    color: red;
+  }
+
+  .ts{
+    font-size: 30px;
   }
 }
 .i{
   font-size: 25px;
 }
+.cart-buy{
+  border: none;
+  letter-spacing: 3px;
+  font-size: 20px;
+  background-color: rgb(229, 176, 42);
+  color: white;
+  box-shadow: 0px 0px 4px 0px grey;
+
+}
+.cart-buy:disabled {
+  background-color: #bdc3c7;
+  color: #7f8c8d;
+  cursor: not-allowed;
+}
+.st{
+  position: absolute;
+  top: 40%;
+  left: 10%;
+ right: 10%;
+}
+

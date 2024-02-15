@@ -139,7 +139,12 @@ export default function Profile() {
     console.log("user id for fetching from profile", userID);
     try {
       const response = await axios.get(
-        `http://localhost:5000/User/Login/profile/${userID}`
+        `http://localhost:5000/User/Login/profile/${userID}`,
+        {
+          headers: {
+            Authorization: `${Cookies.token}`,
+          },
+        }
       );
       console.log("Response:", response);
       setfetcheduser(response.data.User);

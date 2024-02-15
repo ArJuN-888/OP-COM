@@ -129,7 +129,7 @@ const getUserprofile = async (req, res) => {
       Profile: user.filename,
       sellerstatus: user.sellerstatus,
       enotify: user.enotify,
-      sellerstatus:user.sellerstatus
+      banstat: user.banned
     };
     console.log("Response to be sent:", response); // Log the response to be sent
 
@@ -669,6 +669,21 @@ if(quantity>product.stoke)
    res.status(400).json({message:"unable to update"})
   }
 };
+const getbannedusers = async(req,res) =>{
+  try{
+  const data =[]
+ const seller = await Users.find({banned:true})
+ console.log("seller",typeof seller)
+ seller.forEach((result)=>{
+  data.push(result._id)
+ })
+ console.log("sellerid",data)
+ res.status(200).json({bannedids:data})
+  }
+  catch(error){
+    res.status(200).json({message:"Unable to fetch",error})
+  }
+}
 module.exports = {
   registerUser,
   getUsers,
@@ -697,5 +712,6 @@ module.exports = {
   getuserCartitem,
   removefromcart,
   updatequantity,
-  onlynotify
+  onlynotify,
+  getbannedusers
 };
