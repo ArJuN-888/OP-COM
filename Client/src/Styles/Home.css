@@ -1,101 +1,91 @@
-.home-parent{
-    padding-top: 80px;
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-   font-size: 18px;
-   letter-spacing: 3px;
+.home-parent {
+  padding-top: 80px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 18px;
+  letter-spacing: 3px;
 
-   /* box-shadow: 0px 0px 3px 0px; */
-   
+  /* box-shadow: 0px 0px 3px 0px; */
 }
-.home-child{
-    width: 250px;
-    padding: 15px;
-    box-shadow: 0px 0px 1px 0px slategray;
-    transition: 1s ease-in-out;
-    position: relative;
-    cursor: pointer;
+.home-child {
+  width: 250px;
+  padding: 15px;
+  box-shadow: 0px 0px 1px 0px slategray;
+  transition: 1s ease-in-out;
+  position: relative;
+  cursor: pointer;
 }
-.home-child:hover{
-    transform: scale(1.1);
-    box-shadow: 0px 0px 1px 0px slategray;
+.home-child:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 1px 0px slategray;
 }
-.imgs-container{
-    padding: 4px ;
-width: 220px;
- display: block;
-   margin: auto;
-   
+.imgs-container {
+  padding: 4px;
+  width: 220px;
+  display: block;
+  margin: auto;
 }
-.imgs{
-   display: block;
-   margin: auto;
-    width: 100%;
-    height: 260px;
-    object-fit:contain;
+.imgs {
+  display: block;
+  margin: auto;
+  width: 100%;
+  height: 260px;
+  object-fit: contain;
 }
-.prof-id{
-font-size: 10px;
+.prof-id {
+  font-size: 10px;
 }
-@media screen and (max-width:410px) {
-    .imgs-container{
-     
-     width:auto
-       
-       } 
-       .imgs{
-        height: auto;
-       }
+@media screen and (max-width: 410px) {
+  .imgs-container {
+    width: auto;
+  }
+  .imgs {
+    height: auto;
+  }
 }
-.pnam{
-color: darkmagenta;
-font-weight: 500;
+.pnam {
+  color: darkmagenta;
+  font-weight: 500;
 }
 
-
-.pname{
-    background-color: rgb(188, 105, 105);
-    color: white;
- font-size: 18px;
+.pname {
+  background-color: rgb(188, 105, 105);
+  color: white;
+  font-size: 18px;
 }
-.pprice::before{
-    content: "∘";
-    padding:0px 10px;
+.pprice::before {
+  content: "∘";
+  padding: 0px 10px;
 }
-.pprice{
-    font-size: 18px;
-    color: white;
-    width: 120px;
-    padding: 0px 5px;
-    border-radius: 50px 10px 10px 50px;
-    background-color: rgba(25, 27, 25, 0.778);
-
+.pprice {
+  font-size: 18px;
+  color: white;
+  width: 120px;
+  padding: 0px 5px;
+  border-radius: 50px 10px 10px 50px;
+  background-color: rgba(25, 27, 25, 0.778);
 }
-.like{
-border: none;
-background-color: transparent;
-position: absolute;
-right: 7%;
-top: 10%;
-
-
+.like {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  right: 7%;
+  top: 10%;
 }
-.likeicon{
-font-size: 35px;
+.likeicon {
+  font-size: 35px;
 
-color: rgb(166, 165, 165);
-
-
+  color: rgb(166, 165, 165);
 }
-.likeicons{
-    font-size: 35px;
-    color: rgb(243, 74, 74);
-    }
-    .homelink{
-        text-decoration: none;
-    }
-    .out-st{
-        color: red;
-    }
+.likeicons {
+  font-size: 35px;
+  color: rgb(243, 74, 74);
+}
+.homelink {
+  text-decoration: none;
+}
+.out-st {
+  color: red;
+}
