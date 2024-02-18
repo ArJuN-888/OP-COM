@@ -14,4 +14,5 @@ router.post("/addProduct",AdminverifyToken,productController.addadminProduct)
 router.delete("/getProduct/deleteProduct/:id",Middleware,productController.deleteProduct)
 router.delete("/getProduct/deleteadminProduct/:id",AdminverifyToken,productController.deleteadminProduct)
 router.get("/getProduct/bycategory/:userID",Middleware,productController.getsearchProduct)
+router.get("/getProduct/particular/:userID",Middleware,productController.getcategoryproduct)
 module.exports = router

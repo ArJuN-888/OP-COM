@@ -124,7 +124,14 @@ catch(error)
 
  
   }
-  return (
+  if(Likedproduct.length === 0)
+  {
+return(
+  <div className='home-parent'><h1>Wishlist-Empty</h1></div>
+)
+  }
+  else{
+    return (
     <div className='home-parent'>
       
 {Likedproduct.map((product)=>(
@@ -141,6 +148,10 @@ catch(error)
   </div>
 ))}
 </div>
+)
+  }
+ 
+
    
-  )
+  
 }

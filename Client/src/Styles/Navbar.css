@@ -68,7 +68,9 @@ display: flex;
    gap: 50px;
   color: black;
    align-items: center;
-   
+justify-content: end;
+flex-grow: 1;   
+margin: 0px 10px 0px 0px;
 
 
 
@@ -97,7 +99,7 @@ border: 3.2px solid rgb(213, 213, 213);
     display: none;
 }
 
-@media screen and (max-width:997px) {
+@media screen and (max-width:1033px) {
     .ul{
        display: none;
     }

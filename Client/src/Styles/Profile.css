@@ -25,7 +25,6 @@ padding-top: 100px;
   gap: 6px;
 max-width: 100%;
 
-
 }
 
 .Child2{
@@ -130,6 +129,7 @@ max-width: 100%;
     border-radius: 8px;
     transition: 1s ease-in-out;
 letter-spacing: 4px;
+text-align: start;
 }
 .edit{
     display: flex;
@@ -348,10 +348,11 @@ font-size: 10px;
 .seller-links{
   color: red;
 }
-.main{
-    text-align: center;
-}
+
 .ptext{
     color: green;
     font-size: 20px;
+}
+.main{
+    text-align: center;
 }

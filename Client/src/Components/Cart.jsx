@@ -87,6 +87,15 @@ const total = () =>{
   })
   return total
 }
+if(Cart.length===0)
+{
+  return(
+    <div className='cart-parent'><h1 className='emp'> Cart Empty</h1></div>
+  )
+}
+else{
+
+
 
   return (
     <>
@@ -117,6 +126,8 @@ const total = () =>{
 <button className='buy'>Place Order<PiShoppingCart className='i'/></button>
 </div>
 </div>
+
 </>
   )
+}
 }

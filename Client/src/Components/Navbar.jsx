@@ -58,7 +58,7 @@ export default function Navbar() {
     <div>
       <nav className="nav">
         <label className="lbl">op-com</label>
-        <div className="search">
+        {Cookies.token && <div className="search">
           <input className="input-search" value={category} onChange={(e)=>setCategory(e.target.value)} placeholder="Search here..." />
           {category &&<Link
           to={`/Search/${category}`}
@@ -69,8 +69,8 @@ export default function Navbar() {
               <FontAwesomeIcon icon={faMagnifyingGlass} className="glass" />
             </div>
           </Link>}
-        </div>
-        <ul className="ul mb-0">
+        </div>}
+        <ul className="ul mb-0 ">
           {Cookies.token ? (
             <>
               <li>
@@ -124,7 +124,7 @@ export default function Navbar() {
             </>
           )}
 
-          <div className="img-contains">
+          <li><div className="img-contains">
             {Cookies.token ? (
               <img
                 className="images"
@@ -137,6 +137,7 @@ export default function Navbar() {
               </div>
             )}
           </div>
+          </li>
         </ul>
         <div className="dropdown">
           <button

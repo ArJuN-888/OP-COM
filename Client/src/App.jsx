@@ -6,6 +6,7 @@ import GetID from "./Components/Hooks/GetId";
 import "@fortawesome/fontawesome-free/css/all.css";
 // import Adminpanel from './Components/Adminpanel';
 import Cart from "./Components/Cart";
+import Fastrack from "./Components/Fastrack";
 import Editproduct from "./Components/Editproduct";
 import Requests from "./Components/Requests";
 import { ToastContainer} from "react-toastify";
@@ -19,6 +20,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Usermanagement from "./Components/Usermanagement";
 import { useCookies } from "react-cookie";
 import Adminnav from "./Components/Adminnav";
+import Titan from "./Components/Titan";
 import Addproduct from "./Components/Addproduct";
 import Adminlogin from "./Components/Adminlogin";
 import Userlogin from "./Components/Userlogin";
@@ -58,18 +60,24 @@ function App() {
           {Cookies.admintoken ? <Adminnav /> : <Navbar />}
 
           <Routes>
-            <Route path="/Liked" element={<Liked />} />
+           
             {Cookies.admintoken ? <><Route path="/Add" element={<Addproduct />} />
             <Route path="/Usermanagement" element={<Usermanagement />} />
             <Route path="/Requests" element={<Requests />} />
             <Route path="/Adminhome" element={<Adminhome />} />
             <Route path="/Editproduct" element={<Editproduct />} /></>:<></>}
            {cookies.token ? <> <Route path="/" element={<Home />} />
+           <Route path="/Liked" element={<Liked />} />
             <Route path="/Details/:productId" element={<Details />} />
             <Route path="/Cart" element={<Cart />} />
             <Route path="/Search/:category" element={<Searchresult />}/>
             <Route path="/Sellerform" element={<Sellerform />} />
-            <Route path="/profile" element={<Profile />} /></>:<></>}
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/Fastrack" element={<Fastrack />} />
+            <Route path="/Titan" element={<Titan />} />
+            </>
+            
+            :<></>}
             {!userID &&  <Route path="/Adminlogin" element={<Adminlogin />} />}
            
            

@@ -2,20 +2,23 @@
 .parent-nav{
   position: fixed;
   width: 100%;
- justify-content: end;
+
  place-items: center;
 display: flex;
 height: auto;
 background-color: white;
 height: 60px;
+padding: 0px 10px 0px 10px;
 }
 .uls{
  padding: 0px 0px 0px 0px;
 display: flex;
+flex-grow: 1;
 gap: 40px;
 font-size: 20px;
 letter-spacing: 3px;
 place-items: center;
+justify-content: end;
 }
 .ad-link{
 color: black;
@@ -23,9 +26,18 @@ color: black;
 .adm-stat{
 margin-right: 5px;
 }
-.icons{
+.icons-admin{
 
 padding-left:  0px;
 font-size: 30px;
-color: darkseagreen;
+margin-bottom: 6px;
+color: rgb(30, 29, 29);
+}
+.panel{
+  display: flex;
+  justify-content: flex-start;
+}
+.panel-title{
+  font-size: 30px;
+  letter-spacing: 4px;
 }

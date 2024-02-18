@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from "react-router-dom"
+import {NavLink} from "react-router-dom"
 import "../Styles/Adminnav.css"
 import {FaSignOutAlt} from "react-icons/fa";
 import {  toast,Flip} from 'react-toastify';
@@ -24,13 +24,16 @@ export default function Adminnav() {
   return (
     <div>
       <nav className='parent-nav'>
+        <div  className='panel'>
+        <label className='panel-title'>Administrative Console</label>
+        </div>
         <ul className='uls mb-0'>
-        <li> <Link to="/Adminhome" className='ad-link'><FaHome className='icons'/></Link></li>
-        <li> <Link to="/Usermanagement" className='ad-link'>User-management</Link></li>
-        <li> <Link to="/Add" className='ad-link'>Add-product</Link></li>
-        <li> <Link to="/Requests" className='ad-link'>Requests</Link></li>
-        <li><Link to = "Editproduct" className='ad-link'>Edit-product</Link></li>
-        <li> <Link className='adm-stat' to="/Adminlogin"  onClick={()=>{Logout()}}><FaSignOutAlt className='icons'/></Link></li>
+        <li> <NavLink to="/Adminhome" className='ad-link'><FaHome className='icons-admin'/></NavLink></li>
+        <li> <NavLink to="/Usermanagement" className='ad-link'>User-management</NavLink></li>
+        <li> <NavLink to="/Add" className='ad-link'>Add-product</NavLink></li>
+        <li> <NavLink to="/Requests" className='ad-link'>Requests</NavLink></li>
+        <li><NavLink to = "Editproduct" className='ad-link'>Edit-product</NavLink></li>
+        <li> <NavLink className='adm-stat' to="/Adminlogin"  onClick={()=>{Logout()}}><FaSignOutAlt className='icons-admin'/></NavLink></li>
         </ul>
       </nav>
     </div>

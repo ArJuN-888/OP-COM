@@ -385,8 +385,9 @@ const updatesellerpending = async (req, res) => {
 const deletesellerpending = async (req, res) => {
   try {
     const { id } = req.params;
-    const { filename } = req.body;
+    const { filename,userID } = req.body;
     const data = await Seller.findByIdAndDelete(id);
+    const user = await Users.findByIdAndUpdate(userID,{req:false})
     console.log("data", data);
     const callback = () => {
       console.log("Removed profile due to invalid registration credentials");

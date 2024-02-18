@@ -348,7 +348,75 @@ const getsearchProduct = async (req, res) => {
   }
 };
 
+const getcategoryproduct = async (req, res) => {
+  try {
+    const { userID } = req.params;
+    const currentuser = await Users.findById(userID);
+    const admin = await Admin.find({});
+    const producttoget = req.query.only
+    console.log("userid", userID);
+    console.log("producttoget",producttoget)
+    const users = await Users.find({
+      banned: false,
+    }).lean();
+    console.log("users", users);
 
+    if (currentuser.sellerstatus === true) {
+      let data = [];
+      let tempdata = [];
+     
+
+      const filterNotBanProductsPromises = users.map((user) =>
+      Products.find({ loginid: user._id })
+    );
+
+    const filterNotBanProductsResults = await Promise.all(
+      filterNotBanProductsPromises
+    );
+
+    filterNotBanProductsResults.forEach((result) => {
+      tempdata = [...tempdata, ...result];
+    });
+
+      console.log("tempdataallusersearch", tempdata);
+      const removesellerpro = tempdata.filter(
+        (product) => String(product.loginid) !== String(currentuser._id)
+      );
+      console.log("removesellerprosearch", removesellerpro);
+      data = [...data, ...removesellerpro];
+
+      const adminProducts = await Products.find({ loginid: admin[0]._id });
+      data = [...data, ...adminProducts];
+
+      const filterbasedsearch = data.filter((product)=> product.brandname.toLowerCase() === producttoget.toLowerCase())
+      return res.status(200).json({ products: filterbasedsearch });
+    } else {
+      let Data = [];
+      const filterNotBanProductsPromises = users.map((user) =>
+        Products.find({ loginid: user._id })
+      );
+
+      const filterNotBanProductsResults = await Promise.all(
+        filterNotBanProductsPromises
+      );
+
+      filterNotBanProductsResults.forEach((result) => {
+        Data = [...Data, ...result];
+      });
+
+      console.log("Data", Data);
+
+      const adminProducts = await Products.find({ loginid: admin[0]._id });
+      Data = [...Data, ...adminProducts];
+
+      const filterbasedsearch = Data.filter((product)=> product.brandname === producttoget)
+      return res.status(200).json({ products: filterbasedsearch });
+    }
+  } catch (error) {
+    console.log("Unable to fetch details", error);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+};
 module.exports = {
   adduserProduct,
   getProduct,
@@ -359,5 +427,6 @@ module.exports = {
   getadminProduct,
   addadminProduct,
   productDetails,
-  getsearchProduct
+  getsearchProduct,
+  getcategoryproduct
 };

@@ -57,7 +57,7 @@ export default function Requests() {
           headers: {
             Authorization: `${Cookies.admintoken}`,
           },
-          data: { filename }, // Pass filename as part of the data object
+          data: { filename,userID}, // Pass filename as part of the data object
         }
       );
       fetchseller();
