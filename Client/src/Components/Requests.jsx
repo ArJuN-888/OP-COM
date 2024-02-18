@@ -9,7 +9,7 @@ export default function Requests() {
   const [sellerdata, setsellerData] = useState([]);
   const [Cookies,] = useCookies(['admintoken']);
 
-  const [reqURL] = useState('http://localhost:5000/uploads');
+  const [reqURL,] = useState('http://localhost:5000/uploads');
 
   useEffect(() => {
     fetchseller();
@@ -90,8 +90,8 @@ export default function Requests() {
   };
   
   
-  const downloadImage = (url, filename) => {
-    axios({
+  const downloadImage = async (url, filename) => {
+    await axios({
       url,
       method: 'GET',
       responseType: 'blob', // important
@@ -103,23 +103,26 @@ export default function Requests() {
   return (
     <div className='req-parent'>
       {sellerdata.map((data) => (
-        <div key={data._id}>
-          <div>{data.userID}</div>
-          <div>{data.username}</div>
-          <div>{data.email}</div>
-          <div>{data.category}</div>
-          <div>{data.phno}</div>
-          <div>{data.address}</div>
-          <div>{data.description}</div>
+        <div key={data._id} className='req-child'>
           <div>
-            <img className='im' src={`${reqURL}/${data.filename}`} alt='Seller Image' />
-            <button onClick={() => downloadImage(`${reqURL}/${data.filename}`, data.filename)}>
+            <div className='req-image-contain'><img className='req-image' src={`${reqURL}/${data.filename}`} alt='Seller Image' /></div>
+          <div className='btn-contain-dwld'> <button className='req-dwld-btn' onClick={() => downloadImage(`${reqURL}/${data.filename}`, data.filename)}>
               Download Image
-            </button>
+            </button></div>
+            </div>
+          {/* <div className='req-id'>{data.userID}</div> */}
+          <div className='data-part'>
+          <div className='req-username'>Name: {data.username}</div>
+          <div className='req-email'>Gmail: {data.email}</div>
+          <div className='req-cat'>Category: {data.category}</div>
+          <div className='req-phno'>Phno: {data.phno}</div>
+          <div className='req-address'>Address: {data.address}</div>
+          <div className='req-des'>Description: {data.description}</div>
+    
+          <div className='req-btn-grp'>
+           <div> <button className='req-confirm-btn' onClick={() => Confirm(data._id,data.userID)}>Confirm_seller_Request</button></div>
+           <div> <button className='req-clear-btn' onClick={() => Clear(data._id,data.userID,data.filename)}>Clear</button></div>
           </div>
-          <div>
-            <button onClick={() => Confirm(data._id,data.userID)}>Confirm_seller_Request</button>
-            <button onClick={() => Clear(data._id,data.userID,data.filename)}>Clear</button>
           </div>
         </div>
       ))}

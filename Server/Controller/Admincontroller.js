@@ -1,5 +1,4 @@
 const {Admin} = require("../Model/AdminSchema")
-const {Products} = require("../Model/ProductSchema")
 const JWT = require("jsonwebtoken")
 require("dotenv").config()
 const adminLogin = async (req,res) =>{

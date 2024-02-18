@@ -129,7 +129,8 @@ const getUserprofile = async (req, res) => {
       Profile: user.filename,
       sellerstatus: user.sellerstatus,
       enotify: user.enotify,
-      banstat: user.banned
+      banstat: user.banned,
+      req:user.req
     };
     console.log("Response to be sent:", response); // Log the response to be sent
 
@@ -301,7 +302,7 @@ const sellerregister = async (req, res) => {
         console.log("Removed profile due to invalid registration credentials");
       };
       fs.unlink(`public/uploads/${req.file.filename}`, callback);
-      return res.status(400).json({ message: "already existing seller" });
+      return res.status(400).json({ message: "seller data already initiated" });
     }
     const user = await Users.findById(userID);
     console.log("user", user);
@@ -327,6 +328,7 @@ const sellerregister = async (req, res) => {
       return res.status(400).json({ message: "invalid email" });
     }
     console.log("filename", req.file.filename);
+    const userrequpdate = await Users.findByIdAndUpdate(userID,{req:true})
     const data = new Seller({
       userID,
       username,
@@ -368,6 +370,7 @@ const updatesellerpending = async (req, res) => {
     const data = await Seller.findByIdAndUpdate(id, { pending });
     const userupdate = await Users.findByIdAndUpdate(userID, {
       sellerstatus: true,
+      req:false
     });
     console.log("data", data);
     res.status(200).json({
@@ -422,6 +425,7 @@ const  onlynotify = async (req, res) => {
   return res.status(200).json({
    
     notify: seller.notify,
+    pstat:seller.pending
     
   });
  

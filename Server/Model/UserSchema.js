@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema({
     sellerstatus:{type:Boolean,required:true},
     banned:{type: Boolean,required: true  },
     enotify:{type: Boolean,required: true  },
+    req:{type: Boolean,required: true,default:false  }
 })
 const sellerSchema = new mongoose.Schema({
     userID:{type:mongoose.Schema.Types.ObjectId,ref:"User",required : true},

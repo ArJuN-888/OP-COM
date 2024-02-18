@@ -28,8 +28,10 @@ const adduserProduct = async (req, res) => {
       return res.status(400).json({ message: "Login required" });
     }
     const sellerdata = await Seller.find({userID:loginid})
-    if(sellerdata.category !==category )
+   console.log("sellerdatacat",sellerdata[0].category)
+    if(sellerdata[0].category !== category)
     {
+      console.log("cat",sellerdata.category,category)
       return res.status(400).json({ message: "category you are trying to add is not permitted" });
     }
     console.log("reqbody", req.body);

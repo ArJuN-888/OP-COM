@@ -1,3 +1,82 @@
 .req-parent{
     padding-top: 70px;
 }
+.req-child{
+    margin: 2px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 0px 0px 1px;
+}
+.btn-contain-dwld{
+    text-align: center;
+  
+}
+.data-part{
+font-size: 20px;
+margin: 0px 15px;
+}
+.req-image-contain{
+width: 200px;
+background-color: grey;
+box-shadow: 0px 0px 3px 0px;
+
+}
+.req-image{
+    width: 200px;
+    margin: auto;
+    display: block;
+}
+.req-dwld-btn{
+border: none;
+background-color: rgb(229, 176, 42);
+color: white;
+margin: 5px 0px;
+    font-size: 20px;
+    width: 100%;
+}
+.req-confirm-btn{
+    border: none;
+    background-color: darkseagreen;
+    color: white;
+}
+.req-clear-btn{
+    border: none;
+    background-color: red;
+    color: white;
+}
+.req-btn-grp{
+display: flex;
+gap: 2px;
+flex-wrap: wrap;
+margin: 20px 0px;
+ 
+}
+.req-id{
+  
+}
+.req-username{
+    margin: 5px 0px;
+}
+.req-email{
+    margin: 5px 0px;
+}
+.req-cat{
+    margin: 5px 0px;
+}
+.req-phno{
+    margin: 5px 0px;
+}
+.req-address{
+    margin: 5px 0px;
+}
+.req-des{
+    margin: 5px 0px;
+}
+@media screen and (max-width:236px){
+    /* .req-image-contain{
+        width: 300px;
+    }
+    .req-image{
+        width: fit-content;
+    } */
+}

@@ -13,6 +13,7 @@ export default function Details() {
     const[Cart,setCart]= useState([])
     const [likedid,setlikedid] = useState([])
     const [Cookies] = useCookies(["token"]);
+    const [bannedid,setbannedID] = useState([])
     const [Details,setDetails] = useState({})
     console.log("Details",Details)
     console.log("cart",Cart)
@@ -20,8 +21,26 @@ export default function Details() {
     useEffect(()=>{
         fetchlikedid()
      fetchDetails()
+     getbannedid()
      fetchcart()
     },[])
+  const getbannedid = async() =>{
+      try{
+  const response = await axios.get("http://localhost:5000/User/UserRegistration/banned",{
+    headers:{
+      Authorization:`${Cookies.token}`
+    }
+  })
+  setbannedID(response.data.bannedids)
+
+}
+catch(error)
+{
+  toast(error.response.data.message,{
+    transition: Flip
+  })
+}
+    }
     const nav = useNavigate()
     const fetchcart = async() =>{
       const response = await axios.get(`http://localhost:5000/User/Cart/ids/${userID}`,{
@@ -145,13 +164,14 @@ export default function Details() {
       <div className='imgs-details'>   <button onClick={()=>{checkLike(Details._id)}} className='likes'>{likedid.includes(Details._id) ? <IoHeartSharp className='likeicons'/>:<IoHeartSharp className='likeiconf'/>}</button><img className='im-d' src={Details.photourl} /></div>
       <div className='btn-grps'>
         <button onClick={()=>{Cartcheck(Details._id)}} className='cart-btn'>{Cart.find(item=> item.productID === Details._id )? "Go-to-Cart" : "Add-To-Cart"}</button>
-        <button className='buy-btn'>Buy-Now</button>
+        <button disabled={bannedid.includes(Details.loginid)} className='buy-btn'>Buy-Now</button>
       </div>
       </div>
       <div className='details-contain'>
       <div className='brand'><mark className='brand-sub'>{Details.brandname}</mark></div>
     <div className='pn'>{Details.productname}</div>
     <div className='pd'>{Details.description}</div>
+    <div>{bannedid.includes(Details.loginid) ? <label className='out-st'>Currently Out of Stock</label>:""}</div>
     <div className='sto'>Available-Stoke-{Details.stoke}</div>
      <div className='pp'>₹ {Details.price}</div>
       </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import GetID from './Hooks/GetId'
 import "../Styles/Sellerform.css"
@@ -18,8 +18,10 @@ export default function Sellerform() {
     pending:true,
     notify:true,
   })
+
     const [Cookies,] = useCookies(["token"]);
     const [File,setFile] = useState(null)
+  
     const handleChange = (key,value) =>{
       setSellerform({...sellerform,[key]:value})
      }
@@ -53,6 +55,7 @@ catch(error)
       })
 }
 }
+
   return (
     <div className='seller-parent'>
       <input
@@ -94,6 +97,7 @@ catch(error)
       onChange={HandleFile}
       />
      <button onClick={submitRequest}>Submit_request</button>
+   
     </div>
   )
 }

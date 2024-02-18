@@ -49,6 +49,7 @@ export default function Profile() {
   const [edittoggle, setEdittoggle] = useState(false);
   const [ids, setids] = useState("");
   const [note, setnote] = useState(null);
+  const [sellerreqstat,setsellerReqstat] = useState(null)
   const [estate, seteState] = useState(null);
   console.log("sfdmb", Cookies.token);
   console.log("email", fetcheduser.email);
@@ -60,10 +61,10 @@ export default function Profile() {
   console.log("sellerdatapproved", sellerdata);
   console.log("enotify", estate);
   console.log("note", note);
-
   useEffect(() => {
     fetchUserprofile();
     fetchuserProduct();
+    
   }, []);
 
   const notifyfetch = async () => {
@@ -152,7 +153,10 @@ export default function Profile() {
       setstatus(response.data.active);
       console.log("Status:", response.data.active);
       setusername(response.data.User.username);
+    
       console.log("Username:", response.data.User.username);
+      setsellerReqstat(response.data.req)
+      console.log("reqstat",response.data.req)
       setsellerstat(response.data.sellerstatus);
       console.log("Seller Status:", response.data.sellerstatus);
       if (response.data.sellerstatus === true) {
@@ -684,14 +688,18 @@ export default function Profile() {
           </div>
         )}
       </div>
-      {sellerstat === false && (
-        <div className="seller-link">
+    
+     
+        {(sellerstat === false && sellerreqstat===true) && (<div className="seller-link">
+       Seller request Pending....
+         </div>)}
+         {(sellerstat === false && sellerreqstat===false) && (<div className="seller-link">
           Want to be a seller ?{" "}
           <Link className="seller-links" to="/Sellerform">
-            Click here
+          Click here
           </Link>
-        </div>
-      )}
+         </div>)}
+        
     </div>
   );
 }

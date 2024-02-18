@@ -57,7 +57,7 @@ export default function Navbar() {
   return (
     <div>
       <nav className="nav">
-        <label className="lbl">Timex</label>
+        <label className="lbl">op-com</label>
         <div className="search">
           <input className="input-search" value={category} onChange={(e)=>setCategory(e.target.value)} placeholder="Search here..." />
           {category &&<Link

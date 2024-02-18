@@ -8,8 +8,12 @@ const app = express()
 const PORT  = 5000
 app.use(express.json())
 
-app.use(express.static("./public"));
-app.use(cors())
+
+app.use(cors({
+    origin: ["http://localhost:5173"], // Change this to your React app's URL
+    credentials: true,
+  }));
+  app.use(express.static("./public"));
 app.use("/User",userRoute)
 app.use("/Product",productRoute)
 app.use("/Admin",adminRoute)
