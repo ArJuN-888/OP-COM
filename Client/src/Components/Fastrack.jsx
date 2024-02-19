@@ -103,7 +103,7 @@ export default function Fastrack() {
      
       }
   return (
-    <div className='home-parent'>
+    <div className='liked-parent'>
       
     {Filtered.map((product)=>(
      

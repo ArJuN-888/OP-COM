@@ -73,6 +73,7 @@ export default function Navbar() {
         <ul className="ul mb-0 ">
           {Cookies.token ? (
             <>
+           
               <li>
                 <NavLink to="/" className="lk" activeclassname="active">
                   {/* <FaHome className="icon" /> */}Home
@@ -139,6 +140,8 @@ export default function Navbar() {
           </div>
           </li>
         </ul>
+        
+            
         <div className="dropdown">
           <button
             onClick={() => {
@@ -243,6 +246,9 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
-    </div>
+      
+     
+              </div>
+  
   );
 }

@@ -1,12 +1,11 @@
 import Profile from "./Components/Profile";
 import Navbar from "./Components/Navbar";
 import Context from "./Components/Context";
-import GetadminID from "./Components/Hooks/GetadminID";
 import GetID from "./Components/Hooks/GetId";
 import "@fortawesome/fontawesome-free/css/all.css";
-// import Adminpanel from './Components/Adminpanel';
 import Cart from "./Components/Cart";
 import Fastrack from "./Components/Fastrack";
+import Sonata from "./Components/Sonata";
 import Editproduct from "./Components/Editproduct";
 import Requests from "./Components/Requests";
 import { ToastContainer} from "react-toastify";
@@ -20,6 +19,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Usermanagement from "./Components/Usermanagement";
 import { useCookies } from "react-cookie";
 import Adminnav from "./Components/Adminnav";
+import Casio from "./Components/Casio";
 import Titan from "./Components/Titan";
 import Addproduct from "./Components/Addproduct";
 import Adminlogin from "./Components/Adminlogin";
@@ -75,6 +75,8 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/Fastrack" element={<Fastrack />} />
             <Route path="/Titan" element={<Titan />} />
+            <Route path="/Casio" element={<Casio />} />
+            <Route path="/Sonata" element={<Sonata />} />
             </>
             
             :<></>}

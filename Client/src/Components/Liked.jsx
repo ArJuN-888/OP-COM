@@ -132,7 +132,7 @@ return(
   }
   else{
     return (
-    <div className='home-parent'>
+    <div className='liked-parent'>
       
 {Likedproduct.map((product)=>(
 <div key={product._id} className='home-child'>

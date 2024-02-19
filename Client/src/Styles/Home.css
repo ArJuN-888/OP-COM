@@ -1,13 +1,21 @@
 .home-parent {
-  padding-top: 80px;
   display: flex;
+  gap: 20px;
+  padding-top: 80px;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 18px;
+  letter-spacing: 3px;
+  /* box-shadow: 0px 0px 3px 0px; */
+}
+.liked-parent{
+  display: flex;
+  padding-top: 80px;
   gap: 20px;
   flex-wrap: wrap;
   justify-content: center;
   font-size: 18px;
   letter-spacing: 3px;
-
-  /* box-shadow: 0px 0px 3px 0px; */
 }
 .home-child {
   width: 250px;
@@ -16,6 +24,7 @@
   transition: 1s ease-in-out;
   position: relative;
   cursor: pointer;
+  height: 400px;
 }
 .home-child:hover {
   transform: scale(1.1);
@@ -42,6 +51,10 @@
     width: auto;
   }
   .imgs {
+    height: auto;
+  }
+  .home-child{
+    
     height: auto;
   }
 }
@@ -89,3 +102,92 @@
 .out-st {
   color: red;
 }
+.side-menu{
+
+box-shadow: 0px 0px 1px 0px;
+border-radius: 10px 0px 0px 10px;
+
+}
+.side-ul{
+padding: 0px 28px;
+}
+.side-li{
+  margin: 0px 0px  20px 0px;
+}
+.side-lnk{
+ text-decoration: none;
+ color: rgb(0, 0, 0);
+ 
+}
+
+.avail-hd{
+  display: none;
+}
+
+.avail-ul{
+ display: none;
+ 
+}
+.avail-ln{
+  text-decoration: none;
+color: black;  
+}
+.avail-ln:hover{
+  background-color: rgb(0, 0, 0,0.1);
+}
+.it{
+letter-spacing: 2px;
+padding: 0px 10px;
+margin-bottom: 10px;
+background-color: rgb(225, 220, 220);
+}
+@media screen and (max-width: 972px) {
+  .side-menu{
+display: none;
+  }
+  .avail-hd{
+    display: flex;
+    justify-content: center;
+  padding-top: 80px;
+  position: relative;
+  }
+  .avail-hd:hover .avail-ul{
+    display: flex;
+position: absolute;
+z-index: 1;
+padding: 0px 40px 0px 40px;
+margin:34px 0px 0px 0px;
+font-size: 20px;
+border-radius: 10px 10px 0px 0px;
+gap: 55px;
+background-color: white;
+box-shadow: 0px 0px 2px 0px;
+
+
+  }
+  .home-parent{
+    padding-top: 0px;
+  }
+
+
+
+}
+@media screen and (max-width: 525px) {
+  .avail-hd:hover .avail-ul{
+    display: block;
+  }
+  .avail-hd:hover .avail-ul{
+    padding: 0px 18px 0px 18px;
+    text-align: center;
+ 
+  }
+  .avail-ln{
+   padding: 7px 8px;
+   width: 100%;
+  }
+  .avail-li{
+    margin: 20px 0px;
+  }
+}
+
+

@@ -409,7 +409,7 @@ const getcategoryproduct = async (req, res) => {
       const adminProducts = await Products.find({ loginid: admin[0]._id });
       Data = [...Data, ...adminProducts];
 
-      const filterbasedsearch = Data.filter((product)=> product.brandname === producttoget)
+      const filterbasedsearch = Data.filter((product)=> product.brandname.toLowerCase() === producttoget.toLowerCase())
       return res.status(200).json({ products: filterbasedsearch });
     }
   } catch (error) {

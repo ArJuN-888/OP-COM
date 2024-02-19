@@ -17,7 +17,7 @@ export default function Addproduct() {
   const [price, setPrice] = useState("");
   const addProduct = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/Product/addProduct',{stoke,category,brandname,productname,description,photourl,loginid,price},{
+      const response = await axios.post('http://localhost:5000/Product/admin/addProduct',{stoke,category,brandname,productname,description,photourl,loginid,price},{
         headers:{
           Authorization: `${Cookies.admintoken}`
         },

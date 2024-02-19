@@ -5,7 +5,7 @@ import { IoHeartSharp } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 import GetID from './Hooks/GetId'
 import { useCookies } from 'react-cookie'
-export default function Titan() {
+export default function Casio() {
     const [Cookies,] = useCookies(["token"])
     const [Liked,setLiked] = useState([])
     const [Filtered,setFiltered] = useState([])
@@ -17,7 +17,7 @@ export default function Titan() {
 
                 const response = await axios.get(`http://localhost:5000/Product/getProduct/particular/${userID}`,{
                     params: {
-                    only: "Titan",
+                    only: "casio",
                       
                       },
                     headers:{

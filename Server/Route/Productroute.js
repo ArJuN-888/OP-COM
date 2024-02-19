@@ -10,7 +10,7 @@ router.get("/getProduct/adminproduct/:adminID",AdminverifyToken,productControlle
 router.put("/getProduct/:ids",Middleware,productController.updateProduct)
 router.put("/getProduct/updateadminproduct/:ids",AdminverifyToken,productController.updateProduct)
 router.post("/addProduct",Middleware,productController.adduserProduct)
-router.post("/addProduct",AdminverifyToken,productController.addadminProduct)
+router.post("/admin/addProduct",AdminverifyToken,productController.addadminProduct)
 router.delete("/getProduct/deleteProduct/:id",Middleware,productController.deleteProduct)
 router.delete("/getProduct/deleteadminProduct/:id",AdminverifyToken,productController.deleteadminProduct)
 router.get("/getProduct/bycategory/:userID",Middleware,productController.getsearchProduct)

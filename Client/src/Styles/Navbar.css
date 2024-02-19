@@ -99,7 +99,7 @@ border: 3.2px solid rgb(213, 213, 213);
     display: none;
 }
 
-@media screen and (max-width:1033px) {
+@media screen and (max-width:1048px) {
     .ul{
        display: none;
     }
@@ -155,16 +155,16 @@ position: relative;
 
 }
 
-@media screen and (max-width:584px) {
+@media screen and (max-width:573px) {
   
  .ul{
     display: none;
  } 
 
-  .lbl{
-  display: none;
-  }
  
+ .lbl{
+    display: none;
+    }
 
  
 }
@@ -282,14 +282,14 @@ border: 3.2px solid rgb(206, 199, 199);
   
 }
 
-@media screen and (max-width:446px) {
+@media screen and (max-width:460px) {
     .bt{
         margin-left: 24px;
     }
     .dropdown-content{
         margin: 4px 0px 0px 0px;
     }
-  
+   
 }
 .sig{
     margin: 30px 0px;
@@ -302,3 +302,5 @@ border: 3.2px solid rgb(206, 199, 199);
     border: none;
     background-color:transparent;
 }
+
+

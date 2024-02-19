@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
+import { RxDropdownMenu } from "react-icons/rx";
 import "../Styles/Home.css"
 import GetID from './Hooks/GetId';
 import { IoHeartSharp } from "react-icons/io5";
@@ -105,8 +106,25 @@ catch(error)
  
   }
   return (
+    <>
+     <div className="avail-hd">
+            <label className='it'>Available  <RxDropdownMenu className='icon' /></label>
+            <ul className="avail-ul">
+            <li className='avail-li'><Link className='avail-ln' to="/Titan">Titan</Link></li> 
+             <li className='avail-li'><Link className='avail-ln' to="/Casio">Casio</Link></li>
+             <li className='avail-li'><Link className='avail-ln' to="/Fastrack">Fastrack</Link></li>
+             <li className='avail-li'><Link className='avail-ln' to="/Sonata">Sonata</Link></li>
+            </ul>
+       </div>
     <div className='home-parent'>
-      
+     <div className='side-menu'>
+      <ul className='side-ul'>
+        <li className='side-li'><Link to="/Titan" className='side-lnk'>Titan</Link></li>
+        <li className='side-li'><Link to="/Casio" className='side-lnk'>Casio</Link></li>
+        <li className='side-li'><Link to="/Fastrack" className='side-lnk'>Fastrack</Link></li>
+        <li className='side-li'><Link to="/Sonata" className='side-lnk'>Sonata</Link></li>
+      </ul>
+      </div> 
 {allproducts.map((product)=>(
  
 <div key={product._id} className='home-child'>
@@ -122,6 +140,6 @@ catch(error)
  
 ))}
 </div>
-   
+   </>
   )
 }
