@@ -39,11 +39,10 @@ export default function Addproduct() {
         value={stoke}
         onChange={(e) => setStoke(e.target.value)}
       />
-       <input
-        placeholder="category..."
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-      />
+               <select value={category} onChange={(e)=>setCategory(e.target.value)}>
+        <option value="watch">Watch</option>
+        <option value="bags">Bags</option>
+      </select>
       <input
         placeholder="brandname..."
         value={brandname}

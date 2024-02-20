@@ -1,16 +1,17 @@
 .home-parent {
   display: flex;
   gap: 20px;
-  padding-top: 80px;
+  padding-top: 90px;
   flex-wrap: wrap;
   justify-content: center;
   font-size: 18px;
   letter-spacing: 3px;
+
   /* box-shadow: 0px 0px 3px 0px; */
 }
 .liked-parent{
   display: flex;
-  padding-top: 80px;
+  padding-top: 90px;
   gap: 20px;
   flex-wrap: wrap;
   justify-content: center;
@@ -20,11 +21,13 @@
 .home-child {
   width: 250px;
   padding: 15px;
-  box-shadow: 0px 0px 1px 0px slategray;
   transition: 1s ease-in-out;
   position: relative;
   cursor: pointer;
   height: 400px;
+ border-radius: 10px;
+  background-color: rgb(0,0,0,0.2);
+ 
 }
 .home-child:hover {
   transform: scale(1.1);
@@ -116,7 +119,7 @@ padding: 0px 28px;
 }
 .side-lnk{
  text-decoration: none;
- color: rgb(0, 0, 0);
+ color: rgb(250, 246, 246);
  
 }
 

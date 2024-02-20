@@ -57,7 +57,7 @@ export default function Navbar() {
   return (
     <div>
       <nav className="nav">
-        <label className="lbl">op-com</label>
+       {Cookies.token ? <label className="lbl">Op-cOm</label> :<label className="lbl" style={{color:"white"}}>Op-cOm</label>} 
         {Cookies.token && <div className="search">
           <input className="input-search" value={category} onChange={(e)=>setCategory(e.target.value)} placeholder="Search here..." />
           {category &&<Link
@@ -75,7 +75,7 @@ export default function Navbar() {
             <>
            
               <li>
-                <NavLink to="/" className="lk" activeclassname="active">
+                <NavLink to="/Home" className="lk" activeclassname="active">
                   {/* <FaHome className="icon" /> */}Home
                 </NavLink>
               </li>
@@ -112,32 +112,34 @@ export default function Navbar() {
           ) : (
             <>
             <li>
-              <NavLink to="/Adminlogin" activeclassname="active"  className="lk">
+              <NavLink to="/Adminlogin" activeclassname="active"  className="lks">
                 {/* <RiAdminFill className="icon" /> */}Admin
                
               </NavLink>
               </li>
               <li>
               <Link to="/userlogin" activeclassname="active" className="lk" >
-                <FaSignInAlt className="icon" />
+                <FaSignInAlt className="ico" />
               </Link>
               </li>
             </>
           )}
 
-          <li><div className="img-contains">
+          <li>
             {Cookies.token ? (
+              <div className="img-contains">
               <img
                 className="images"
                 src={`${reqURL}/${profileImage}`}
                 alt="profile"
               />
-            ) : (
+              </div> ) : (
+                  <div className="img-contains-logout">
               <div className="qs">
-                <FaUserCircle className="ic" />
+                <FaUserCircle className="ict" />
               </div>
-            )}
-          </div>
+              </div> )}
+       
           </li>
         </ul>
         
@@ -170,7 +172,7 @@ export default function Navbar() {
                 <>
                   {" "}
                   <li className="n">
-                    <NavLink className="l" to="/" activeclassname="active">
+                    <NavLink className="l" to="/Home" activeclassname="active">
                       <FaHome className="icon" />
                     </NavLink>
                   </li>

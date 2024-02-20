@@ -7,13 +7,13 @@
    align-items: center;
  height: auto;
  z-index: 1;
-
+padding-top: 10px;
 
 }
 .lbl{
     font-size: 30px;
     letter-spacing: 3px;
-color: black;
+color: rgb(255, 255, 255);
     margin-left: 10px;
    
  
@@ -76,11 +76,15 @@ margin: 0px 10px 0px 0px;
 
 }
 .lk{
-    color: black;
+    color: rgb(255, 255, 255);
  text-decoration: none;
  
  
 
+}
+.lks{
+    color: rgb(214, 209, 209);
+    text-decoration: none;
 }
 
 
@@ -95,11 +99,25 @@ border: 3.2px solid rgb(213, 213, 213);
 
   
 }
+.img-contains-logout{
+    width: 50px; /* Adjust this value based on your design */
+    border: 2px solid rgb(255, 255, 255);
+        margin: 2px 0px 2px 0px;
+        padding: 1.9px;
+        height: 50px;
+        border-radius: 130px;
+     
+}
+.ict{
+    font-size: 43.9px;
+    color:rgba(255, 255, 255, 0.842);
+    
+} 
 .bt{
     display: none;
 }
 
-@media screen and (max-width:1048px) {
+@media screen and (max-width:1067px) {
     .ul{
        display: none;
     }
@@ -116,6 +134,7 @@ border: 3.2px solid rgb(213, 213, 213);
       .dropdown{
         position: relative;
        margin: 0px 55px 0px 0px;
+       
      
     }
  
@@ -162,13 +181,18 @@ position: relative;
  } 
 
  
- .lbl{
+ /* .lbl{
     display: none;
-    }
+    } */
 
  
 }
+@media screen and (max-width:473px) {
+     .lbl{
+    display: none;
+    }
 
+}
 
 .border-heart{
     font-size: 26px;
@@ -195,18 +219,24 @@ position: relative;
     font-size: 25px;
   color:grey;
 }
+.ico{
+    padding-left:  0px;
+    font-size: 28px;
+    color:rgb(200, 196, 196);
+    margin: 0px 0px 4px 0px;  
+}
 .icon{
 
 padding-left:  0px;
 font-size: 28px;
-color:black;
+color:rgb(255, 255, 255);
 margin: 0px 0px 4px 0px;
 
 }
 .icon-out{
     padding-left:  0px;
     font-size: 28px;
-    color:rgb(61, 49, 49);
+    color:rgb(216, 210, 210);
     margin: 0px 0px 4px 0px; 
 }
 .cross{
@@ -225,6 +255,8 @@ margin: 0px 0px 4px 0px;
     box-sizing: border-box;
     font-size: 20px;
    border-radius: 20px;
+   background-color: transparent;
+   color: white;
 
 }
 
@@ -237,8 +269,13 @@ margin: 0px 0px 4px 0px;
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color:white;
+    background-color:transparent;
+    background: url("https://r4.wallpaperflare.com/wallpaper/531/951/621/digital-digital-art-artwork-illustration-minimalism-hd-wallpaper-08869d3810a06c28a09cf1be487204ea.jpg");
     height: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
     z-index: 1;
     width: fit-content;
     margin: 4px 0px 0px 36px;

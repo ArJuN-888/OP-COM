@@ -1,5 +1,6 @@
 import Profile from "./Components/Profile";
 import Navbar from "./Components/Navbar";
+import "./app.css"
 import Context from "./Components/Context";
 import GetID from "./Components/Hooks/GetId";
 import "@fortawesome/fontawesome-free/css/all.css";
@@ -28,6 +29,7 @@ import Adminhome from "./Components/Adminhome";
 import Home from "./Components/Home";
 import Searchresult from "./Components/Searchresult";
 import Liked from "./Components/Liked";
+import Initial from "./Components/Initial";
 function App() {
   const [userRegister, setuserRegister] = useState({
     username: "",
@@ -51,6 +53,7 @@ function App() {
   const customToastStyle = {
     fontSize: '16px',
     letterSpacing:'2px',
+   
     // Adjust the font size as needed
   };
   return (
@@ -60,13 +63,13 @@ function App() {
           {Cookies.admintoken ? <Adminnav /> : <Navbar />}
 
           <Routes>
-           
+          <Route path="/" element={<Initial />} />
             {Cookies.admintoken ? <><Route path="/Add" element={<Addproduct />} />
             <Route path="/Usermanagement" element={<Usermanagement />} />
             <Route path="/Requests" element={<Requests />} />
             <Route path="/Adminhome" element={<Adminhome />} />
             <Route path="/Editproduct" element={<Editproduct />} /></>:<></>}
-           {cookies.token ? <> <Route path="/" element={<Home />} />
+           {cookies.token ? <> <Route path="/Home" element={<Home />} />
            <Route path="/Liked" element={<Liked />} />
             <Route path="/Details/:productId" element={<Details />} />
             <Route path="/Cart" element={<Cart />} />
@@ -89,8 +92,11 @@ function App() {
         </Context.Provider>
       </BrowserRouter>
       <ToastContainer
-       position="top-center"
+       position="bottom-right"
        style={customToastStyle}
+      //  toastStyle={{backgroundColor:"rgb(0,0,0,0.5"}}
+       autoClose={3000}
+       theme="light"
        />
     </>
   );

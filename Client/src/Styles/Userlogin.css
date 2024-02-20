@@ -1,0 +1,47 @@
+
+.login-parent{
+    height: 100vh;
+ display: flex;
+ justify-content: center;
+align-items: center;
+
+}
+
+.login-frm{
+background-color: rgb(0,0,0,0.1);
+padding: 30px;
+display: grid;
+border-radius: 10px 10px 10px 10px;
+box-shadow: 0px 0px 4px 0px;
+}
+.ip1{
+    margin: 5px 0px;
+    height: 35px;
+    border: none;
+    letter-spacing: 5px;
+    background-color: transparent;
+    color:white;
+    font-size: 20px;
+    width: 100%;
+    outline: none;
+}
+::placeholder{
+    color: rgb(213, 206, 206);
+}
+.login-bt{
+border:  1px solid rgb(210, 205, 205);
+background-color: transparent;
+color: white;
+width: 100%;
+margin-top: 50px;
+height: 38px;
+font-size: 18px;
+border-radius: 3px;
+}
+.login-bt:hover{
+    
+    color: rgb(16, 12, 12);
+    background-color: rgba(255, 255, 255, 0.379);
+    border-radius: 3px;
+   
+}

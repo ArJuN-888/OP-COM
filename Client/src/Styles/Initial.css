@@ -1,0 +1,23 @@
+.ini-parent{
+
+
+height: 100vh;
+display: flex;
+justify-content: start;
+align-items: center;
+
+}
+.e-front{
+    
+    margin-left: 10px;
+    color: azure;
+    font-size: 22px;
+}
+.l-div{
+display: flex;
+justify-content: end;
+}
+.l-l{
+font-size: 25px;
+color: rgb(161, 2, 254);
+}

@@ -18,7 +18,7 @@ export default function Sellerform() {
     pending:true,
     notify:true,
   })
-
+console.log("sellerfrm",sellerform)
     const [Cookies,] = useCookies(["token"]);
     const [File,setFile] = useState(null)
   
@@ -39,6 +39,7 @@ const submitRequest = async() =>{
         formData.append(key, sellerform[key]);
       
       });
+      
         const response = await axios.post("http://localhost:5000/User/SellerRegistartion",formData,{
             headers:{
                 Authorization:`${Cookies.token}`
@@ -68,11 +69,15 @@ catch(error)
       value={sellerform.email}
       onChange={(e)=>handleChange("email",e.target.value)}
       />
-       <input
+       {/* <input
        placeholder='category...'
       value={sellerform.category}
       onChange={(e)=>handleChange("category",e.target.value)}
-      />
+      /> */}
+      <select value={sellerform.category} onChange={(e)=>handleChange("category",e.target.value)}>
+        <option value="watch">Watch</option>
+        <option value="bags">Bags</option>
+      </select>
        <input
        placeholder='address...'
       value={sellerform.address}

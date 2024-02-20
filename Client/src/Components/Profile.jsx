@@ -330,6 +330,7 @@ export default function Profile() {
   };
   const addProduct = async () => {
     try {
+      console.log("productadd",category)
       const response = await axios.post(
         "http://localhost:5000/Product/addProduct",
         {
@@ -587,12 +588,10 @@ export default function Profile() {
                   value={stoke}
                   onChange={(e) => setStoke(e.target.value)}
                 />
-                <input
-                  className="inputs"
-                  placeholder="category..."
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value)}
-                />
+                   <select value={category} onChange={(e)=>setCategory(e.target.value)}>
+        <option value="watch">Watch</option>
+        <option value="bags">Bags</option>
+      </select>
                 <input
                   className="inputs"
                   placeholder="brandname..."

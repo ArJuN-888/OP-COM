@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import axios from 'axios'
-import "../Styles/auth.css"
+import bck from "./background/bck.mp4"
+import "../Styles/Userlogin.css"
 import { useNavigate } from 'react-router-dom'
 import {useCookies} from "react-cookie"
 import {  toast ,Flip} from 'react-toastify';
@@ -28,7 +29,7 @@ export default function Userlogin() {
   toast.success(response.data.message,{
     transition:Flip
   })
-  nav("/")
+  nav("/Home")
 
         }
 catch(error)
@@ -44,20 +45,25 @@ catch(error)
   
     <div className='login-parent'>
   
+  <div className='login-frm'>
         <input
         type='text'
         name='email'
+        placeholder='Email...'
+        className='ip1'
         value={login.email}
         onChange={handleChange}
         />
         <input
         type='password'
         name='password'
+        placeholder='Password...'
+        className='ip1'
         value={login.password}
         onChange={handleChange}
         />
-        <button onClick={()=>{Login()}}>Login</button>
-       
+        <button className='login-bt' onClick={()=>{Login()}}>Login</button>
+        </div>
     </div>
    
     </>
