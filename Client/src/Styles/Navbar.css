@@ -5,15 +5,14 @@
     position: fixed;
    justify-content: space-between;
    align-items: center;
- height: auto;
+ height: 80px;
  z-index: 1;
 padding-top: 10px;
-
 }
 .lbl{
     font-size: 30px;
     letter-spacing: 3px;
-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
     margin-left: 10px;
    
  
@@ -76,25 +75,25 @@ margin: 0px 10px 0px 0px;
 
 }
 .lk{
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
  text-decoration: none;
  
  
 
 }
 .lks{
-    color: rgb(214, 209, 209);
+    color: rgb(237, 229, 229);
     text-decoration: none;
 }
 
 
 
 .img-contains {
-    width: 70px; /* Adjust this value based on your design */
+    width: 62px; /* Adjust this value based on your design */
 border: 3.2px solid rgb(213, 213, 213);
     margin: 2px 0px 2px 0px;
-    padding: 2.5px;
-    height: 69px;
+    padding: 2px;
+    height: 60.5px;
     border-radius: 130px;
 
   
@@ -110,7 +109,7 @@ border: 3.2px solid rgb(213, 213, 213);
 }
 .ict{
     font-size: 43.9px;
-    color:rgba(255, 255, 255, 0.842);
+    color:rgba(225, 217, 217, 0.842);
     
 } 
 .bt{
@@ -145,7 +144,7 @@ border: 3.2px solid rgb(213, 213, 213);
    
     border-radius: 120px;
    width: 100%;
-   height: 57px;
+   height: 50px;
    object-fit: cover; /* or object-fit: contain; */
 }
 
@@ -156,16 +155,16 @@ border: 3.2px solid rgb(213, 213, 213);
 }
 .qs{
    text-align: center;
-   color:ghostwhite;
+   color:rgb(0, 0, 0);
    
 }
 .ic{
    font-size: 58px;
-  color: rgb(186, 183, 183);
+  color: rgb(193, 187, 187);
 }
 .search{
     display: flex;
-   
+   color: black;
 position: relative;
  flex-grow: 1;
  margin: 5px 4px 5px 4px;
@@ -222,21 +221,27 @@ position: relative;
 .ico{
     padding-left:  0px;
     font-size: 28px;
-    color:rgb(200, 196, 196);
+    color:rgb(231, 223, 223);
     margin: 0px 0px 4px 0px;  
+}
+.icon-avail{
+    padding-left:  0px;
+    font-size: 28px;
+    color:rgb(14, 14, 14);
+    margin: 0px 0px 4px 0px; 
 }
 .icon{
 
 padding-left:  0px;
 font-size: 28px;
-color:rgb(255, 255, 255);
+color:rgb(239, 232, 232);
 margin: 0px 0px 4px 0px;
 
 }
 .icon-out{
     padding-left:  0px;
     font-size: 28px;
-    color:rgb(216, 210, 210);
+    color:rgb(97, 94, 94);
     margin: 0px 0px 4px 0px; 
 }
 .cross{
@@ -256,8 +261,11 @@ margin: 0px 0px 4px 0px;
     font-size: 20px;
    border-radius: 20px;
    background-color: transparent;
-   color: white;
+   color: rgb(0, 0, 0);
 
+}
+.input-search::placeholder{
+    color: black;
 }
 
 .active{

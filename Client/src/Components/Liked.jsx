@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import nol from "./background/nol.png"
 import "../Styles/Home.css"
 import GetID from './Hooks/GetId';
 import { GoHeart } from "react-icons/go";
@@ -127,7 +128,9 @@ catch(error)
   if(Likedproduct.length === 0)
   {
 return(
-  <div className='home-parent'><h1>Wishlist-Empty</h1></div>
+  <div className='liked-parent'><h3 style={{color:"grey"}}>Wishlist-Empty</h3>
+  <img src={nol} width="40px" height="40px"/>
+  </div>
 )
   }
   else{

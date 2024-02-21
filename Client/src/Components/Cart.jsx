@@ -4,7 +4,7 @@ import { PiShoppingCart } from "react-icons/pi";
 import "../Styles/Cart.css"
 import { useEffect,useState } from 'react'
 import { TfiTrash } from "react-icons/tfi";
-import { IoCloseOutline } from "react-icons/io5";
+import nol from "./background/nol.png"
 import {  toast,Flip} from 'react-toastify';
 import { useCookies } from "react-cookie";
 import GetID from './Hooks/GetId';
@@ -90,7 +90,8 @@ const total = () =>{
 if(Cart.length===0)
 {
   return(
-    <div className='cart-parent'><h1 className='emp'> Cart Empty</h1></div>
+    <div className='cart-sub-parent'><h3 style={{color:"grey"}}>Cart-Empty</h3>
+    <img src={nol} width="40px" height="40px"/></div>
   )
 }
 else{

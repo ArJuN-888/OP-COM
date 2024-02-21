@@ -169,7 +169,7 @@ catch(error)
       </div>
       <div className='details-contain'>
       <div className='brand'><mark className='brand-sub'>{Details.brandname}</mark></div>
-    <div className='pn'>{Details.productname}</div>
+    <div className='pn'>Model - {Details.productname}</div>
     <div className='pd'>{Details.description}</div>
     <div>{bannedid.includes(Details.loginid) ? <label className='out-st'>Currently Out of Stock</label>:""}</div>
     <div className='sto'>Available-Stoke-{Details.stoke}</div>

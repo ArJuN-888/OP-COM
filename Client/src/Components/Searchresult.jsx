@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import "../Styles/Search.css"
 import { useCookies } from 'react-cookie'
+import empty from "./background/empty.png"
 import GetID from './Hooks/GetId';
 import { IoHeartSharp } from "react-icons/io5";
 import {  toast,Flip} from 'react-toastify';
@@ -99,8 +101,19 @@ catch(error)
 
  
   }
+  if(searchresult.length === 0)
+  {
+    return(
+      <div className='Search-parent'><h3 style={{color:"grey"}}>Un-available</h3>
+      <img src={empty} width="50px" height="50px"/>
+      </div>
+    )
+  }
+  else{
+
+  
   return (
-    <div className='home-parent'>
+    <div className='Search-parent'>
       
 {searchresult.map((product)=>(
  
@@ -117,4 +130,5 @@ catch(error)
 ))}
 </div>
   )
+}
 }

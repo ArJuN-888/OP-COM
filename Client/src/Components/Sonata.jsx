@@ -17,7 +17,7 @@ export default function Sonata() {
 
                 const response = await axios.get(`http://localhost:5000/Product/getProduct/particular/${userID}`,{
                     params: {
-                    only: "casio",
+                    only: "sonata",
                       
                       },
                     headers:{
@@ -102,9 +102,49 @@ export default function Sonata() {
     
      
       }
+      const hightoLow = () =>{
+        const data = [...Filtered]
+        let swapped
+   do{
+    swapped = false
+     for(let i=0;i<data.length-1;i++)
+     {
+      if(data[i].price < data[i+1].price)
+      {
+       let temp = data[i]
+        data[i]=data[i+1]
+        data[i+1] = temp
+        swapped = true
+      }
+     }
+   }while(swapped)
+   setFiltered(data)
+      }
+      const lowtoHigh = () => {
+        let swapped
+        const data = [...Filtered]
+        do{
+         swapped = false
+          for(let i=0;i<data.length-1;i++)
+          {
+           if(data[i].price > data[i+1].price)
+           {
+            let temp = data[i]
+             data[i]=data[i+1]
+             data[i+1] = temp
+             swapped = true
+           }
+          }
+        }while(swapped)
+        setFiltered(data)
+      }
   return (
     <div className='liked-parent'>
-    
+      <div>
+      <button onClick={hightoLow}>Sort-H</button>
+      <button onClick={lowtoHigh}>Sort-L</button>
+      </div>
+  
     {Filtered.map((product)=>(
      
     <div key={product._id} className='home-child'>

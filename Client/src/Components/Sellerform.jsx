@@ -89,9 +89,6 @@ catch(error)
       onChange={(e)=>handleChange("description",e.target.value)}
       />
        <input
-  
-   
-   
        placeholder='phonenumber...'
       value={sellerform.phno}
       type='number'

@@ -4,6 +4,7 @@ import "./app.css"
 import Context from "./Components/Context";
 import GetID from "./Components/Hooks/GetId";
 import "@fortawesome/fontawesome-free/css/all.css";
+import Reports from "./Components/Reports";
 import Cart from "./Components/Cart";
 import Fastrack from "./Components/Fastrack";
 import Sonata from "./Components/Sonata";
@@ -68,7 +69,9 @@ function App() {
             <Route path="/Usermanagement" element={<Usermanagement />} />
             <Route path="/Requests" element={<Requests />} />
             <Route path="/Adminhome" element={<Adminhome />} />
-            <Route path="/Editproduct" element={<Editproduct />} /></>:<> <Route path="/" element={<Initial />} /></>}
+            <Route path="/Editproduct" element={<Editproduct />} />
+            <Route path="/Reports" element={<Reports />} />
+            </>:<> <Route path="/" element={<Initial />} /></>}
            {cookies.token ? <> <Route path="/Home" element={<Home />} />
            <Route path="/Liked" element={<Liked />} />
             <Route path="/Details/:productId" element={<Details />} />

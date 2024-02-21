@@ -1,7 +1,15 @@
 .cart-parent {
   padding-top: 90px;
- text-align: center;
+
+
 }
+.cart-sub-parent{
+  padding-top: 90px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
 .cart-child {
   margin: 0px 5px 0px 5px;
   display: flex;

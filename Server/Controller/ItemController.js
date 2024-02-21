@@ -173,10 +173,17 @@ const updateProduct = async (req, res) => {
       description,
       photourl,
       price,
+      loginid
     } = req.body;
+
     if(!stoke || !category || !brandname || !productname || !description || !photourl || !price)
     {
 return res.status(400).json({ message: "empty-fields unable to proceed"});
+    }
+    const sellercategory = await Seller.findOne({userID:loginid})
+    if(sellercategory.category !== category)
+    {
+      return res.status(400).json({ message: "category you are trying to update is invalid" });
     }
     const product = await Products.findByIdAndUpdate(ids, {
       stoke,

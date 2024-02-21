@@ -4,7 +4,11 @@
  display: flex;
  justify-content: center;
 align-items: center;
-
+background: url("https://r4.wallpaperflare.com/wallpaper/531/951/621/digital-digital-art-artwork-illustration-minimalism-hd-wallpaper-08869d3810a06c28a09cf1be487204ea.jpg");
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center center;
+background-attachment: fixed;
 }
 
 .login-frm{
@@ -67,9 +71,10 @@ letter-spacing: 5px;
  box-shadow: 0px 0px 0px 1px;
 width: fit-content;
 border: none;
+cursor: pointer;
 
 }
-input[type="file"] {
+.ipt {
     /* Hide the default file input button */
     display: none;
   }

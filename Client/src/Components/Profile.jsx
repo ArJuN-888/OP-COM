@@ -32,6 +32,7 @@ export default function Profile() {
   const userID = GetID();
   const profile = Getprofile();
   const [price, setPrice] = useState("");
+  const [loginid,] = useState(userID)
   const [username, setusername] = useState("");
   const [sellerstat, setsellerstat] = useState(false);
   const [password, setPassword] = useState("");
@@ -416,7 +417,9 @@ export default function Profile() {
           description,
           photourl,
           price,
+          loginid:userID
         },
+      
         {
           headers: {
             Authorization: `${Cookies.token}`,
@@ -588,7 +591,7 @@ export default function Profile() {
                   value={stoke}
                   onChange={(e) => setStoke(e.target.value)}
                 />
-                   <select value={category} onChange={(e)=>setCategory(e.target.value)}>
+                   <select className="slt" value={category} onChange={(e)=>setCategory(e.target.value)}>
         <option value="watch">Watch</option>
         <option value="bags">Bags</option>
       </select>
@@ -649,7 +652,7 @@ export default function Profile() {
 
         {alluserproducts.length !== 0 && (
           <div className="Child2">
-            <p>Added-Products</p>
+            <p className="ad">Added-Products</p>
             <div className="overFlow">
               {alluserproducts.map((product) => (
                 <div key={product._id} className="profile-map">
@@ -663,7 +666,7 @@ export default function Profile() {
                     <p className="ps">{product.productname}</p>
                   </div>
 
-                  <div>
+                  <div className="map-p-grp">
                     <button
                       className="Editp"
                       onClick={() => {

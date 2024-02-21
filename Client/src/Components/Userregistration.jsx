@@ -64,28 +64,28 @@ export default function Userregistration() {
         <label className='login-title'>User Registration</label>
       <input
       value={userRegister.username}
-      placeholder='username'
+      placeholder='Username...'
       type='text'
       className='ip1'
       onChange={(e)=>handleChange("username",e.target.value)}
       />
       <input
             value={userRegister.email}
-          placeholder='email'
+          placeholder='Email...'
           type='text'
           className='ip1'
           onChange={(e)=>handleChange("email",e.target.value)}
       />
       <input
           value={userRegister.password}
-          placeholder='password'
+          placeholder='Password...'
           type='text'
           className='ip1'
           onChange={(e)=>handleChange("password",e.target.value)}
       />
           <input
            value={userRegister.confirmpassword}
-          placeholder='confirmpassword'
+          placeholder='Confirmpassword...'
           type='text'
           className='ip1'
           onChange={(e)=>handleChange("confirmpassword",e.target.value)}
@@ -97,11 +97,11 @@ export default function Userregistration() {
       <input
       type='file'
       onChange={HandleFile}
-      className='ip1'
+      className='ipt'
      />
      </label>
      </div> 
-     <p className='nm'>{!filename ? "No file choosen": filename}</p>
+     <p className='nm'>{!filename ? "No file choosen...": filename}</p>
      </div>
      <button className='login-bt' onClick={()=>{HandleRegister()}}>Register</button>
      <label className='note'>Existing user ? <Link className='lg-lk' to="/Userlogin">Login</Link></label>

@@ -6,7 +6,7 @@ const ProductSchema = new mongoose.Schema({
     productname:{type:String,required:true},
     description:{type:String,required:true},
     photourl:{type:String,required:true},
-    loginid:{type:mongoose.Schema.Types.ObjectId,ref:"User",required : true},
+    loginid:{type:mongoose.Schema.Types.ObjectId,required : true},
     price:{type:Number,required:true},
    
 })

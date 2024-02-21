@@ -11,7 +11,11 @@ export default function Home() {
   const [Liked,setLiked] = useState([])
   const [Cookies] = useCookies(["token"]);
   const [allproducts,setallProducts] = useState([])
+  const [reportstatement,setReportstatement] = useState("")
+  const [toggle,setToggle] = useState(0)
   console.log("liked",Liked)
+  const [dateandtime,] = useState(new Date());
+  const dt = dateandtime.toLocaleString()
   const userID = GetID()
   console.log("allproducts",allproducts)
 
@@ -105,10 +109,35 @@ catch(error)
 
  
   }
+  const ToggleInput = () =>{
+setToggle(1)
+  }
+  const ToggleCancel = () =>{
+    setToggle(0)
+  }
+  const Reportproceed = async() =>{
+    try{
+ const response = await axios.post("http://localhost:5000/Report/reports",{userID:userID,reportstatement,dt},{
+  headers:{
+    Authorization:`${Cookies.token}`
+  }
+})
+ setToggle(0)
+ setReportstatement("")
+ toast.success(response.data.message,{
+  transition: Flip
+})
+    }
+    catch(error){
+      toast(error.response.data.message,{
+        transition: Flip
+      })
+    }
+  }
   return (
     <>
      <div className="avail-hd">
-            <label className='it'>Available  <RxDropdownMenu className='icon' /></label>
+            <label className='it'>Available  <RxDropdownMenu className='icon-avail' /></label>
             <ul className="avail-ul">
             <li className='avail-li'><Link className='avail-ln' to="/Titan">Titan</Link></li> 
              <li className='avail-li'><Link className='avail-ln' to="/Casio">Casio</Link></li>
@@ -139,6 +168,23 @@ catch(error)
   </div>
  
 ))}
+</div>
+<div className='report-parent'>
+ 
+  {toggle === 1 ? 
+  <div className='report-child'> 
+     <input
+     value={reportstatement}
+     onChange={(e)=>setReportstatement(e.target.value)}
+     className='input-report'
+     placeholder='Specify your report... '
+     />
+     <button className='report-btn-Proceed'  onClick={Reportproceed} >Proceed</button>
+  <button className='report-btn-cancel'  onClick={ToggleCancel} >Cancel</button>
+  </div>
+  :
+  <div><button className='report-btn-invoke' onClick={ToggleInput}>Report</button></div>}
+
 </div>
    </>
   )

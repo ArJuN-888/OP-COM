@@ -28,7 +28,7 @@ export default function Navbar() {
   const ref = useRef();
   const userID = GetID();
   const [Cookies, setCookie] = useCookies(["token"]);
-  const [reqURL] = useState("http://localhost:5000/uploads");
+  const [reqURL,] = useState("http://localhost:5000/uploads");
 
   useEffect(() => {
     const prImg = localStorage.getItem("profile");

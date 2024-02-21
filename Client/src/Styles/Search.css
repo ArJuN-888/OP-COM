@@ -1,0 +1,7 @@
+.Search-parent{
+    display: flex;
+    gap: 20px;
+    padding-top: 90px;
+    flex-wrap: wrap;
+    justify-content: center;
+}

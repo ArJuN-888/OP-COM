@@ -1,4 +1,5 @@
 const { Users, Seller } = require("../Model/UserSchema");
+const {report} =require("../Model/ReportSchema")
 const { Products } = require("../Model/ProductSchema");
 const fs = require("fs");
 const bcrypt = require("bcryptjs");
@@ -164,8 +165,12 @@ const editUser = async (req, res) => {
 const editPic = async (req, res) => {
   try {
     const { userID } = req.params;
-
+    const reportuser = await report.findOne({userID:userID})
+    const id =reportuser._id
+    const updatereport = await report.findByIdAndUpdate(id,{filename:req.file.filename})
+    console.log("report",reportuser)
     const user = await Users.findById(userID);
+   
     console.log("user", user);
     console.log("userfile", req.file);
     const callback = (error) => {

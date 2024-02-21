@@ -1,0 +1,34 @@
+.Admin-report-parent{
+padding-top: 90px;
+
+}
+.Admin-report-child{
+    display: flex;
+    justify-content: center;
+    background-color: antiquewhite;
+    align-items: center;
+    gap: 5px;
+}
+.user-status-report{
+
+}
+.img-repo-container{
+ width: 73px;
+ height: 71px;
+border: 1px solid grey;
+ border-radius: 40px;
+
+}
+.repo-img{
+
+width: 68.9px;
+display: block;
+margin: auto;
+padding: 1px;
+height: 68.4px;
+border-radius: 40px;
+object-fit: cover;
+}
+.repo-name{
+
+}

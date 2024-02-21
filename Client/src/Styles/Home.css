@@ -25,8 +25,7 @@
   position: relative;
   cursor: pointer;
   height: 400px;
- border-radius: 10px;
-  background-color: rgb(0,0,0,0.2);
+ box-shadow: 0px 0px 1px 0px slategray;
  
 }
 .home-child:hover {
@@ -92,10 +91,11 @@
 }
 .likeicon {
   font-size: 35px;
-
+ padding-top: 3px;
   color: rgb(166, 165, 165);
 }
 .likeicons {
+  padding-top: 3px;
   font-size: 35px;
   color: rgb(243, 74, 74);
 }
@@ -110,6 +110,7 @@
 box-shadow: 0px 0px 1px 0px;
 border-radius: 10px 0px 0px 10px;
 
+
 }
 .side-ul{
 padding: 0px 28px;
@@ -119,7 +120,7 @@ padding: 0px 28px;
 }
 .side-lnk{
  text-decoration: none;
- color: rgb(250, 246, 246);
+ color: rgb(0, 0, 0);
  
 }
 
@@ -193,4 +194,9 @@ box-shadow: 0px 0px 2px 0px;
   }
 }
 
+/*report*/
+.report-parent{
+  display: flex;
+  justify-content: center;
+}
 
