@@ -4,7 +4,6 @@ import { FaUserCircle } from "react-icons/fa";
 import { FaSignInAlt } from "react-icons/fa";
 import { FaSignOutAlt } from "react-icons/fa";
 import { FaCartPlus } from "react-icons/fa";
-import axios from "axios";
 import GetID from "./Hooks/GetId";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FaHome } from "react-icons/fa";
@@ -25,7 +24,7 @@ export default function Navbar() {
  const [category,setCategory] = useState("")
   // const id=GetID()
   const profile = Getprofile();
-  const nav = useNavigate();
+  const navs = useNavigate();
   const ref = useRef();
   const userID = GetID();
   const [Cookies, setCookie] = useCookies(["token"]);
@@ -39,12 +38,14 @@ export default function Navbar() {
   const handleLog = () => {
     localStorage.removeItem("userID");
     setCookie("token", "");
+    navs("/")
     toast("Successfully logged-Out", {
       transition: Flip,
     });
     localStorage.removeItem("profile");
     setProfileImage("");
     setCategory("")
+    
   };
 
 
@@ -100,7 +101,7 @@ export default function Navbar() {
               </li>
               <li>
                 <Link
-                  to="/userlogin"
+                  to="/"
                   onClick={() => {
                     handleLog();
                   }}

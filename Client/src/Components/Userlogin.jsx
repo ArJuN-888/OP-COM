@@ -1,8 +1,7 @@
 import React, { useContext, useState } from 'react'
 import axios from 'axios'
-import bck from "./background/bck.mp4"
 import "../Styles/Userlogin.css"
-import { useNavigate } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 import {useCookies} from "react-cookie"
 import {  toast ,Flip} from 'react-toastify';
 export default function Userlogin() {
@@ -44,8 +43,9 @@ catch(error)
     <>
   
     <div className='login-parent'>
-  
+
   <div className='login-frm'>
+  <label className='login-title'>User Login</label>
         <input
         type='text'
         name='email'
@@ -63,6 +63,7 @@ catch(error)
         onChange={handleChange}
         />
         <button className='login-bt' onClick={()=>{Login()}}>Login</button>
+        <label className='note'>New user ? <Link className='lg-lk' to="/Userregister">Sign up</Link></label>
         </div>
     </div>
    

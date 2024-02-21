@@ -7,12 +7,12 @@ import { useCookies } from "react-cookie";
 import {FaHome} from "react-icons/fa";
 export default function Adminnav() {
   const [Cookies,setCookie] = useCookies(["admintoken"]);
- 
+
   const Logout = () =>{
   
       localStorage.removeItem("adminID")
       setCookie("admintoken","")
-      
+
       toast.success("Successfully logged-Out", {
         transition: Flip
       });
@@ -33,7 +33,7 @@ export default function Adminnav() {
         <li> <NavLink to="/Add" className='ad-link'>Add-product</NavLink></li>
         <li> <NavLink to="/Requests" className='ad-link'>Requests</NavLink></li>
         <li><NavLink to = "Editproduct" className='ad-link'>Edit-product</NavLink></li>
-        <li> <NavLink className='adm-stat' to="/Adminlogin"  onClick={()=>{Logout()}}><FaSignOutAlt className='icons-admin'/></NavLink></li>
+        <li> <NavLink className='adm-stat' to="/"  onClick={()=>{Logout()}}><FaSignOutAlt className='icons-admin'/></NavLink></li>
         </ul>
       </nav>
     </div>

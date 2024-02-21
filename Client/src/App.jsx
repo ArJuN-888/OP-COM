@@ -63,12 +63,12 @@ function App() {
           {Cookies.admintoken ? <Adminnav /> : <Navbar />}
 
           <Routes>
-          <Route path="/" element={<Initial />} />
+         
             {Cookies.admintoken ? <><Route path="/Add" element={<Addproduct />} />
             <Route path="/Usermanagement" element={<Usermanagement />} />
             <Route path="/Requests" element={<Requests />} />
             <Route path="/Adminhome" element={<Adminhome />} />
-            <Route path="/Editproduct" element={<Editproduct />} /></>:<></>}
+            <Route path="/Editproduct" element={<Editproduct />} /></>:<> <Route path="/" element={<Initial />} /></>}
            {cookies.token ? <> <Route path="/Home" element={<Home />} />
            <Route path="/Liked" element={<Liked />} />
             <Route path="/Details/:productId" element={<Details />} />
@@ -82,7 +82,7 @@ function App() {
             <Route path="/Sonata" element={<Sonata />} />
             </>
             
-            :<></>}
+            :<> <Route path="/" element={<Initial />} /></>}
             {!userID &&  <Route path="/Adminlogin" element={<Adminlogin />} />}
            
            

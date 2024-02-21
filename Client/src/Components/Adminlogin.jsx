@@ -31,17 +31,22 @@ export default function Adminlogin() {
   }
   return (
     <div className='adminlog-parent'>
+       <div className='login-ad-frm'>
+       <label className='login-title'>Admin Login</label>
       <input
-      placeholder='email...'
+      placeholder='Email...'
+      className='ip2'
       value={email}
       onChange={(e)=>setEmail(e.target.value)}
       />
       <input
-      placeholder='password...'
+      placeholder='Password...'
+      className='ip2'
       value={password}
       onChange={(e)=>setPassword(e.target.value)}
       />
-      <button onClick={handleSubmit}>Login</button>
+      <button className='login-ad-bt' onClick={handleSubmit}>Login</button>
+      </div>
     </div>
   )
 }

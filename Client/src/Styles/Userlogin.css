@@ -45,3 +45,40 @@ border-radius: 3px;
     border-radius: 3px;
    
 }
+.note{
+    margin-top: 20px ;
+color: white;
+font-size: 18px;
+text-align: end;
+letter-spacing: 5px;
+}
+.lg-lk{
+ font-size: 20px;
+}
+.login-title{
+    color: rgb(229, 235, 240);
+    font-size: 30px;
+}
+.hover{
+    margin-top: 10px;
+    font-size: 20px;
+    color: white;
+    padding: 3px;
+ box-shadow: 0px 0px 0px 1px;
+width: fit-content;
+border: none;
+
+}
+input[type="file"] {
+    /* Hide the default file input button */
+    display: none;
+  }
+  .nm{
+    color: white;
+    margin-top: 13px;
+  }
+  .hover-grp{
+    display: flex;
+    
+    gap: 10px;
+  }
