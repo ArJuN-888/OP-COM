@@ -10,7 +10,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FaRegPlusSquare } from "react-icons/fa";
 import { FaKey } from "react-icons/fa";
+import { IoSend } from 'react-icons/io5';
 import { useCookies } from "react-cookie";
+import Spinner from 'react-bootstrap/Spinner';
 import Getprofile from "./Hooks/Getprofile";
 import GetID from "./Hooks/GetId";
 export default function Profile() {
@@ -506,7 +508,9 @@ export default function Profile() {
 
                 <div className="btn-grp">
                   <button className="Update" onClick={() => HandleUpdate()}>
-                    Update
+                    Update <IoSend style={{
+                      padding:"0px 0px 2px 0px"
+                    }}/>
                   </button>
                   <button className="Cancel" onClick={() => HandleCancel()}>
                     Cancel
@@ -540,7 +544,9 @@ export default function Profile() {
                 />
                 <div>
                   <button className="Req" onClick={() => HandlepassReq()}>
-                    Request
+                    Request <IoSend style={{
+                      padding:"0px 0px 2px 0px"
+                    }}/>
                   </button>
                   <button
                     className="passCancel"
@@ -569,7 +575,9 @@ export default function Profile() {
                 />
                 <div>
                   <button className="Req" onClick={() => Handlepasspost()}>
-                    Update
+                    Update <IoSend style={{
+                      padding:"0px 0px 2px 0px"
+                    }}/>
                   </button>
                   <button
                     className="passCancel"
@@ -693,7 +701,7 @@ export default function Profile() {
     
      
         {(sellerstat === false && sellerreqstat===true) && (<div className="seller-link">
-       Seller request Pending....
+        <Spinner animation="border" variant="danger" /> Seller request Pending....
          </div>)}
          {(sellerstat === false && sellerreqstat===false) && (<div className="seller-link">
           Want to be a seller ?{" "}

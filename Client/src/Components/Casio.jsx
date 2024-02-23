@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { toast, Flip } from "react-toastify";
 import axios from 'axios'
+import Badge from 'react-bootstrap/Badge';
+import Stack from 'react-bootstrap/Stack';
 import { IoHeartSharp } from "react-icons/io5";
 import { Link } from 'react-router-dom';
+import { BsSortDown,BsSortUp } from "react-icons/bs";
 import GetID from './Hooks/GetId'
 import { useCookies } from 'react-cookie'
 export default function Casio() {
@@ -139,11 +142,19 @@ export default function Casio() {
         setFiltered(data)
       }
   return (
-    <div className='liked-parent'>
-      <div>
-      <button onClick={hightoLow}>Sort-H</button>
-      <button onClick={lowtoHigh}>Sort-L</button>
+    <>
+       <div className='srt-parent'>
+      <Stack direction="horizontal" gap={2}>
+      <Badge onClick={hightoLow} bg="primary"><BsSortDown style={{
+        fontSize:"25px"
+      }} /></Badge>
+      <Badge onClick={lowtoHigh} bg="secondary"><BsSortUp style={{
+        fontSize:"25px"
+      }}/></Badge>
+      </Stack>
       </div>
+    <div className='srt-sub-parent'>
+    
   
     {Filtered.map((product)=>(
      
@@ -159,5 +170,6 @@ export default function Casio() {
      
     ))}
     </div>
+    </>
   )
 }

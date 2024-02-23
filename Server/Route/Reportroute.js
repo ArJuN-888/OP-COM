@@ -5,5 +5,6 @@ const Middleware = require("../Middleware/Tokenverify")
 const AdminverifyToken = require("../Middleware/Admintokenverify")
 router.post("/reports",Middleware,reportController.addreport)
 router.get("/reports/fetch",AdminverifyToken,reportController.getreport)
+router.delete("/reports/delete/:repoID",AdminverifyToken,reportController.deleterepo)
 module.exports = router
 

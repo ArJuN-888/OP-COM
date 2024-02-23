@@ -4,13 +4,24 @@ padding-top: 90px;
 }
 .Admin-report-child{
     display: flex;
-    justify-content: center;
-    background-color: antiquewhite;
+    justify-content: start;
     align-items: center;
     gap: 5px;
+    margin: 10px 10px 0px 10px;
+ border-radius: 40px;
+ padding: 3px;
+ box-shadow: 0px 0px 3px 0px;
+ flex-wrap: wrap;
+}
+.user-status-report::before{
+content: "🌟";
 }
 .user-status-report{
-
+ background-color: rgb(59, 57, 57);
+ color: white;
+ padding:0px 10px 0px 10px;
+ box-shadow: 0px 0px 5px 0px grey;
+ border-radius: 20px 10px 10px 20px;
 }
 .img-repo-container{
  width: 73px;
@@ -29,6 +40,48 @@ height: 68.4px;
 border-radius: 40px;
 object-fit: cover;
 }
+.repo-state{
+border: 1px solid grey;
+padding: 5px;
+}
 .repo-name{
 
+}
+.repo-state{
+    height: 60px;
+    width: 400px;
+    overflow-y: scroll;
+    border: none;
+
+}
+.cls-repo{
+   border: none;
+   font-size: 20px;
+   border-radius: 3px;
+   background-color: red;
+   color: white;
+   box-shadow: 0px 0px 4px 0px grey;
+}
+.repo-mail{
+    font-size: 22px;
+}
+.issue{
+    background-color: rgb(255, 208, 0);
+    border-radius: 20px;
+    height: 34px;
+    border: none;
+    box-shadow: 0px 0px 4px 0px;
+}
+.is{
+    color: white;
+    font-size: 23px;
+}
+.rsl{
+    border: none;
+    padding: 5px 10px;
+    box-shadow: 0px 0px 2px 0px;
+    background-color: rgb(136, 223, 136);
+}
+.statement-rp{
+    font-size: 20px;
 }

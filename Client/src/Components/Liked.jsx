@@ -5,6 +5,9 @@ import "../Styles/Home.css"
 import GetID from './Hooks/GetId';
 import { GoHeart } from "react-icons/go";
 import { Link } from 'react-router-dom';
+import Badge from 'react-bootstrap/Badge';
+import Stack from 'react-bootstrap/Stack';
+import { BsSortDown,BsSortUp } from "react-icons/bs";
 import { IoHeartSharp } from "react-icons/io5";
 import {  toast,Flip} from 'react-toastify';
 import { useCookies } from "react-cookie";
@@ -125,6 +128,42 @@ catch(error)
 
  
   }
+  const hightoLow = () =>{
+    const data = [...Likedproduct]
+    let swapped
+do{
+swapped = false
+ for(let i=0;i<data.length-1;i++)
+ {
+  if(data[i].price < data[i+1].price)
+  {
+   let temp = data[i]
+    data[i]=data[i+1]
+    data[i+1] = temp
+    swapped = true
+  }
+ }
+}while(swapped)
+setLikedproduct(data)
+  }
+  const lowtoHigh = () => {
+    let swapped
+    const data = [...Likedproduct]
+    do{
+     swapped = false
+      for(let i=0;i<data.length-1;i++)
+      {
+       if(data[i].price > data[i+1].price)
+       {
+        let temp = data[i]
+         data[i]=data[i+1]
+         data[i+1] = temp
+         swapped = true
+       }
+      }
+    }while(swapped)
+    setLikedproduct(data)
+  }
   if(Likedproduct.length === 0)
   {
 return(
@@ -135,7 +174,18 @@ return(
   }
   else{
     return (
-    <div className='liked-parent'>
+      <>
+     <div className='srt-parent'>
+      <Stack direction="horizontal" gap={2}>
+      <Badge onClick={hightoLow} bg="primary"><BsSortDown style={{
+        fontSize:"25px"
+      }} /></Badge>
+      <Badge onClick={lowtoHigh} bg="secondary"><BsSortUp style={{
+        fontSize:"25px"
+      }}/></Badge>
+      </Stack>
+      </div>
+    <div className='srt-sub-parent'>
       
 {Likedproduct.map((product)=>(
 <div key={product._id} className='home-child'>
@@ -151,6 +201,7 @@ return(
   </div>
 ))}
 </div>
+</>
 )
   }
  

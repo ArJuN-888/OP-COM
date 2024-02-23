@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
-import { RxDropdownMenu } from "react-icons/rx";
 import "../Styles/Home.css"
 import GetID from './Hooks/GetId';
 import { IoHeartSharp } from "react-icons/io5";
 import {  toast,Flip} from 'react-toastify';
+import { IoSend } from 'react-icons/io5';
 import { useCookies } from "react-cookie";
 export default function Home() {
   const [Liked,setLiked] = useState([])
@@ -136,24 +136,17 @@ setToggle(1)
   }
   return (
     <>
-     <div className="avail-hd">
-            <label className='it'>Available  <RxDropdownMenu className='icon-avail' /></label>
-            <ul className="avail-ul">
-            <li className='avail-li'><Link className='avail-ln' to="/Titan">Titan</Link></li> 
-             <li className='avail-li'><Link className='avail-ln' to="/Casio">Casio</Link></li>
-             <li className='avail-li'><Link className='avail-ln' to="/Fastrack">Fastrack</Link></li>
-             <li className='avail-li'><Link className='avail-ln' to="/Sonata">Sonata</Link></li>
-            </ul>
-       </div>
-    <div className='home-parent'>
-     <div className='side-menu'>
+
+        <div className='side-menu'>
       <ul className='side-ul'>
-        <li className='side-li'><Link to="/Titan" className='side-lnk'>Titan</Link></li>
-        <li className='side-li'><Link to="/Casio" className='side-lnk'>Casio</Link></li>
-        <li className='side-li'><Link to="/Fastrack" className='side-lnk'>Fastrack</Link></li>
-        <li className='side-li'><Link to="/Sonata" className='side-lnk'>Sonata</Link></li>
+        <li className='side-li'><Link to="/Titan" className='side-lnk'><img src="https://logos-download.com/wp-content/uploads/2016/06/Titan_Watches_logo.png" width="110px"  /></Link></li>
+        <li className='side-li'><Link to="/Casio" className='side-lnk'><img src="https://iconspng.com/images/casio-logo.jpg"  width="100px"/></Link></li>
+        <li className='side-li-f'><Link to="/Fastrack" className='side-lnk'><img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Fastrack_logo.png"  width="100px"/></Link></li>
+        <li className='side-li'><Link to="/Sonata" className='side-lnk'><img src="https://vectorseek.com/wp-content/uploads/2023/08/Hyundai-Sonata-Logo-Vector.svg-.png" width="110px"/></Link></li>
       </ul>
       </div> 
+    <div className='home-parent'>
+    
 {allproducts.map((product)=>(
  
 <div key={product._id} className='home-child'>
@@ -169,22 +162,24 @@ setToggle(1)
  
 ))}
 </div>
+
 <div className='report-parent'>
- 
+  <label className='t'>Specify your experience/reports by just Clicking the button below</label>
+<div className='report-child'> 
   {toggle === 1 ? 
-  <div className='report-child'> 
+ <>
      <input
      value={reportstatement}
      onChange={(e)=>setReportstatement(e.target.value)}
      className='input-report'
-     placeholder='Specify your report... '
+     placeholder='Specify here... '
      />
-     <button className='report-btn-Proceed'  onClick={Reportproceed} >Proceed</button>
+     <button className='report-btn-Proceed'  onClick={Reportproceed} >Send <IoSend/></button>
   <button className='report-btn-cancel'  onClick={ToggleCancel} >Cancel</button>
-  </div>
+  </>
   :
-  <div><button className='report-btn-invoke' onClick={ToggleInput}>Report</button></div>}
-
+  <div><button className='report-btn-invoke' onClick={ToggleInput}>Comments/Reports</button></div>}
+  </div>
 </div>
    </>
   )

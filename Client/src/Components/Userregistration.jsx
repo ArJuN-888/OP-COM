@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import Context from './Context'
 import { Link } from 'react-router-dom';
+import { FaCloudUploadAlt } from 'react-icons/fa';
 import {  toast,Flip } from 'react-toastify';
 import axios from "axios"
 export default function Userregistration() {
@@ -92,7 +93,7 @@ export default function Userregistration() {
       />
       <div className='hover-grp'>
      <div><label className='hover'>
-        Choose File
+       <FaCloudUploadAlt/> Upload File
        
       <input
       type='file'

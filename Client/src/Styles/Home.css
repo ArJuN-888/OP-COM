@@ -1,7 +1,7 @@
 .home-parent {
   display: flex;
   gap: 20px;
-  padding-top: 90px;
+ 
   flex-wrap: wrap;
   justify-content: center;
   font-size: 18px;
@@ -9,15 +9,7 @@
 
   /* box-shadow: 0px 0px 3px 0px; */
 }
-.liked-parent{
-  display: flex;
-  padding-top: 90px;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-  font-size: 18px;
-  letter-spacing: 3px;
-}
+
 .home-child {
   width: 250px;
   padding: 15px;
@@ -106,21 +98,22 @@
   color: red;
 }
 .side-menu{
-
-box-shadow: 0px 0px 1px 0px;
-border-radius: 10px 0px 0px 10px;
-
-
+display: flex;
+justify-content: center;
+padding-top: 90px;
 }
 .side-ul{
-padding: 0px 28px;
+display: flex;
+gap: 80px;
+padding: 5px;
+align-items: center;
+width: fit-content;
 }
-.side-li{
-  margin: 0px 0px  20px 0px;
+.side-li-f{
+  margin: 0px 0px  30px 0px;
+ 
 }
 .side-lnk{
- text-decoration: none;
- color: rgb(0, 0, 0);
  
 }
 
@@ -146,8 +139,11 @@ margin-bottom: 10px;
 background-color: rgb(225, 220, 220);
 }
 @media screen and (max-width: 972px) {
-  .side-menu{
-display: none;
+  .side-ul{
+    gap: 50px;
+    flex-wrap: wrap;
+    justify-content: center;
+ 
   }
   .avail-hd{
     display: flex;
@@ -196,7 +192,67 @@ box-shadow: 0px 0px 2px 0px;
 
 /*report*/
 .report-parent{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0px 0px 0px 1px rgb(209, 206, 206);
+}
+.report-child{
+padding: 5px;
+}
+.input-report{
+font-size: 20px;
+border: none;
+outline: none;
+}
+.report-btn-Proceed{
+font-size: 20px;
+margin: 0px 4px;
+box-shadow: 0px 0px 2px 0px grey;
+color: green;
+border: 1px solid green;
+border-radius: 2px;
+background-color: transparent;
+}
+.report-btn-cancel{
+  font-size: 20px;
+  border: none;
+  border-radius: 2px;
+  margin: 0px 2px;
+  color: red;
+  background-color: transparent;
+border: 1px solid rgb(194, 100, 100);
+}
+.report-btn-invoke{
+  border: none;
+  font-size: 20px;
+  background-color: transparent;
+  border: 2px solid blue;
+  border-radius: 3px;
+  color: blue;
+
+}
+.input-report::placeholder{
+  color:black
+
+}
+.t{
+  font-size: 20px;
+  color: rgb(129, 125, 125);
+}
+/*sort*/
+.srt-parent{
   display: flex;
   justify-content: center;
+  padding-top: 80px;
 }
-
+.srt-sub-parent{
+  display: flex;
+  padding-top: 20px;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 18px;
+  letter-spacing: 3px;
+}

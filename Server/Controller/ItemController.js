@@ -201,7 +201,39 @@ return res.status(400).json({ message: "empty-fields unable to proceed"});
   }
 };
 
+const updateadminProduct = async (req, res) => {
+  try {
+    const { ids } = req.params;
+    const {
+      stoke,
+      category,
+      brandname,
+      productname,
+      description,
+      photourl,
+      price,
+    } = req.body;
 
+    if(!stoke || !category || !brandname || !productname || !description || !photourl || !price)
+    {
+return res.status(400).json({ message: "empty-fields unable to proceed"});
+    }
+
+    const product = await Products.findByIdAndUpdate(ids, {
+      stoke,
+      category,
+      brandname,
+      productname,
+      description,
+      photourl,
+      price,
+    });
+    console.log("userproducts", product);
+    return res.status(200).json({ message: "successfully updated", product });
+  } catch (error) {
+    res.status(400).json({ message: "Unable to update" });
+  }
+};
 const getadminProduct = async (req, res) => {
   try {
     const { adminID } = req.params;
@@ -431,6 +463,7 @@ module.exports = {
   deleteProduct,
   deleteadminProduct,
   updateProduct,
+  updateadminProduct,
   getadminProduct,
   addadminProduct,
   productDetails,

@@ -28,7 +28,19 @@ const getreport = async (req,res)=>{
     }
   
 }
+const deleterepo = async (req,res)=>{
+    try{
+        const {repoID} = req.params
+        const data = await report.findByIdAndDelete(repoID)
+        res.status(200).json({message:"Reports/Comments are Successfully read and  deleted"})
+    }
+    catch(error){
+        res.status(400).json({message:"unable to delete"})
+    }
+  
+}
 module.exports={
     addreport,
-    getreport
+    getreport,
+    deleterepo
 }

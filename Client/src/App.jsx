@@ -27,6 +27,7 @@ import Addproduct from "./Components/Addproduct";
 import Adminlogin from "./Components/Adminlogin";
 import Userlogin from "./Components/Userlogin";
 import Adminhome from "./Components/Adminhome";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from "./Components/Home";
 import Searchresult from "./Components/Searchresult";
 import Liked from "./Components/Liked";
