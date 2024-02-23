@@ -18,8 +18,8 @@ box-shadow: 0px 0px 5px 0px slategray;
   transition: 1s ease-in-out;
   position: relative;
   cursor: pointer;
-  height: 390px;
- box-shadow: 0px 0px 2px 0px slategray;
+  height: 420px;
+
  
 }
 .home-child:hover {
@@ -64,17 +64,9 @@ box-shadow: 0px 0px 5px 0px slategray;
   color: white;
   font-size: 18px;
 }
-.pprice::before {
-  content: "∘";
-  padding: 0px 10px;
-}
+
 .pprice {
-  font-size: 18px;
-  color: white;
-  width: 120px;
-  padding: 0px 5px;
-  border-radius: 50px 10px 10px 50px;
-  background-color: rgba(25, 27, 25, 0.778);
+color: black;
 }
 .like {
   border: none;

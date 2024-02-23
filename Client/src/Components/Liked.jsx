@@ -178,14 +178,17 @@ return(
      <div className='srt-parent'>
       <Stack direction="horizontal" gap={2}>
       <Badge onClick={hightoLow} style={{
-        boxShadow:"0px 0px 5px 0px grey"
-      }} bg="primary"><BsSortDown style={{
-        fontSize:"25px"
+        boxShadow:"0px 0px 5px 0px grey",
+      
+      }} bg="white"><BsSortDown style={{
+        fontSize:"25px",
+        color:"blue"
       }} /></Badge>
       <Badge style={{
         boxShadow:"0px 0px 5px 0px grey"
-      }} onClick={lowtoHigh} bg="secondary"><BsSortUp style={{
-        fontSize:"25px"
+      }} onClick={lowtoHigh} bg="white"><BsSortUp style={{
+        fontSize:"25px",
+        color:"slategrey"
       }}/></Badge>
       </Stack>
       </div>

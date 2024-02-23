@@ -178,7 +178,7 @@ setallProducts(data)
   return (
     <>
 
-<Carousel fade className='caro'>
+{/* <Carousel fade className='caro'>
       <Carousel.Item>
       <img
           className="d-block w-100"
@@ -205,7 +205,7 @@ setallProducts(data)
       <Carousel.Item>
       <img
           className="d-block w-100"
-          src="https://www.casio.com/content/casio/locales/in/en/products/_jcr_content/root/responsivegrid/carousel_copy/image_1970305012_cop_2034587992.casiocoreimg.jpeg/1676551981928/cic-banner-desktop.jpeg"
+          src="https://www.sonatawatches.in/dw/image/v2/BKDD_PRD/on/demandware.static/-/Library-Sites-SonataSharedLibrary/default/dwda930b92/images/homepage/desktop/SF-D.jpg"
           alt="Third slide"
         />
         <Carousel.Caption>
@@ -225,8 +225,8 @@ setallProducts(data)
         <li className='side-li-f'><Link to="/Fastrack" className='side-lnk'><img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Fastrack_logo.png"  width="100px"/></Link></li>
         <li className='side-li'><Link to="/Sonata" className='side-lnk'><img src="https://vectorseek.com/wp-content/uploads/2023/08/Hyundai-Sonata-Logo-Vector.svg-.png" width="110px"/></Link></li>
       </ul>
-      </div> 
-      <div className='srt-parent-home'>
+      </div>  */}
+      {/* <div className='srt-parent-home'>
       <Stack direction="horizontal" gap={2}>
       <Badge style={{
         boxShadow:"0px 0px 5px 0px grey",
@@ -246,7 +246,7 @@ setallProducts(data)
         color:"slategrey"
       }}/></Badge>
       </Stack>
-      </div>
+      </div> */}
     <div className='home-parent'>
     
 {allproducts.map((product)=>(
@@ -256,8 +256,8 @@ setallProducts(data)
 <button onClick={(e)=>{checkLike(product._id);e.preventDefault()}} className='like'>{Liked.includes(product._id) ? <IoHeartSharp className='likeicons'/>:<IoHeartSharp className='likeicon'/>}</button>
 {/* <div className="prof-id">{product.loginid}</div> */}
 <div className='imgs-container'><img className='imgs' src={product.photourl} /></div>
-<div className='pnames'><mark className='pname'>{product.brandname}</mark></div>
-<div className='pnam'>{product.productname}</div>
+<div className='pnames '><label style={{color:"black"}}>{product.brandname}</label></div>
+<div className='pnam'>{product.description}</div>
 <div className='pprice'>₹ {product.price}</div>
  </Link>
   </div>
@@ -265,7 +265,7 @@ setallProducts(data)
 ))}
 </div>
 
-<div className='report-parent'>
+{/* <div className='report-parent'>
   <label className='t'>Specify your experience/reports by just Clicking the button below</label>
 <div className='report-child'> 
   {toggle === 1 ? 
@@ -282,7 +282,7 @@ setallProducts(data)
   :
   <div><button className='report-btn-invoke' onClick={ToggleInput}>Comments/Reports</button></div>}
   </div>
-</div>
+</div> */}
    </>
   )
 }

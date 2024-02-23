@@ -8,6 +8,7 @@ import Reports from "./Components/Reports";
 import Cart from "./Components/Cart";
 import Fastrack from "./Components/Fastrack";
 import Sonata from "./Components/Sonata";
+// import Horizontalnavbar from "./Components/Horizontalnavbar";
 import Editproduct from "./Components/Editproduct";
 import Requests from "./Components/Requests";
 import { ToastContainer} from "react-toastify";
@@ -63,7 +64,7 @@ function App() {
       <BrowserRouter>
         <Context.Provider value={Data}>
           {Cookies.admintoken ? <Adminnav /> : <Navbar />}
-
+          {/* {cookies.token && (<Horizontalnavbar/>)} */}
           <Routes>
          
             {Cookies.admintoken ? <><Route path="/Add" element={<Addproduct />} />

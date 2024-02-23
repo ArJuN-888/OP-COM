@@ -1,0 +1,14 @@
+.hr-parent{
+display: flex;
+position: relative;
+z-index: 1;
+}
+.hr-nav-container{
+position: fixed;
+width: 200px;
+height: 100%;
+background-color: aqua;
+}
+.hr-nav-ul{
+
+}
