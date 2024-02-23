@@ -145,11 +145,20 @@ export default function Titan() {
     <>
       <div className='srt-parent'>
       <Stack direction="horizontal" gap={2}>
-      <Badge onClick={hightoLow} bg="primary"><BsSortDown style={{
-        fontSize:"25px"
+      <Badge style={{
+        boxShadow:"0px 0px 5px 0px grey",
+        cursor:"pointer",
+        
+      }} onClick={hightoLow} bg="white"><BsSortDown style={{
+        fontSize:"25px",
+        color:"blue"
       }} /></Badge>
-      <Badge onClick={lowtoHigh} bg="secondary"><BsSortUp style={{
-        fontSize:"25px"
+      <Badge style={{
+        boxShadow:"0px 0px 5px 0px grey",
+        cursor:"pointer"
+      }} onClick={lowtoHigh} bg="white"><BsSortUp style={{
+        fontSize:"25px",
+        color:"slategray"
       }}/></Badge>
       </Stack>
       </div>

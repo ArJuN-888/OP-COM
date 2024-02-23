@@ -6,7 +6,8 @@ import { FaPen } from "react-icons/fa";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { useCookies } from 'react-cookie'
-import GetadminID from './Hooks/GetadminID'
+import GetadminID from './Hooks/GetadminID';
+import { IoSend } from 'react-icons/io5';
 export default function Editproduct() {
   const [price,setPrice] = useState("")
   const [stoke, setStoke] = useState("");
@@ -184,7 +185,7 @@ export default function Editproduct() {
                   onChange={(e) => setPrice(e.target.value)}
                 />
                 <div>  <button className="Req" onClick={updateProduct}>
-                    Update
+                    Update <IoSend/>
                   </button>
                   <button className="passCancel" onClick={updateCancel}>
                     Cancel

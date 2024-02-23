@@ -6,7 +6,6 @@
  place-items: center;
 display: flex;
 height: auto;
-background-color: white;
 height: 60px;
 padding: 0px 10px 0px 10px;
 }
@@ -31,7 +30,7 @@ margin-right: 5px;
 padding-left:  0px;
 font-size: 30px;
 margin-bottom: 6px;
-color: rgb(109, 104, 104);
+color: rgb(24, 23, 23);
 }
 .panel{
   display: flex;

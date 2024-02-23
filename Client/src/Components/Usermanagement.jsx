@@ -77,7 +77,7 @@ catch(error){
     }
   return (
     <div className='userman-parent'>
-        <table border="1px" className='table table-primary'>
+        <table  className='tab'>
             <thead>
                 <tr>
                     <th>User_ID</th>
@@ -93,8 +93,13 @@ catch(error){
         <td>{user._id}</td>
         <td>{user.username}</td>
         <td>{user.email}</td>
-        <td><button onClick={()=>{handleRemove(user._id)}}>Remove_Account</button></td>
-        <td><button onClick={()=>{handleBan(user._id,user.banned )}}>{user.banned ? "un-ban":"ban"}</button></td>
+        <td> 
+           
+       <button className='tb-bt' onClick={()=>{handleRemove(user._id)}}>Remove_Account</button>
+       
+        <button className='tb-btb' onClick={()=>{handleBan(user._id,user.banned )}}>{user.banned ? "un-ban":"ban"}</button>
+        </td>
+        
         </tr>
    
        

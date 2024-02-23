@@ -4,11 +4,16 @@ import { Link } from 'react-router-dom';
 import "../Styles/Home.css"
 import GetID from './Hooks/GetId';
 import { IoHeartSharp } from "react-icons/io5";
+import Badge from 'react-bootstrap/Badge';
+import { BsSortDown,BsSortUp } from "react-icons/bs";
+import Stack from 'react-bootstrap/Stack';
 import {  toast,Flip} from 'react-toastify';
+import Carousel from 'react-bootstrap/Carousel';
 import { IoSend } from 'react-icons/io5';
 import { useCookies } from "react-cookie";
 export default function Home() {
   const [Liked,setLiked] = useState([])
+  
   const [Cookies] = useCookies(["token"]);
   const [allproducts,setallProducts] = useState([])
   const [reportstatement,setReportstatement] = useState("")
@@ -134,8 +139,84 @@ setToggle(1)
       })
     }
   }
+  const hightoLow = () =>{
+    const data = [...allproducts]
+    let swapped
+do{
+swapped = false
+ for(let i=0;i<data.length-1;i++)
+ {
+  if(data[i].price < data[i+1].price)
+  {
+   let temp = data[i]
+    data[i]=data[i+1]
+    data[i+1] = temp
+    swapped = true
+  }
+ }
+}while(swapped)
+setallProducts(data)
+  }
+  const lowtoHigh = () => {
+    let swapped
+    const data = [...allproducts]
+    do{
+     swapped = false
+      for(let i=0;i<data.length-1;i++)
+      {
+       if(data[i].price > data[i+1].price)
+       {
+        let temp = data[i]
+         data[i]=data[i+1]
+         data[i+1] = temp
+         swapped = true
+       }
+      }
+    }while(swapped)
+    setallProducts(data)
+  }
   return (
     <>
+
+<Carousel fade className='caro'>
+      <Carousel.Item>
+      <img
+          className="d-block w-100"
+          src="https://www.sonatawatches.in/dw/image/v2/BKDD_PRD/on/demandware.static/-/Library-Sites-SonataSharedLibrary/default/dwda930b92/images/homepage/desktop/SF-D.jpg"
+          alt="First slide"
+       
+        />
+        <Carousel.Caption>
+          <h3>First slide label</h3>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+      <img
+          className="d-block w-100"
+          src="https://www.sonatawatches.in/dw/image/v2/BKDD_PRD/on/demandware.static/-/Library-Sites-SonataSharedLibrary/default/dw9a40b6ca/images/homepage/desktop/NewArrivals-D.jpg"
+          alt="Second slide"
+        />
+        <Carousel.Caption>
+          <h3>Second slide label</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+      <img
+          className="d-block w-100"
+          src="https://www.casio.com/content/casio/locales/in/en/products/_jcr_content/root/responsivegrid/carousel_copy/image_1970305012_cop_2034587992.casiocoreimg.jpeg/1676551981928/cic-banner-desktop.jpeg"
+          alt="Third slide"
+        />
+        <Carousel.Caption>
+          <h3>Third slide label</h3>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p>
+        </Carousel.Caption>
+      </Carousel.Item>
+    </Carousel>
+
 
         <div className='side-menu'>
       <ul className='side-ul'>
@@ -145,6 +226,27 @@ setToggle(1)
         <li className='side-li'><Link to="/Sonata" className='side-lnk'><img src="https://vectorseek.com/wp-content/uploads/2023/08/Hyundai-Sonata-Logo-Vector.svg-.png" width="110px"/></Link></li>
       </ul>
       </div> 
+      <div className='srt-parent-home'>
+      <Stack direction="horizontal" gap={2}>
+      <Badge style={{
+        boxShadow:"0px 0px 5px 0px grey",
+        cursor:"pointer",
+       
+        
+      }} onClick={hightoLow} bg="white"><BsSortDown style={{
+        fontSize:"25px",
+        color:"blue"
+      }} /></Badge>
+      <Badge style={{
+        boxShadow:"0px 0px 5px 0px grey",
+        cursor:"pointer",
+    
+      }} onClick={lowtoHigh} bg="white"><BsSortUp style={{
+        fontSize:"25px",
+        color:"slategrey"
+      }}/></Badge>
+      </Stack>
+      </div>
     <div className='home-parent'>
     
 {allproducts.map((product)=>(

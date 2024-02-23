@@ -33,42 +33,51 @@ export default function Addproduct() {
   };
   return (
     <div className="prd-main">
+      <div className="prd-sub">
       <input
         placeholder="stoke..."
+        className="in"
         type="number"
         value={stoke}
         onChange={(e) => setStoke(e.target.value)}
       />
-               <select value={category} onChange={(e)=>setCategory(e.target.value)}>
-        <option value="watch">Watch</option>
-        <option value="bags">Bags</option>
+               <select className="slt-ad" value={category} onChange={(e)=>setCategory(e.target.value)}>
+               <option className="op" value="" disabled>Select</option>
+        <option className="op" value="watch">Watch</option>
+        <option className="op" value="bags">Bags</option>
       </select>
       <input
         placeholder="brandname..."
+        className="in"
         value={brandname}
         onChange={(e) => setbrandname(e.target.value)}
       />
       <input
+       className="in"
         placeholder="productname..."
         value={productname}
         onChange={(e) => setproductname(e.target.value)}
       />
       <input
+       className="in"
         placeholder="description..."
         value={description}
         onChange={(e) => setdescription(e.target.value)}
       />
       <input
+       className="in"
         placeholder="photourl..."
         value={photourl}
         onChange={(e) => setphotourl(e.target.value)}
       />
        <input
+        className="in"
         placeholder="Price..."
         value={price}
         onChange={(e) => setPrice(e.target.value)}
       />
-      <button onClick={addProduct}>Add</button>
+      <button className="ad-bt-add" onClick={addProduct}>Create</button>
+      </div>
     </div>
   );
 }

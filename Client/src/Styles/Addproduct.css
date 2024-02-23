@@ -1,3 +1,51 @@
 .prd-main{
     padding-top: 80px;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+}
+.prd-sub{
+display: grid;
+background-color: rgba(129, 126, 126, 0.2);
+padding: 20px;
+width: 400px;
+border-radius: 10px;
+box-shadow: 0px 0px 5px 0px;
+}
+.in{
+width: 100%;
+margin: 10px 0px;
+height: 40px;
+border: none;
+color: rgb(8, 8, 8);
+font-size: 20px;
+outline: none;
+background-color: transparent;
+}
+.in::placeholder{
+    color: rgb(0, 0, 0);
+    letter-spacing: 5px;
+    font-size: 22px;
+}
+.ad-bt-add{
+border: none;
+height: 40px;
+margin-top: 40px;
+background-color: rgb(88, 109, 200);
+color: rgb(255, 255, 255);
+box-shadow: 0px 0px 5px 0px grey;
+font-size: 20px;
+border-radius: 3px;
+}
+.slt-ad{
+width: fit-content;
+border: none;
+font-size: 20px;
+background-color: transparent;
+color: rgb(0, 0, 0);
+}
+.op{
+    color: black;
 }

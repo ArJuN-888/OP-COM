@@ -1,23 +1,52 @@
 .userman-parent{
     padding-top: 80px ;
-    font-size: 20px;
+    font-size: 18px;
     margin: 0px 3px;
+    display: grid;
+  
 }
-.table{
+.tab{
     width: 100%;
-    border:1px solid black;
-            overflow-x:auto; /* Enable horizontal scrolling */
+border: 1px solid grey;
+
+            /* Enable horizontal scrolling */
 }
 thead{
-    background-color: olivedrab;
+    background-color: rgb(141, 192, 141);
+}
+tr,td{
+    border: 1px solid rgb(202, 197, 197);
+}
+th{
     color: white;
+    border: 1px solid grey;
 }
 tbody{
-    background-color: grey;
-    color: white;
+  
+    color: black;
     letter-spacing: 3px;
+    border: 1px solid grey;
    
 }
+
 .ad-link{
     text-decoration: none;
+
+}
+.tb-bt{
+ border: none;
+ background-color: rgb(238, 80, 80);
+ color: white;
+ box-shadow: 0px 0px 5px 0px grey;
+ border-radius: 2px;
+ padding: 5px 10px;
+}
+.tb-btb{
+    border: none;
+    margin: 0px 6px;
+    border-radius: 2px;
+    padding:5px 10px;
+    color: white;
+    background-color: rgb(140, 140, 148);
+    box-shadow: 0px 0px 5px 0px grey;
 }

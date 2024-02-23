@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { toast, Flip } from "react-toastify";
 import axios from 'axios'
 import Badge from 'react-bootstrap/Badge';
+import { BsSortDown,BsSortUp } from "react-icons/bs";
 import Stack from 'react-bootstrap/Stack';
 import { IoHeartSharp } from "react-icons/io5";
 import { Link } from 'react-router-dom';
-import { BsSortDown,BsSortUp } from "react-icons/bs";
+
 import GetID from './Hooks/GetId'
 import { useCookies } from 'react-cookie'
 export default function Casio() {
@@ -145,11 +146,22 @@ export default function Casio() {
     <>
        <div className='srt-parent'>
       <Stack direction="horizontal" gap={2}>
-      <Badge onClick={hightoLow} bg="primary"><BsSortDown style={{
-        fontSize:"25px"
+      <Badge style={{
+        boxShadow:"0px 0px 5px 0px grey",
+        cursor:"pointer",
+      
+      }} onClick={hightoLow} bg="white"><BsSortDown style={{
+        fontSize:"25px",
+        color:"blue"
       }} /></Badge>
-      <Badge onClick={lowtoHigh} bg="secondary"><BsSortUp style={{
-        fontSize:"25px"
+      <Badge style={{
+        boxShadow:"0px 0px 5px 0px grey",
+        cursor:"pointer",
+       
+      }} onClick={lowtoHigh} bg="white"><BsSortUp style={{
+        fontSize:"25px",
+        color:"slategrey",
+       
       }}/></Badge>
       </Stack>
       </div>

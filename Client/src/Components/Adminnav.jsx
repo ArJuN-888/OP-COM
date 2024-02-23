@@ -30,6 +30,7 @@ export default function Adminnav() {
         <ul className='uls mb-0'>
         <li> <NavLink to="/Adminhome" className='ad-link'><FaHome className='icons-admin'/></NavLink></li>
         <li> <NavLink to="/Usermanagement" className='ad-link'>User-management</NavLink></li>
+        <li> <NavLink to="/Reports" className='ad-link'>Reports</NavLink></li>
         <li> <NavLink to="/Add" className='ad-link'>Add-product</NavLink></li>
         <li> <NavLink to="/Requests" className='ad-link'>Requests</NavLink></li>
         <li><NavLink to = "Editproduct" className='ad-link'>Edit-product</NavLink></li>

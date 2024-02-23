@@ -74,7 +74,9 @@ catch(error)
       value={sellerform.category}
       onChange={(e)=>handleChange("category",e.target.value)}
       /> */}
+      category:
       <select value={sellerform.category} onChange={(e)=>handleChange("category",e.target.value)}>
+      <option value="" disabled  >select</option>
         <option value="watch">Watch</option>
         <option value="bags">Bags</option>
       </select>
