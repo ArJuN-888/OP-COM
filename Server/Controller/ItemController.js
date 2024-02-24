@@ -185,7 +185,6 @@ const updateProduct = async (req, res) => {
       description,
       photourl,
       price,
-      loginid,
       genderprefer,
       strapcolor,
       body,
@@ -204,6 +203,7 @@ const updateProduct = async (req, res) => {
     if (category === "bag" && (!material || !capacity)) {
       return res.status(400).json({ message: "Please fill the fields " });
     }
+  const productmatch = await Products.findById(ids)
 
     const product = await Products.findByIdAndUpdate(ids, {
       stoke,
@@ -213,7 +213,7 @@ const updateProduct = async (req, res) => {
       description,
       photourl,
       price,
-      prevprice: price,
+      prevprice:  (price < productmatch.price) ? (productmatch.price):price,
       genderprefer,
       strapcolor: category === 'watch' ? strapcolor : undefined,
       body: category === 'watch' ? body : undefined,
@@ -256,7 +256,7 @@ console.log("reqbodyadminupdate",req.body)
     if (category === "bag" && (!material || !capacity)) {
       return res.status(400).json({ message: "Please fill the fields" });
     }
-
+    const productmatch = await Products.findById(ids)
     const product = await Products.findByIdAndUpdate(ids, {
       stoke,
       category,
@@ -265,7 +265,7 @@ console.log("reqbodyadminupdate",req.body)
       description,
       photourl,
       price,
-      prevprice: price,
+      prevprice:  (price < productmatch.price) && (productmatch.price),
       genderprefer,
       strapcolor: category === 'watch' ? strapcolor : undefined,
       body: category === 'watch' ? body : undefined,
@@ -414,9 +414,11 @@ const getsearchProduct = async (req, res) => {
           item.category.toLowerCase().includes(category.toLowerCase()) ||
           item.brandname.toLowerCase().includes(category.toLowerCase()) ||
           item.productname.toLowerCase().includes(category.toLowerCase())
+         
+         
         );
       });
-
+console.log("filterprosrch",filteredProducts)
       return res.status(200).json({ products: filteredProducts });
     } else {
       let Data = [];
@@ -432,7 +434,7 @@ const getsearchProduct = async (req, res) => {
         Data = [...Data, ...result];
       });
 
-      console.log("Data", Data);
+      console.log("Datafdjhgjgdf", Data);
 
       const adminProducts = await Products.find({ loginid: admin[0]._id });
       Data = [...Data, ...adminProducts];
@@ -440,11 +442,16 @@ const getsearchProduct = async (req, res) => {
       if (category.toLowerCase() === "all") {
         return res.status(200).json({ products: Data });
       }
-
+      console.log("AdminadddesDatafdjhgjgdf",typeof Data);
       const filteredProducts = Data.filter((item) => {
+        const normalizedCategory = category.toLowerCase();
+      
         return (
-          item.category.toLowerCase().includes(category.toLowerCase()) ||
-          item.brandname.toLowerCase().includes(category.toLowerCase())
+          item.category.toLowerCase().includes(normalizedCategory) ||
+          item.brandname.toLowerCase().includes(normalizedCategory) ||
+          item.productname.toLowerCase().includes(normalizedCategory) ||
+          (item.material && item.material.toLowerCase().includes(normalizedCategory)) ||
+          (item.body && item.body.toLowerCase().includes(normalizedCategory))
         );
       });
 

@@ -230,10 +230,13 @@ setallProducts(data)
         <li className='side-li'><Link to="/Sonata" className='side-lnk'><img src="https://vectorseek.com/wp-content/uploads/2023/08/Hyundai-Sonata-Logo-Vector.svg-.png" width="110px"/></Link></li>
       </ul>
       </div>  */}
-      {/* <div className='srt-parent-home'>
+    
+    <div className='home-parent'>
+      <div className='sub-pr-parent'>
+      <div className='srt-parent-home'>
       <Stack direction="horizontal" gap={2}>
       <Badge style={{
-        boxShadow:"0px 0px 5px 0px grey",
+        boxShadow:"0px 0px 2px 0px grey",
         cursor:"pointer",
        
         
@@ -242,17 +245,15 @@ setallProducts(data)
         color:"blue"
       }} /></Badge>
       <Badge style={{
-        boxShadow:"0px 0px 5px 0px grey",
+        boxShadow:"0px 0px 2px 0px grey",
         cursor:"pointer",
     
       }} onClick={lowtoHigh} bg="white"><BsSortUp style={{
         fontSize:"25px",
-        color:"slategrey"
+        color:"black"
       }}/></Badge>
       </Stack>
-      </div> */}
-    <div className='home-parent'>
-      <div className='sub-pr-parent'>
+      </div>
         <div className='bag-parent'>
    
 {filterbags.map((product)=>(
@@ -264,7 +265,7 @@ setallProducts(data)
 <div className='imgs-container'><img className='imgs' src={product.photourl} /></div>
 <div className='pnames '><label style={{color:"black"}}>{product.brandname}</label></div>
 <div className='pnam'>{product.description}</div>
-<div className='pprice'>₹ {product.price}</div>
+<div className='pprice'>₹ {product.price}  {product.prevprice > product.price ?<div className='position-r'>{product.prevprice}<label className='position-a'></label></div> :<></> }</div>
  </Link>
   </div>
  
@@ -281,7 +282,9 @@ setallProducts(data)
  <div className='imgs-container'><img className='imgs' src={product.photourl} /></div>
  <div className='pnames '><label style={{color:"black"}}>{product.brandname}</label></div>
  <div className='pnam'>{product.description}</div>
- <div className='pprice'>₹ {product.price}</div>
+ <div className='pprice'>₹ {product.price}  {product.prevprice > product.price ?<div className='position-r'>{product.prevprice}<label className='position-a'></label></div> :<></> 
+ 
+}</div>
   </Link>
    </div>
   

@@ -4,10 +4,11 @@
     width: 100%;
     position: fixed;
    justify-content: space-between;
-   align-items: center;
+ align-items: center;
  height: 80px;
  z-index: 10;
-padding-top: 10px;
+ backdrop-filter: blur(10px);
+
 }
 .lbl{
     font-size: 30px;
@@ -64,20 +65,22 @@ color: rgb(0, 0, 0);
 display: flex;
    font-size: 17px;
    letter-spacing: 3px;
-   gap: 50px;
+   gap: 35px;
   color: black;
    align-items: center;
 justify-content: end;
-flex-grow: 1;   
 margin: 0px 10px 0px 0px;
+flex-grow: 1
 
 
-
+}
+.ic-prof{
+    margin-bottom: 9px;
 }
 .lk{
     color: rgb(0, 0, 0);
  text-decoration: none;
- 
+ align-items: center;
  
 
 }
@@ -95,7 +98,7 @@ border: 3.2px solid rgb(213, 213, 213);
     padding: 2px;
     height: 60.5px;
     border-radius: 130px;
-
+  
   
 }
 .img-contains-logout{
@@ -194,9 +197,14 @@ position: relative;
 }
 
 .border-heart{
-    font-size: 26px;
-    color:rgb(243, 92, 92);
-   
+    font-size: 25px;
+    color:rgb(68, 65, 65);
+    margin: 0px 0px 0px 0px;
+ }
+ .cart-ic{
+    font-size: 29px;
+    margin: 0px 0px 8px 0px;
+    color:rgb(27, 26, 26);
  }
  .bars{
     font-size: 26px;
@@ -241,7 +249,7 @@ margin: 0px 0px 4px 0px;
 .icon-out{
     padding-left:  0px;
     font-size: 28px;
-    color:rgb(97, 94, 94);
+    color:rgb(0,0,0,0.9);
     margin: 0px 0px 4px 0px; 
 }
 .cross{
@@ -265,11 +273,12 @@ margin: 0px 0px 4px 0px;
 
 }
 .input-search::placeholder{
-    color: black;
+    color: rgb(140, 131, 131);
+    letter-spacing: 5px;
 }
 
 .active{
-  
+
    border-bottom: 3px solid darkgrey;
   
 }

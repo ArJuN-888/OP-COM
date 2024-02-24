@@ -192,7 +192,7 @@ text-align: start;
     display: none;
 }
 .lb{
-    background-color:rgb(233, 241, 241);
+    background-color:rgb(255, 255, 255);
     color: grey;
    padding: 1px 3.2px;
     border-radius: 20px;
@@ -200,16 +200,16 @@ text-align: start;
     top: 4%;
     left: 1.4%;
     border: 3px solid white;
-    box-shadow: 0px 0px 10px 0px grey;
+    box-shadow: 0px 0px 10px 0px rgb(180, 173, 173);
 }
 .inp-lbl{
     font-size: 18px;
 }
 .Edit{
     letter-spacing: 2px;
-    padding: 2px 8px;
+    padding: 2px 9px;
     color: white;
-    background-color:rgb(245, 83, 83);
+    background-color:rgb(0,0,0,0.8);
     cursor: pointer;
     border: 2px solid white;
     margin: 0px 2px;
@@ -275,7 +275,7 @@ text-align: start;
 }
 .status{
     color: olivedrab;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   
 }
 .statu{
     padding: 0px 30px;

@@ -200,8 +200,8 @@ return(
 <button onClick={(e)=>{checkLike(product._id);e.preventDefault()}} className='like'>{likedid.includes(product._id) ? <IoHeartSharp className='likeicons'/>:<GoHeart className='likeicon'/>}</button>
 {/* <div className="prof-id">{product.loginid}</div> */}
 <div className='imgs-container'><img className='imgs' src={product.photourl} /></div>
-<div className='pname'><mark className='pname'>{product.brandname}</mark></div>
-<div className='pnam'>{product.productname}</div>
+<div className='pnames'><label  style={{color:"black"}}>{product.brandname}</label></div>
+<div className='pnam'>{product.description}</div>
 <div className='pprice'>₹ {product.price}</div>
 <div>{bannedid.includes(product.loginid) ? <label className='out-st'>Out of Stock</label>:""}</div>
 </Link>

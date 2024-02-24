@@ -3,9 +3,14 @@ import { useCookies } from "react-cookie";
 import { FaUserCircle } from "react-icons/fa";
 import { FaSignInAlt } from "react-icons/fa";
 import { FaSignOutAlt } from "react-icons/fa";
+import { AiOutlineLogin } from "react-icons/ai";
 import { FaCartPlus } from "react-icons/fa";
 import GetID from "./Hooks/GetId";
+import { LiaUserSolid } from "react-icons/lia";
+import { PiHeart } from "react-icons/pi";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { IoMdCart } from "react-icons/io";
+import { RiHome2Line } from "react-icons/ri";
 import { FaHome } from "react-icons/fa";
 import { IoCloseOutline } from "react-icons/io5";
 import { FaUserEdit } from "react-icons/fa";
@@ -77,26 +82,26 @@ export default function Navbar() {
            
               <li>
                 <NavLink to="/Home" className="lk" activeclassname="active">
-                  {/* <FaHome className="icon" /> */}Home
+                  <RiHome2Line className="cart-ic" />
                 </NavLink>
               </li>
               <li>
                 <NavLink className="lk" to="/profile" activeclassname="active">
-                  Profile
+                  <LiaUserSolid className="cart-ic"/>
                 </NavLink>
               </li>
 
               <li>
                 <NavLink className="liked" to="/Liked" activeclassname="active">
-                  <FontAwesomeIcon
-                    icon={faHeartCircleBolt}
-                    className="border-heart"
+                  <PiHeart
+  
+                    className="cart-ic"
                   />
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/Cart" className="lk" activeclassname="active">
-                  {/* <FaCartPlus className="icon" /> */}Cart
+                  <IoMdCart className="cart-ic"  />
                 </NavLink>
               </li>
               <li>
@@ -106,7 +111,7 @@ export default function Navbar() {
                     handleLog();
                   }}
                 >
-                  <FaSignOutAlt className="icon-out" />
+                  <AiOutlineLogin className="cart-ic" />
                 </Link>
               </li>
             </>
@@ -126,7 +131,7 @@ export default function Navbar() {
             </>
           )}
 
-          <li>
+          <li className="ic-prof" >
             {Cookies.token ? (
               <div className="img-contains">
               <img

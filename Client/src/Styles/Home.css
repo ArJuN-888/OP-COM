@@ -81,6 +81,8 @@ gap: 10px;
 
 .pprice {
 color: black;
+display: flex;
+justify-content: space-between;
 }
 .like {
   border: none;
@@ -266,9 +268,8 @@ border: 1px solid rgb(194, 100, 100);
 }
 .srt-parent-home{
   display: flex;
-  justify-content: center;
+  justify-content: start;
   padding: 5px;
-  box-shadow: 0px 0px 5px 0px;
   margin:5px 5px 0px 5px;
 }
 .srt-sub-parent{
@@ -307,4 +308,16 @@ z-index: 1;
  background-color: white;
  margin: 0px 5px 5px 5px;
 
+ }
+ .position-r{
+  position: relative;
+ }
+ .position-a{
+
+position: absolute;
+width: 40px;
+background-color: rgb(0, 0, 0);
+height: 2px;
+left: 1%;
+top: 45%;
  }
