@@ -1,15 +1,30 @@
 .home-parent {
   display: flex;
   gap: 20px;
-  box-shadow: 0px 0px 1px 0px;
-  flex-wrap: wrap;
-  margin: 5px 5px 0px 5px;
+ 
+
   justify-content: center;
   font-size: 18px;
   letter-spacing: 3px;
-padding-top: 10px;
-box-shadow: 0px 0px 5px 0px slategray;
+padding-top: 80px;
+
   /* box-shadow: 0px 0px 3px 0px; */
+}
+.sub-pr-parent{
+}
+.watch-parent{
+padding: 10px;
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+gap: 10px;
+}
+.bag-parent{
+  padding: 10px;
+  display: flex;
+justify-content: center;
+flex-wrap: wrap;
+gap: 10px;
 }
 
 .home-child {
@@ -18,13 +33,12 @@ box-shadow: 0px 0px 5px 0px slategray;
   transition: 1s ease-in-out;
   position: relative;
   cursor: pointer;
-  height: 420px;
+  height: auto;
 
  
 }
 .home-child:hover {
-  transform: scale(1.1);
-  box-shadow: 0px 0px 1px 0px slategray;
+  box-shadow: 0px 0px 20px 1px slategray;
 }
 .imgs-container {
   padding: 4px;

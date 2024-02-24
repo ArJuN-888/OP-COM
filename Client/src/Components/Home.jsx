@@ -175,6 +175,10 @@ setallProducts(data)
     }while(swapped)
     setallProducts(data)
   }
+  const filterbags = allproducts.filter(element=>element.category === "bag")
+  console.log("filterbag",filterbags)
+  const filterwatch = allproducts.filter(element=>element.category === "watch")
+  console.log("filterwatch",filterwatch)
   return (
     <>
 
@@ -248,8 +252,10 @@ setallProducts(data)
       </Stack>
       </div> */}
     <div className='home-parent'>
-    
-{allproducts.map((product)=>(
+      <div className='sub-pr-parent'>
+        <div className='bag-parent'>
+   
+{filterbags.map((product)=>(
  
 <div key={product._id} className='home-child'>
  <Link className='homelink' to={`/Details/${product._id}`} >
@@ -263,6 +269,25 @@ setallProducts(data)
   </div>
  
 ))}
+</div>
+<div className='watch-parent'>
+
+{filterwatch.map((product)=>(
+ 
+ <div key={product._id} className='home-child'>
+  <Link className='homelink' to={`/Details/${product._id}`} >
+ <button onClick={(e)=>{checkLike(product._id);e.preventDefault()}} className='like'>{Liked.includes(product._id) ? <IoHeartSharp className='likeicons'/>:<IoHeartSharp className='likeicon'/>}</button>
+ {/* <div className="prof-id">{product.loginid}</div> */}
+ <div className='imgs-container'><img className='imgs' src={product.photourl} /></div>
+ <div className='pnames '><label style={{color:"black"}}>{product.brandname}</label></div>
+ <div className='pnam'>{product.description}</div>
+ <div className='pprice'>₹ {product.price}</div>
+  </Link>
+   </div>
+  
+ ))}
+ </div>
+ </div>
 </div>
 
 {/* <div className='report-parent'>

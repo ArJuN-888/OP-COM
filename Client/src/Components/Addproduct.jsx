@@ -11,20 +11,54 @@ export default function Addproduct() {
   const [productname, setproductname] = useState("");
   const [description, setdescription] = useState("");
   const [photourl, setphotourl] = useState("");
+  const [genderprefer,setGenderprefer] = useState("");
+  const [strapcolor,setStrapcolor] = useState("");
+  const [body,setBody] = useState("");
+  const [material,setMaterial] = useState("");
+  const [capacity,setCapacity] = useState("")
   const [Cookies] = useCookies(["admintoken"]);
   const adminID = GetadminID()
   const [loginid,]=useState(adminID)
   const [price, setPrice] = useState("");
   const addProduct = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/Product/admin/addProduct',{stoke,category,brandname,productname,description,photourl,loginid,price},{
-        headers:{
+      let payload = {
+        stoke,
+        category,
+        brandname,
+        productname,
+        description,
+        photourl,
+        loginid,
+        price,
+        genderprefer,
+      };
+  
+      if (category === "watch") {
+        payload = {
+          ...payload,
+          body,
+          strapcolor,
+        };
+      }
+      else if(category === "bag"){
+        payload = {
+          ...payload,
+          material,
+          capacity
+         
+        };
+      }
+  
+      const response = await axios.post('http://localhost:5000/Product/admin/addProduct', payload, {
+        headers: {
           Authorization: `${Cookies.admintoken}`
         },
       });
-      toast.success(response.data.message,{
+  
+      toast.success(response.data.message, {
         transition: Flip
-      })
+      });
     } catch (error) {
       toast.error(error.response.data.message,{
         transition: Flip
@@ -44,7 +78,7 @@ export default function Addproduct() {
                <select className="slt-ad" value={category} onChange={(e)=>setCategory(e.target.value)}>
                <option className="op" value="" disabled>Select</option>
         <option className="op" value="watch">Watch</option>
-        <option className="op" value="bags">Bags</option>
+        <option className="op" value="bag">Bag</option>
       </select>
       <input
         placeholder="brandname..."
@@ -76,6 +110,41 @@ export default function Addproduct() {
         value={price}
         onChange={(e) => setPrice(e.target.value)}
       />
+       <input
+        className="in"
+        placeholder="Gender preference..."
+        value={genderprefer}
+        onChange={(e) => setGenderprefer(e.target.value)}
+      />
+     
+      {category === "watch" && (<><input
+        className="in"
+        placeholder="Strap color..."
+        value={strapcolor}
+        onChange={(e) => setStrapcolor(e.target.value)}
+      />
+       <input
+        className="in"
+        placeholder="body..."
+        value={body}
+        onChange={(e) => setBody(e.target.value)}
+      /></>)} 
+      {category === "bag" && (<> <input
+      className="in"
+      placeholder="material..."
+      value={material}
+      onChange={(e) => setMaterial(e.target.value)}
+    />
+    <input
+      className="in"
+      placeholder="capacity..."
+      value={capacity}
+      onChange={(e) => setCapacity(e.target.value)}
+    /></>)}
+     
+     
+  
+      
       <button className="ad-bt-add" onClick={addProduct}>Create</button>
       </div>
     </div>

@@ -167,7 +167,7 @@ setLikedproduct(data)
   if(Likedproduct.length === 0)
   {
 return(
-  <div className='liked-parent'><h3 style={{color:"grey"}}>Wishlist-Empty</h3>
+  <div className='srt-parent'><h3 style={{color:"grey"}}>Wishlist-Empty</h3>
   <img src={nol} width="40px" height="40px"/>
   </div>
 )

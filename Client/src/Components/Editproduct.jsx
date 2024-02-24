@@ -10,12 +10,19 @@ import GetadminID from './Hooks/GetadminID';
 import { IoSend } from 'react-icons/io5';
 export default function Editproduct() {
   const [price,setPrice] = useState("")
+  const [disableCategorySelect, setDisableCategorySelect] = useState(false);
   const [stoke, setStoke] = useState("");
   const [category, setCategory] = useState("");
   const [brandname, setbrandname] = useState("");
   const [productname, setproductname] = useState("");
   const [description, setdescription] = useState("");
   const [photourl, setphotourl] = useState("");
+  const [genderprefer,setGenderprefer] = useState("");
+  const [strapcolor,setStrapcolor] = useState("");
+  const [body,setBody] = useState("");
+  const [material,setMaterial] = useState("");
+  const [capacity,setCapacity] = useState("")
+  const [edittoggle,setEdittoggle] = useState(0)
   const [ids,setids] = useState("")
     const [Cookies,] = useCookies(["admintoken"])
     const [adminproduct,setadminproduct] = useState([])
@@ -60,9 +67,9 @@ export default function Editproduct() {
       }
     };
     const editItem = (id) => {
+      setDisableCategorySelect(true)
       setids(id)
-      // setEdittoggle(true)
-      // setFormtoggle(true)
+      setEdittoggle(1)
       const filterdata = adminproduct.find((element) => element._id === id);
       console.log("filter", filterdata);
       setStoke(filterdata.stoke)
@@ -72,17 +79,51 @@ export default function Editproduct() {
       setdescription(filterdata.description)
       setphotourl(filterdata.photourl)
       setPrice(filterdata.price)
+      setGenderprefer(filterdata.genderprefer)
+      setStrapcolor(filterdata.strapcolor)
+      setBody(filterdata.body)
+      setMaterial(filterdata.material)
+      setCapacity(filterdata.capacity)
     };
     const updateProduct = async() =>{
       try{
+        let payload = {
+          stoke,
+          category,
+          brandname,
+          productname,
+          description,
+          photourl,
+          price,
+          genderprefer,
+        };
+    
+        if (category === "watch") {
+       
+          payload = {
+            ...payload,
+            body,
+            strapcolor,
+          };
+        }
+        else if(category === "bag"){
+        
+          payload = {
+            ...payload,
+            material,
+            capacity
+           
+          };
+        }
         const response = await axios.put(`http://localhost:5000/Product/getProduct/updateadminproduct/${ids}`,
-        {stoke,category,brandname,productname,description,photourl,price},{
+         payload,{
          
            headers: {
              Authorization: `${Cookies.admintoken}`,
            },
          
         })
+        setEdittoggle(0)
         setStoke("")
         setphotourl("");
         setdescription("");
@@ -91,6 +132,11 @@ export default function Editproduct() {
         setproductname("");
         fetchProducts()
       setbrandname("")
+      setGenderprefer("")
+        setStrapcolor("")
+        setBody("")
+        setMaterial("")
+        setCapacity("")
         toast.success(response.data.message, {
           transition: Flip,
         });
@@ -102,7 +148,7 @@ export default function Editproduct() {
     }
     }
     const updateCancel = () =>{
-      
+      setEdittoggle(0)
       setStoke("")
         setphotourl("");
         setdescription("");
@@ -110,6 +156,11 @@ export default function Editproduct() {
         setPrice("");
         setproductname("");
         setbrandname("")
+        setGenderprefer("")
+        setStrapcolor("")
+        setBody("")
+        setMaterial("")
+        setCapacity("")
     }
   return (
     <div className='Edit-parent'>
@@ -140,6 +191,9 @@ export default function Editproduct() {
                   </div>
   </div>
 ))}
+{edittoggle === 1 ?
+ <>
+ 
  <div className="frm-child">
                 <input
                   className="inputs"
@@ -148,12 +202,11 @@ export default function Editproduct() {
                   value={stoke}
                   onChange={(e) => setStoke(e.target.value)}
                 />
-                <input
-                  className="inputs"
-                  placeholder="category..."
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value)}
-                />
+                        <select className="slt-ad" disabled={disableCategorySelect} value={category} onChange={(e)=>setCategory(e.target.value)}>
+               <option className="op" value="" disabled>Select</option>
+        <option className="op" value="watch">Watches</option>
+        <option className="op" value="bag">Bags</option>
+      </select>
                  <input
                   className="inputs"
                   placeholder="brandname..."
@@ -184,6 +237,42 @@ export default function Editproduct() {
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
                 />
+                   <input
+                  className="inputs"
+                  placeholder="Gender preference..."
+                  value={genderprefer}
+                  onChange={(e) => setGenderprefer(e.target.value)}
+                />
+                {(category === "watch") ? <>
+                <input
+                  className="inputs"
+                  placeholder="Strap color..."
+                  value={strapcolor}
+                  onChange={(e) => setStrapcolor(e.target.value)}
+                />
+                   <input
+                  className="inputs"
+                  placeholder="body..."
+                  value={body}
+                  onChange={(e) => setBody(e.target.value)}
+                />
+                </>:<>
+                
+                <input
+                  className="inputs"
+                  placeholder="material..."
+                  value={material}
+                  onChange={(e) => setMaterial(e.target.value)}
+                />
+                   <input
+                  className="inputs"
+                  placeholder="capacity..."
+                  value={capacity}
+                  onChange={(e) => setCapacity(e.target.value)}
+                />
+                </>}
+               
+             
                 <div>  <button className="Req" onClick={updateProduct}>
                     Update <IoSend/>
                   </button>
@@ -191,6 +280,14 @@ export default function Editproduct() {
                     Cancel
                   </button></div>
                 </div>
+ 
+ </> 
+
+
+
+: <></>}
+
+
     </div>
   )
 }

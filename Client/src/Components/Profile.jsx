@@ -15,6 +15,7 @@ import { useCookies } from "react-cookie";
 import Spinner from 'react-bootstrap/Spinner';
 import Getprofile from "./Hooks/Getprofile";
 import GetID from "./Hooks/GetId";
+import Editproduct from "./Editproduct";
 export default function Profile() {
   const {
     userRegister,
@@ -23,6 +24,11 @@ export default function Profile() {
     setstatus,
     setProfileImage,
   } = useContext(Context);
+  const [genderprefer,setGenderprefer] = useState("");
+  const [strapcolor,setStrapcolor] = useState("");
+  const [body,setBody] = useState("");
+  const [material,setMaterial] = useState("");
+  const [capacity,setCapacity] = useState("")
   const [stoke, setStoke] = useState("");
   const [category, setCategory] = useState("");
   const [brandname, setbrandname] = useState("");
@@ -54,6 +60,7 @@ export default function Profile() {
   const [note, setnote] = useState(null);
   const [sellerreqstat,setsellerReqstat] = useState(null)
   const [estate, seteState] = useState(null);
+  const [disableCategorySelect, setDisableCategorySelect] = useState(false);
   console.log("sfdmb", Cookies.token);
   console.log("email", fetcheduser.email);
   console.log("fetcheduser", fetcheduser);
@@ -330,22 +337,41 @@ export default function Profile() {
   };
   const handleAddProduct = () => {
     setFormtoggle(true);
+    setDisableCategorySelect(false)
   };
   const addProduct = async () => {
     try {
+      let payload = {
+        stoke,
+        category,
+        brandname,
+        productname,
+        description,
+        photourl,
+        loginid,
+        price,
+        genderprefer,
+      };
+  
+      if (category === "watch") {
+        payload = {
+          ...payload,
+          body,
+          strapcolor,
+        };
+      }
+      else if(category === "bag"){
+        payload = {
+          ...payload,
+          material,
+          capacity
+         
+        };
+      }
       console.log("productadd",category)
       const response = await axios.post(
         "http://localhost:5000/Product/addProduct",
-        {
-          stoke,
-          category,
-          brandname,
-          productname,
-          description,
-          photourl,
-          loginid: userID,
-          price,
-        },
+     payload,
         {
           headers: {
             Authorization: `${Cookies.token}`,
@@ -395,32 +421,56 @@ export default function Profile() {
   };
   const editItem = (id) => {
     setids(id);
+    setDisableCategorySelect(true)
     setEdittoggle(true);
     setFormtoggle(true);
     const filterdata = alluserproducts.find((element) => element._id === id);
     console.log("filter", filterdata);
     setStoke(filterdata.stoke);
-    setCategory(filterdata.category);
     setbrandname(filterdata.brandname);
     setproductname(filterdata.productname);
+    setCategory(filterdata.category)
     setdescription(filterdata.description);
     setphotourl(filterdata.photourl);
     setPrice(filterdata.price);
+    setGenderprefer(filterdata.genderprefer)
+    setStrapcolor(filterdata.strapcolor)
+    setBody(filterdata.body)
+    setMaterial(filterdata.material)
+    setCapacity(filterdata.capacity)
   };
   const updateProduct = async () => {
     try {
+      let payload = {
+        stoke,
+        category,
+        brandname,
+        productname,
+        description,
+        loginid,
+        photourl,
+        price,
+        genderprefer,
+      };
+  
+      if (category === "watch") {
+        payload = {
+          ...payload,
+          body,
+          strapcolor,
+        };
+      }
+      else if(category === "bag"){
+        payload = {
+          ...payload,
+          material,
+          capacity
+         
+        };
+      }
       const response = await axios.put(
         `http://localhost:5000/Product/getProduct/${ids}`,
-        {
-          stoke,
-          category,
-          brandname,
-          productname,
-          description,
-          photourl,
-          price,
-          loginid:userID
-        },
+        payload,
       
         {
           headers: {
@@ -457,6 +507,11 @@ export default function Profile() {
     setCategory("");
     setPrice("");
     setproductname("");
+    setGenderprefer("")
+        setStrapcolor("")
+        setBody("")
+        setMaterial("")
+        setCapacity("")
   };
 
   return (
@@ -599,9 +654,11 @@ export default function Profile() {
                   value={stoke}
                   onChange={(e) => setStoke(e.target.value)}
                 />
-                   <select className="slt" value={category} onChange={(e)=>setCategory(e.target.value)}>
-        <option value="watch">Watch</option>
-        <option value="bags">Bags</option>
+                  
+         <select className="slt" value={category} disabled={disableCategorySelect} onChange={(e)=>setCategory(e.target.value)}>
+         <option value="" disabled>Category</option>
+        <option value="watch">Watches</option>
+        <option value="bag">Bags</option>
       </select>
                 <input
                   className="inputs"
@@ -633,11 +690,46 @@ export default function Profile() {
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
                 />
+                 <input
+        className="inputs"
+        placeholder="Gender preference..."
+        value={genderprefer}
+        onChange={(e) => setGenderprefer(e.target.value)}
+      />
+      
+      {category === "watch" && (<>  <input
+        className="inputs"
+        placeholder="Strap color..."
+        value={strapcolor}
+        onChange={(e) => setStrapcolor(e.target.value)}
+      />
+       <input
+        className="inputs"
+        placeholder="body..."
+        value={body}
+        onChange={(e) => setBody(e.target.value)}
+      /></>)}
+       {category === "bag" && (  <> <input
+      className="inputs"
+      placeholder="material..."
+      value={material}
+      onChange={(e) => setMaterial(e.target.value)}
+    />
+    <input
+      className="inputs"
+      placeholder="capacity..."
+      value={capacity}
+      onChange={(e) => setCapacity(e.target.value)}
+    /></>)}
+    
+     
                 {edittoggle ? (
                   <div>
                     {" "}
                     <button className="Req" onClick={updateProduct}>
-                      Update
+                      Update <IoSend style={{
+                      padding:"0px 0px 2px 0px"
+                    }}/>
                     </button>
                     <button className="passCancel" onClick={updateCancel}>
                       Cancel
@@ -646,7 +738,9 @@ export default function Profile() {
                 ) : (
                   <div className="btn-add-grp">
                     <button className="Req" onClick={addProduct}>
-                      Create
+                      Create <IoSend style={{
+                      padding:"0px 0px 2px 0px"
+                    }}/>
                     </button>
                     <button className="passCancel" onClick={addCancel}>
                       Cancel
