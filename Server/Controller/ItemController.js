@@ -12,18 +12,24 @@ const adduserProduct = async (req, res) => {
       photourl,
       loginid,
       price,
+      genderprefer,
+      strapcolor,
+      body,
+      material,
+      capacity
     } = req.body;
-    if (
-      !productname ||
-      !category ||
-      !brandname ||
-      !description ||
-      !photourl ||
-      !price 
-
-    ) {
-      return res.status(400).json({ message: "Please fill the fields" });
+    if (!productname || !category || !description || !photourl || !price || !stoke || !brandname || !genderprefer) {
+      return res.status(400).json({ message: "Please fill the required fields" });
     }
+
+    if (category === "watch" && (!body || !strapcolor)) {
+      return res.status(400).json({ message: "Please fill the required fields for watches" });
+    }
+
+    if (category === "bag" && (!material || !capacity)) {
+      return res.status(400).json({ message: "Please fill the required fields for bags" });
+    }
+
     if (!loginid) {
       return res.status(400).json({ message: "Login required" });
     }
@@ -44,6 +50,12 @@ const adduserProduct = async (req, res) => {
       photourl,
       loginid,
       price,
+      prevprice: price,
+      genderprefer,
+      strapcolor: category === 'watch' ? strapcolor : undefined,
+      body: category === 'watch' ? body : undefined,
+      material: category === 'bag' ? material : undefined,
+      capacity: category === 'bag' ? capacity : undefined,
     });
     await data.save();
     return res.status(200).json({ message: "Successfully added", data });
@@ -173,18 +185,26 @@ const updateProduct = async (req, res) => {
       description,
       photourl,
       price,
-      loginid
+      loginid,
+      genderprefer,
+      strapcolor,
+      body,
+      material,
+      capacity
     } = req.body;
+    console.log("reqbdy",req.body)
+    if (!productname || !category || !description || !photourl || !price || !stoke || !brandname || !genderprefer) {
+      return res.status(400).json({ message: "Please fill the fields " });
+    }
 
-    if(!stoke || !category || !brandname || !productname || !description || !photourl || !price)
-    {
-return res.status(400).json({ message: "empty-fields unable to proceed"});
+    if (category === "watch" && (!body || !strapcolor)) {
+      return res.status(400).json({ message: "Please fill the  fields " });
     }
-    const sellercategory = await Seller.findOne({userID:loginid})
-    if(sellercategory.category !== category)
-    {
-      return res.status(400).json({ message: "category you are trying to update is invalid" });
+
+    if (category === "bag" && (!material || !capacity)) {
+      return res.status(400).json({ message: "Please fill the fields " });
     }
+
     const product = await Products.findByIdAndUpdate(ids, {
       stoke,
       category,
@@ -193,6 +213,12 @@ return res.status(400).json({ message: "empty-fields unable to proceed"});
       description,
       photourl,
       price,
+      prevprice: price,
+      genderprefer,
+      strapcolor: category === 'watch' ? strapcolor : undefined,
+      body: category === 'watch' ? body : undefined,
+      material: category === 'bag' ? material : undefined,
+      capacity: category === 'bag' ? capacity : undefined,
     });
     console.log("userproducts", product);
     return res.status(200).json({ message: "successfully updated", product });
@@ -212,11 +238,23 @@ const updateadminProduct = async (req, res) => {
       description,
       photourl,
       price,
+      genderprefer,
+      strapcolor,
+      body,
+      material,
+      capacity
     } = req.body;
+console.log("reqbodyadminupdate",req.body)
+    if (!productname || !category || !description || !photourl || !price || !stoke || !brandname || !genderprefer) {
+      return res.status(400).json({ message: "Please fill the fields" });
+    }
 
-    if(!stoke || !category || !brandname || !productname || !description || !photourl || !price)
-    {
-return res.status(400).json({ message: "empty-fields unable to proceed"});
+    if (category === "watch" && (!body || !strapcolor)) {
+      return res.status(400).json({ message: "Please fill the  fields " });
+    }
+
+    if (category === "bag" && (!material || !capacity)) {
+      return res.status(400).json({ message: "Please fill the fields" });
     }
 
     const product = await Products.findByIdAndUpdate(ids, {
@@ -227,6 +265,12 @@ return res.status(400).json({ message: "empty-fields unable to proceed"});
       description,
       photourl,
       price,
+      prevprice: price,
+      genderprefer,
+      strapcolor: category === 'watch' ? strapcolor : undefined,
+      body: category === 'watch' ? body : undefined,
+      material: category === 'bag' ? material : undefined,
+      capacity: category === 'bag' ? capacity : undefined,
     });
     console.log("userproducts", product);
     return res.status(200).json({ message: "successfully updated", product });
@@ -260,14 +304,29 @@ const addadminProduct = async (req, res) => {
       photourl,
       loginid,
       price,
+      genderprefer,
+      strapcolor,
+      body,
+      material,
+      capacity
     } = req.body;
-    if (!productname || !category || !description || !photourl || !price) {
-      return res.status(400).json({ message: "Please fill the fields" });
+
+    if (!productname || !category || !description || !photourl || !price || !stoke || !brandname || !genderprefer) {
+      return res.status(400).json({ message: "Please fill the required fields" });
     }
+
+    if (category === "watch" && (!body || !strapcolor)) {
+      return res.status(400).json({ message: "Please fill the required fields for watches" });
+    }
+
+    if (category === "bag" && (!material || !capacity)) {
+      return res.status(400).json({ message: "Please fill the required fields for bags" });
+    }
+
     if (!loginid) {
       return res.status(400).json({ message: "Login required" });
     }
-    console.log("reqbody", req.body);
+
     const data = new Products({
       stoke,
       category,
@@ -277,13 +336,23 @@ const addadminProduct = async (req, res) => {
       photourl,
       loginid,
       price,
+      prevprice: price,
+      genderprefer,
+      strapcolor: category === 'watch' ? strapcolor : undefined,
+      body: category === 'watch' ? body : undefined,
+      material: category === 'bag' ? material : undefined,
+      capacity: category === 'bag' ? capacity : undefined,
     });
+
     await data.save();
+
     return res.status(200).json({ message: "Successfully added", data });
   } catch (error) {
+    console.error(error);
     res.status(400).json({ message: "Unable to add" });
   }
 };
+
 const productDetails = async(req,res) =>{
   try{
     const {productId} = req.params
