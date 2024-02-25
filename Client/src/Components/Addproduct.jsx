@@ -55,7 +55,17 @@ export default function Addproduct() {
           Authorization: `${Cookies.admintoken}`
         },
       });
-  
+  setCapacity("")
+  setCategory("")
+  setGenderprefer("")
+  setPrice("")
+  setStoke("")
+  setphotourl("")
+  setproductname("")
+  setbrandname("")
+  setStrapcolor("")
+  setBody("")
+  setMaterial("")
       toast.success(response.data.message, {
         transition: Flip
       });

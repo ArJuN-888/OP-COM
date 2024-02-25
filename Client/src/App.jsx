@@ -6,8 +6,6 @@ import GetID from "./Components/Hooks/GetId";
 import "@fortawesome/fontawesome-free/css/all.css";
 import Reports from "./Components/Reports";
 import Cart from "./Components/Cart";
-import Fastrack from "./Components/Fastrack";
-import Sonata from "./Components/Sonata";
 // import Horizontalnavbar from "./Components/Horizontalnavbar";
 import Editproduct from "./Components/Editproduct";
 import Requests from "./Components/Requests";
@@ -18,15 +16,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Details from "./Components/Details";
 import Sellerform from "./Components/Sellerform";
-import Wildcraft from "./Components/Wildcraft";
-import Puma from "./Components/Puma";
-import Adidas from "./Components/Adidas";
+import Category1 from "./Components/Category1";
+import Category2 from "./Components/Category2";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Usermanagement from "./Components/Usermanagement";
 import { useCookies } from "react-cookie";
 import Adminnav from "./Components/Adminnav";
-import Casio from "./Components/Casio";
-import Titan from "./Components/Titan";
+
+
 import Addproduct from "./Components/Addproduct";
 import Adminlogin from "./Components/Adminlogin";
 import Userlogin from "./Components/Userlogin";
@@ -84,13 +81,8 @@ function App() {
             <Route path="/Search/:category" element={<Searchresult />}/>
             <Route path="/Sellerform" element={<Sellerform />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/Fastrack" element={<Fastrack />} />
-            <Route path="/Titan" element={<Titan />} />
-            <Route path="/Casio" element={<Casio />} />
-            <Route path="/Sonata" element={<Sonata />} />
-            <Route path="/Adidas" element={<Adidas/>}/>
-            <Route path="/Puma" element={<Puma/>}/>
-            <Route path="/Wildcraft" element={<Wildcraft/>}/>
+            <Route path="/WatchCategory/:brandname" element={<Category1 />} />
+            <Route path="/BagCategory/:brandname" element={<Category2/>}/>
             </>
             
             :<> <Route path="/" element={<Initial />} /></>}

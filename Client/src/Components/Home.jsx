@@ -331,6 +331,7 @@ setSelectedbody(body)
       </div>   */}
     
     <div className='home-parent'>
+   
       <div className='sub-pr-parent'>
       <div className='srt-parent-home'>
       <Stack direction="horizontal" gap={2}>
@@ -351,6 +352,7 @@ setSelectedbody(body)
         fontSize:"25px",
         color:"black"
       }}/></Badge>
+      
       {filtertog===1 ?
         <>
         {mctog===1 ? <>
@@ -379,6 +381,8 @@ setSelectedbody(body)
           <label>30 L</label>
           <input  value={40}      checked={selectedCapacity === 40} onChange={() => handleCapacityChange(40)} type='radio'/>
           <label>40 L</label>
+          <input  value={36}      checked={selectedCapacity === 36} onChange={() => handleCapacityChange(36)} type='radio'/>
+          <label>36 L</label>
           <button onClick={Close} style={{
                 border:"none",
                 backgroundColor:"transparent"
@@ -404,8 +408,14 @@ setSelectedbody(body)
         fontSize:"18px",
      
       }} /></Badge>}
-    
-      
+      <label className='link-cat-parent'>
+      <Link to={`/BagCategory/Wildcraft`}>Wildcraft</Link>|
+      <Link to={`/BagCategory/Puma`}>Puma</Link>|
+      <Link to={`/BagCategory/Adidas`}>Adidas</Link>|
+      <Link to={`/BagCategory/Wrogn`}>Wrogn</Link>|
+      </label>
+  
+  
       </Stack>
       
       </div>
@@ -482,8 +492,12 @@ setSelectedbody(body)
         fontSize:"18px",
      
       }} /></Badge>}
-    
-      
+     <label className='link-cat-parent'>
+    <Link to={`/WatchCategory/Casio`}>Casio</Link>|
+      <Link to={`/WatchCategory/Sonata`}>Sonata</Link>|
+      <Link to={`/WatchCategory/Fastrack`}>Fastrack</Link>|
+      <Link to={`/WatchCategory/Titan`}>Titan</Link>|
+      </label>
       </Stack>
       
       </div>
