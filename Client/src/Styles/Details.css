@@ -8,7 +8,6 @@
 }
 .photo-contain{
 padding: 10px;
-border: 1px solid rgb(205, 201, 201);
 height: fit-content;
 
 }
@@ -19,7 +18,7 @@ letter-spacing: 4px;
 height: fit-content;
 margin: 0px 10px ;
 padding: 10px;
-border: 1px solid rgb(205, 201, 201);
+
 
 }
 .brand{
@@ -39,18 +38,10 @@ border: 1px solid rgb(205, 201, 201);
 .pd{
  padding-top: 60px;
 }
-.pp::before{
-    content: "∘";
-    padding: 0px 10px;
-}
+
 .pp{
     margin: 45px 0px 0px 0px;
-    font-size: 20px;
-    color: white;
-    width: 160px;
-    padding: 0px 5px;
-    border-radius: 50px 10px 10px 50px;
-    background-color: rgba(25, 27, 25, 0.778);
+ font-size: 30px;
 }
 .imgs-details{
     padding: 4px ;
@@ -64,7 +55,7 @@ border-radius: 10px;
      width: 100%;
      height: 300px;
      object-fit:contain;
-   
+
 }
 .btn-grps{
     display: flex;
@@ -94,7 +85,7 @@ border-radius: 10px;
 position: absolute;
 right: 7%;
 top: 10%;
-
+background-color: transparent;
 border-radius: 30px;
 padding: 4px 4.5px;
 }
@@ -108,20 +99,23 @@ color: grey;
 border: none;
 letter-spacing: 1px;
 font-size: 18px;
-background-color: darkseagreen;
+padding: 5px 0px;
+border-radius: 3px;
+background-color: rgba(233, 51, 51, 0.859);
 color: white;
 width: 100%;
-box-shadow: 0px 0px 4px 0px grey;
+box-shadow: 0px 0px 2px 0px slategray;
 }
 .buy-btn{
 border: none;
-
+padding: 5px 0px;
 letter-spacing: 1px;
 font-size: 18px;
+border-radius: 3px;
 width: 100%;
-background-color: rgb(229, 176, 42);
+background-color: rgb(130, 126, 126);
 color: white;
-box-shadow: 0px 0px 4px 0px grey;
+box-shadow: 0px 0px 4px 0px slategray;
 }
 .sto{
     padding-top: 10px;

@@ -147,6 +147,13 @@ border: 3.2px solid rgb(213, 213, 213);
    
     border-radius: 120px;
    width: 100%;
+   height: 56px;
+   object-fit: cover; /* or object-fit: contain; */
+}
+.imagess{
+   
+    border-radius: 120px;
+   width: 100%;
    height: 50px;
    object-fit: cover; /* or object-fit: contain; */
 }
@@ -224,7 +231,7 @@ position: relative;
 }
 .glass{
     font-size: 25px;
-  color:grey;
+  color:rgb(46, 44, 44);
 }
 .ico{
     padding-left:  0px;
@@ -270,10 +277,10 @@ margin: 0px 0px 4px 0px;
    border-radius: 20px;
    background-color: transparent;
    color: rgb(0, 0, 0);
-
+outline: none;
 }
 .input-search::placeholder{
-    color: rgb(140, 131, 131);
+    color: rgb(108, 102, 102);
     letter-spacing: 5px;
 }
 
@@ -286,13 +293,6 @@ margin: 0px 0px 4px 0px;
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color:transparent;
-    background: url("https://r4.wallpaperflare.com/wallpaper/531/951/621/digital-digital-art-artwork-illustration-minimalism-hd-wallpaper-08869d3810a06c28a09cf1be487204ea.jpg");
-    height: auto;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
     z-index: 1;
     width: fit-content;
     margin: 4px 0px 0px 36px;

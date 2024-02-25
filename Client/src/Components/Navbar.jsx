@@ -135,7 +135,7 @@ export default function Navbar() {
             {Cookies.token ? (
               <div className="img-contains">
               <img
-                className="images"
+                className="imagess"
                 src={`${reqURL}/${profileImage}`}
                 alt="profile"
               />
@@ -179,7 +179,7 @@ export default function Navbar() {
                   {" "}
                   <li className="n">
                     <NavLink className="l" to="/Home" activeclassname="active">
-                      <FaHome className="icon" />
+                    <RiHome2Line className="cart-ic" />
                     </NavLink>
                   </li>
                   <li className="n">
@@ -188,20 +188,20 @@ export default function Navbar() {
                       to="/profile"
                       activeclassname="active"
                     >
-                      <FaUserEdit className="icon" />
+                      <LiaUserSolid className="cart-ic"/>
                     </NavLink>
                   </li>
                   <li className="n">
                     <NavLink className="l" to="/Liked" activeclassname="active">
-                      <FontAwesomeIcon
-                        icon={faHeartCircleBolt}
-                        className="border-heart"
-                      />
+                    <PiHeart
+  
+  className="cart-ic"
+/>
                     </NavLink>
                   </li>
                   <li className="n">
                     <NavLink className="l" to="/Cart" activeclassname="active">
-                      <FaCartPlus className="icon" />
+                    <IoMdCart className="cart-ic"  />
                     </NavLink>
                   </li>
                   <li className="n">
@@ -212,7 +212,7 @@ export default function Navbar() {
                         handleLog();
                       }}
                     >
-                      <FaSignOutAlt className="icon" />
+                        <AiOutlineLogin className="cart-ic" />
                     </NavLink>
                   </li>{" "}
                   <li>

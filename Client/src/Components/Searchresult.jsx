@@ -121,9 +121,10 @@ catch(error)
  <Link className='homelink' to={`/Details/${product._id}`} >
 <button onClick={(e)=>{checkLike(product._id);e.preventDefault()}} className='like'>{Liked.includes(product._id) ? <IoHeartSharp className='likeicons'/>:<IoHeartSharp className='likeicon'/>}</button>
 <div className='imgs-container'><img className='imgs' src={product.photourl} /></div>
-<div className='pname'><mark className='pname'>{product.brandname}</mark></div>
-<div className='pnam'>{product.productname}</div>
-<div className='pprice'>₹ {product.price}</div>
+<div className='pnames '><label style={{color:"black"}}>{product.brandname}</label></div>
+<div className='pnam'>{product.description}</div>
+<div className='pprice'>₹ {product.price}  {product.prevprice > product.price ?<div className='position-r'>{product.prevprice}<label className='position-a'></label></div> :<></> }</div>
+
  </Link>
   </div>
  

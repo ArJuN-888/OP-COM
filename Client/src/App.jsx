@@ -18,6 +18,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Details from "./Components/Details";
 import Sellerform from "./Components/Sellerform";
+import Wildcraft from "./Components/Wildcraft";
+import Puma from "./Components/Puma";
+import Adidas from "./Components/Adidas";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Usermanagement from "./Components/Usermanagement";
 import { useCookies } from "react-cookie";
@@ -85,6 +88,9 @@ function App() {
             <Route path="/Titan" element={<Titan />} />
             <Route path="/Casio" element={<Casio />} />
             <Route path="/Sonata" element={<Sonata />} />
+            <Route path="/Adidas" element={<Adidas/>}/>
+            <Route path="/Puma" element={<Puma/>}/>
+            <Route path="/Wildcraft" element={<Wildcraft/>}/>
             </>
             
             :<> <Route path="/" element={<Initial />} /></>}

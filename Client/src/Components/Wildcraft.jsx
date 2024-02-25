@@ -8,7 +8,7 @@ import { IoHeartSharp } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 import GetID from './Hooks/GetId'
 import { useCookies } from 'react-cookie'
-export default function Sonata() {
+export default function Wildcraft() {
     const [Cookies,] = useCookies(["token"])
     const [Liked,setLiked] = useState([])
     const [Filtered,setFiltered] = useState([])
@@ -20,7 +20,7 @@ export default function Sonata() {
 
                 const response = await axios.get(`http://localhost:5000/Product/getProduct/particular/${userID}`,{
                     params: {
-                    only: "sonata",
+                    only: "wildcraft",
                       
                       },
                     headers:{
@@ -173,7 +173,7 @@ export default function Sonata() {
     <div className='pnames '><label style={{color:"black"}}>{product.brandname}</label></div>
 <div className='pnam'>{product.description}</div>
 <div className='pprice'>₹ {product.price}  {product.prevprice > product.price ?<div className='position-r'>{product.prevprice}<label className='position-a'></label></div> :<></> }</div>
-    
+   
      </Link>
       </div>
      
