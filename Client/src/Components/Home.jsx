@@ -19,6 +19,8 @@ export default function Home() {
 const [selectedCapacity, setSelectedCapacity] = useState(null);
 const [selectedstrapcolor, setSelectedstrapcolor] = useState(null);
 const [selectedbody, setSelectedbody] = useState(null);
+const [selectedgender1,setselectedGender1] = useState(null)
+const [selectedgender2,setselectedGender2] = useState(null)
   const [Liked,setLiked] = useState([])
   const [filterbag,setfilterBag] = useState([])
   const [filterwatch,setfilterwatch] = useState([])
@@ -37,6 +39,10 @@ const [selectedbody, setSelectedbody] = useState(null);
   const [opstraptog,setOpstraptog] = useState(0)
   const [opbodytog,setOpbodytog] = useState(0)
   const [sbtog,setsbtog] = useState(0)
+  //gender
+  const [togglebag,settoggleBag] = useState(0)
+  const [togglewatch,settoggleWatch] = useState(0)
+
   console.log("liked",Liked)
   console.log("capacity",selectedCapacity)
   console.log("material",selectedMaterial)
@@ -179,6 +185,12 @@ swapped = false
   }
  }
 }while(swapped)
+setFiltertog(0)
+setFiltertogw(0)
+settoggleBag(0)
+settoggleWatch(0)
+setselectedGender1(null)
+setselectedGender2(null)
 setallProducts(data)
   }
   const lowtoHigh = () => {
@@ -197,6 +209,12 @@ setallProducts(data)
        }
       }
     }while(swapped)
+     setFiltertog(0)
+     setFiltertogw(0)
+     settoggleBag(0)
+     settoggleWatch(0)
+     setselectedGender1(null)
+     setselectedGender2(null)
     setallProducts(data)
   }
 
@@ -262,6 +280,8 @@ setallProducts(data)
 
   const handlefilterTog = () =>{
     setFiltertog(1)
+    settoggleBag(0)
+    setselectedGender1(null)
   }
  
     // filterbags = filterbags.filter(element=>element.material === filterState)
@@ -271,6 +291,7 @@ setallProducts(data)
 setOpmattog(1)
 setmctog(1)
 setOpcattog(0)
+
   }
   const handlecap = () =>{
 setOpcattog(1)
@@ -293,6 +314,8 @@ setmctog(1)
   //watch filter
   const handlewatchfilterTog  =()=>{
     setFiltertogw(1)
+    settoggleWatch(0)
+setselectedGender2(null)
   }
   const handlestrap = ()=>{
     setOpstraptog(1)
@@ -316,9 +339,67 @@ setSelectedbody(body)
   const handlestrapChange = (color) =>{
     setSelectedstrapcolor(color)
   }
-  const Idealfor = () =>{
-
+  const Idealforb = () =>{
+settoggleBag(1)
+setFiltertog(0)
+    setmctog(0)
+    setSelectedCapacity(null);
+    setSelectedMaterial(null);
   }
+  const Idealforw = () =>{
+settoggleWatch(1)
+setFiltertogw(0)
+setsbtog(0)
+setSelectedstrapcolor(null);
+setSelectedbody(null);
+  }
+  //gender
+  const handlegb = (gender) =>{
+    setselectedGender1(gender)
+  }
+ 
+
+  const handlegw = (gender) =>{
+    setselectedGender2(gender)
+  }
+ useEffect(()=>{
+const filterp = allproducts.filter(element =>  element.category === "bag" )
+if(selectedgender1)
+{
+  setfilterBag(
+    filterp.filter(
+      (element) =>
+        element.genderprefer.toLowerCase() === selectedgender1.toLowerCase()
+    )
+  );
+}
+else{
+  setfilterBag(filterp)
+}
+ },[selectedgender1,allproducts])
+ useEffect(()=>{
+  const filterp = allproducts.filter(element =>  element.category === "watch" )
+  if(selectedgender2)
+  {
+    setfilterwatch(
+      filterp.filter(
+        (element) =>
+          element.genderprefer.toLowerCase() === selectedgender2.toLowerCase()
+      )
+    );
+  }
+  else{
+    setfilterwatch(filterp)
+  }
+ },[selectedgender2,allproducts])
+ const Close1 = () =>{
+  settoggleBag(0)
+setselectedGender1(null)
+}
+const Close2 = () =>{
+settoggleWatch(0)
+setselectedGender2(null)
+}
   return (
     <>
 
@@ -356,14 +437,29 @@ setSelectedbody(body)
         fontSize:"25px",
         color:"black"
       }}/></Badge>
-       <Badge style={{
+      {togglebag===1 ? <>
+      
+        <input value="men"      checked={selectedgender1 === "men"} onChange={() => handlegb("men")} type='radio'/>
+          <label>men</label>
+          <input value="women"      checked={selectedgender1 === "women"}  onChange={() => handlegb("women")} type='radio'/>
+          <label>women</label>
+          <input  value="unisex"      checked={selectedgender1 === "unisex"} onChange={() => handlegb("unisex")} type='radio'/>
+          <label>unisex</label>
+          <button onClick={Close1} style={{
+         border:"none",
+         backgroundColor:"transparent"
+        }}><IoIosClose style={{
+   fontSize:"25px",
+   color:"grey"
+        }}/></button>
+      </>:<Badge style={{
         boxShadow:"0px 0px 2px 0px grey",
         cursor:"pointer",
     
-      }} onClick={Idealfor} bg="white"><CgUser  style={{
+      }} onClick={Idealforb} bg="white"><CgUser  style={{
         fontSize:"25px",
         color:"black"
-      }}/></Badge>
+      }}/></Badge> } 
       {filtertog===1 ?
         <>
         {mctog===1 ? <>
@@ -453,14 +549,28 @@ setSelectedbody(body)
 </div>
 <div className='srt-parent-home'>
       <Stack direction="horizontal" gap={2}>
-      <Badge style={{
+      {togglewatch===1 ? <>
+        <input value="men"      checked={selectedgender2 === "men"} onChange={() => handlegw("men")} type='radio'/>
+          <label>men</label>
+          <input value="women"      checked={selectedgender2 === "women"}  onChange={() => handlegw("women")} type='radio'/>
+          <label>women</label>
+          <input  value="unisex"      checked={selectedgender2 === "unisex"} onChange={() => handlegw("unisex")} type='radio'/>
+          <label>unisex</label>
+          <button onClick={Close2} style={{
+         border:"none",
+         backgroundColor:"transparent"
+        }}><IoIosClose style={{
+   fontSize:"25px",
+   color:"grey"
+        }}/></button>
+      </>:<Badge style={{
         boxShadow:"0px 0px 2px 0px grey",
         cursor:"pointer",
     
-      }} onClick={Idealfor} bg="white"><CgUser  style={{
+      }} onClick={Idealforw} bg="white"><CgUser  style={{
         fontSize:"25px",
         color:"black"
-      }}/></Badge>
+      }}/></Badge>}
       {filtertogw===1 ?
         <>
         {sbtog===1 ? <>
