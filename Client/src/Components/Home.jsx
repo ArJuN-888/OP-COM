@@ -13,6 +13,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import { IoSend } from 'react-icons/io5';
 import { IoIosClose } from "react-icons/io";
 import { useCookies } from "react-cookie";
+import { CgUser } from "react-icons/cg";
 export default function Home() {
   const [selectedMaterial, setSelectedMaterial] = useState(null);
 const [selectedCapacity, setSelectedCapacity] = useState(null);
@@ -315,6 +316,9 @@ setSelectedbody(body)
   const handlestrapChange = (color) =>{
     setSelectedstrapcolor(color)
   }
+  const Idealfor = () =>{
+
+  }
   return (
     <>
 
@@ -352,7 +356,14 @@ setSelectedbody(body)
         fontSize:"25px",
         color:"black"
       }}/></Badge>
-      
+       <Badge style={{
+        boxShadow:"0px 0px 2px 0px grey",
+        cursor:"pointer",
+    
+      }} onClick={Idealfor} bg="white"><CgUser  style={{
+        fontSize:"25px",
+        color:"black"
+      }}/></Badge>
       {filtertog===1 ?
         <>
         {mctog===1 ? <>
@@ -394,7 +405,11 @@ setSelectedbody(body)
         </> :
         
         <> <button className='mt' onClick={handlemat}>Material</button>
-        <button className='cy' onClick={handlecap}>Capacity</button></>}
+        <button className='cy' onClick={handlecap}>Capacity</button>
+        
+        </>
+        
+        }
        
         </>
       
@@ -438,7 +453,14 @@ setSelectedbody(body)
 </div>
 <div className='srt-parent-home'>
       <Stack direction="horizontal" gap={2}>
-   
+      <Badge style={{
+        boxShadow:"0px 0px 2px 0px grey",
+        cursor:"pointer",
+    
+      }} onClick={Idealfor} bg="white"><CgUser  style={{
+        fontSize:"25px",
+        color:"black"
+      }}/></Badge>
       {filtertogw===1 ?
         <>
         {sbtog===1 ? <>

@@ -5,8 +5,11 @@ import { useCookies } from 'react-cookie'
 import empty from "./background/empty.png"
 import GetID from './Hooks/GetId';
 import { IoHeartSharp } from "react-icons/io5";
+import { BsSortDown,BsSortUp } from "react-icons/bs";
 import {  toast,Flip} from 'react-toastify';
 import { useParams,Link } from 'react-router-dom'
+import Stack from 'react-bootstrap/esm/Stack'
+import Badge from 'react-bootstrap/Badge';
 export default function Searchresult() {
   const {category} = useParams()
   const [Liked,setLiked] = useState([])
@@ -101,6 +104,43 @@ catch(error)
 
  
   }
+  const hightoLow = () =>{
+    const data = [...searchresult]
+    let swapped
+do{
+swapped = false
+ for(let i=0;i<data.length-1;i++)
+ {
+  if(data[i].price < data[i+1].price)
+  {
+   let temp = data[i]
+    data[i]=data[i+1]
+    data[i+1] = temp
+    swapped = true
+  }
+ }
+}while(swapped)
+setSearchresult(data)
+  }
+  const lowtoHigh = () => {
+    let swapped
+    const data = [...searchresult]
+    do{
+     swapped = false
+      for(let i=0;i<data.length-1;i++)
+      {
+       if(data[i].price > data[i+1].price)
+       {
+        let temp = data[i]
+         data[i]=data[i+1]
+         data[i+1] = temp
+         swapped = true
+       }
+      }
+    }while(swapped)
+    setSearchresult(data)
+  }
+
   if(searchresult.length === 0)
   {
     return(
@@ -113,6 +153,29 @@ catch(error)
 
   
   return (
+  <div className='srch-main-container'>
+ 
+     <div className='srt-parent-home'>
+      <Stack direction="horizontal" gap={2}>
+      <Badge style={{
+        boxShadow:"0px 0px 2px 0px grey",
+        cursor:"pointer",
+       
+        
+      }} onClick={hightoLow} bg="white"><BsSortDown style={{
+        fontSize:"25px",
+        color:"blue"
+      }} /></Badge>
+      <Badge style={{
+        boxShadow:"0px 0px 2px 0px grey",
+        cursor:"pointer",
+    
+      }} onClick={lowtoHigh} bg="white"><BsSortUp style={{
+        fontSize:"25px",
+        color:"black"
+      }}/></Badge>
+      </Stack>
+      </div>
     <div className='Search-parent'>
       
 {searchresult.map((product)=>(
@@ -130,6 +193,8 @@ catch(error)
  
 ))}
 </div>
+</div>
+
   )
 }
 }
