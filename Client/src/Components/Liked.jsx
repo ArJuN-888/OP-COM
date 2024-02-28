@@ -182,13 +182,15 @@ return(
       
       }} bg="white"><BsSortDown style={{
         fontSize:"25px",
-        color:"blue"
+        color:"blue",
+        cursor:"pointer"
       }} /></Badge>
       <Badge style={{
         boxShadow:"0px 0px 5px 0px grey"
       }} onClick={lowtoHigh} bg="white"><BsSortUp style={{
         fontSize:"25px",
-        color:"slategrey"
+        color:"slategrey",
+        cursor:"pointer"
       }}/></Badge>
       </Stack>
       </div>

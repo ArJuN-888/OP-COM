@@ -110,6 +110,7 @@ else{
   <div className='cart-bname'><p className='bname'>{product.productID.brandname}</p></div>
   <div className='cart-pname'>{product.productID.productname}</div>
   </div>
+  <div className='cart-d'>{product.productID.description}</div>
 <div className='c3'><div className='cart-price'>₹ {product.quantity * product.productID.price}</div></div>
 <div className='c4'><label className='l'>Qty :</label> <label className="cart-select" onChange={(e) => updateQuantity(product.productID._id, Math.max(1, e.target.value))} value={product.quantity}>  
 <input readOnly={bannedid.includes(product.productID.loginid)}  className='inp-qty' type='number' value={product.quantity} required />
@@ -122,11 +123,11 @@ else{
 ))}
 
 </div>
-<div className='dv'>
+
 <div className='totals'><p className='ts'>₹ {total()}</p>
 <button className='buy'>Place Order<PiShoppingCart className='i'/></button>
 </div>
-</div>
+
 
 </>
   )

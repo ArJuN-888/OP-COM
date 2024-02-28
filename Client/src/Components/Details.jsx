@@ -169,8 +169,14 @@ catch(error)
       </div>
       <div className='details-contain'>
       <div className='brand'><mark className='brand-sub'>{Details.brandname}</mark></div>
-    <div className='pn'>Model - {Details.productname}</div>
+    <div className='pn'>{Details.productname}</div>
     <div className='pd'>{Details.description}</div>
+    <div className='pd'>Ideal for : {Details.genderprefer}</div>
+    
+    {Details.category === "bag" ?  <> <div className='pd'>Material : {Details.material}</div>
+    <div className='pd'>Capacity : {Details.capacity}</div></> : <><div className='pd'>Strap color : {Details.strapcolor}</div>
+    <div className='pd'>Body : {Details.body}</div></>}
+  
     <div>{bannedid.includes(Details.loginid) ? <label className='out-st'>Currently Out of Stock</label>:""}</div>
     <div className='sto'>Available-Stoke-{Details.stoke}</div>
      <div className='pp'>₹ {Details.price}</div>

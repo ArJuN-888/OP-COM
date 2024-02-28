@@ -35,17 +35,12 @@
   font-size: 20px;
   letter-spacing: 3px;
 }
-.cart-price::before{
-  content: "∘";
-  padding:0px 10px;
-  
-}
+
 .cart-price {
-  font-size: 20px;
-  color: white;
+  font-size: 25px;
   padding: 0px 5px;
   border-radius: 50px 10px 10px 50px;
-  background-color: rgb(54, 52, 52);
+  
 }
 
 option {
@@ -57,8 +52,9 @@ option {
 }
 .totals {
   display: flex;
+  flex-wrap: wrap;
   justify-content: end;
-  gap: 30px;
+  gap: 5px;
   align-items: center;
   margin: 0px 4px 0px 4px;
   padding: 5px;
@@ -68,14 +64,14 @@ option {
   font-size: 30px;
   letter-spacing: 3px;
   margin: 0px 0px 0px 20px;
-  color: grey;
+
 
 }
 .buy {
   border: none;
   letter-spacing: 3px;
   font-size: 20px;
-  background-color: rgb(229, 176, 42);
+  background-color: rgb(116, 115, 114);
   color: white;
   padding: 5px;
   box-shadow: 0px 0px 4px 0px grey;
@@ -93,7 +89,7 @@ option {
   cursor: not-allowed;
 }
 .cart-b{
-  background-color: red;
+  background-color: rgba(233, 51, 51, 0.859);
  border: none;
  color: white;
  font-size: 18px;
@@ -155,7 +151,7 @@ position: relative;
   border: none;
   letter-spacing: 3px;
   font-size: 20px;
-  background-color: rgb(229, 176, 42);
+  background-color: rgb(115, 113, 111);
   color: white;
   box-shadow: 0px 0px 4px 0px grey;
 
@@ -171,4 +167,9 @@ position: relative;
   left: 10%;
  right: 10%;
 }
+.cart-d{
+width: 200px;
+
+}
+
 
