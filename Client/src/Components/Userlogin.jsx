@@ -6,6 +6,7 @@ import {useCookies} from "react-cookie"
 import {  toast ,Flip} from 'react-toastify';
 export default function Userlogin() {
     const [Cookies,setCookie] = useCookies(["token"])
+    const [showpass,setShowpass] = useState(0)
     const [login,setlogin] = useState({
         email:"",
         password:""
@@ -55,13 +56,19 @@ catch(error)
         onChange={handleChange}
         />
         <input
-        type='password'
+        type={showpass ? "text" : "password"}
         name='password'
         placeholder='Password...'
         className='ip1'
         value={login.password}
         onChange={handleChange}
         />
+        <div className='check-parent'>
+          <label style={{
+            color:"white"
+          }}>Show Password</label>
+        <input className='checks' type='checkbox' onChange={()=>setShowpass(!showpass)} />
+        </div>
         <button className='login-bt' onClick={()=>{Login()}}>Login</button>
         <label className='note'>New user ? <Link className='lg-lk' to="/Userregister">Sign up</Link></label>
         </div>

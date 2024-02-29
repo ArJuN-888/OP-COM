@@ -1,3 +1,55 @@
 .seller-parent{
-    padding-top: 70px;
+    padding-top: 80px;
+   height: 90vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-wrap: wrap;
+   font-size: 20px;
+   gap: 20px;
+}
+.s-frm{
+    display: grid;
+   padding: 10px;
+
+  
+}
+.i1{
+height: 45px;
+border: none;
+letter-spacing: 5px;
+outline: none;
+width: 400px;
+}
+.i1::placeholder{
+    color: black;
+ 
+}
+.fl{
+    display: none;
+}
+.fl-req{
+   background-color: rgb(255, 255, 255);
+   width: fit-content;
+}
+.req-s{
+    margin: 20px 0px 0px 0px;
+border: none;
+height: 40px;
+width: 100%;
+box-shadow: 0px 0px 5px 0px grey;
+background-color: rgb(35, 34, 34);
+border-radius: 10px 10px 10px 0px;
+color: white;
+}
+.slt-req{
+    height: 40px;
+    width: fit-content;
+    border: none;
+    outline: none;
+}
+@media screen and (max-width:451px) {
+    .i1{
+        width: auto;
+    }
 }

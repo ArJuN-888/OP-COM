@@ -1,10 +1,11 @@
 .Search-parent {
   display: flex;
   gap: 20px;
-
+  
   flex-wrap: wrap;
   justify-content: center;
 }
 .srch-main-container {
-  padding-top: 70px;
+  padding-top:80px;
+
 }

@@ -8,6 +8,8 @@ export default function Userregistration() {
   const {userRegister,setuserRegister} = useContext(Context)
   const [selectedfile,setselectedFile] = useState(null)
   const [filename,setFilename] = useState("")
+  const [showpass,setShowpass] = useState(0)
+  const [showpass1,setShowpass1] = useState(0)
   console.log("registered",userRegister)
   console.log("File",selectedfile)
   console.log("filename",filename)
@@ -80,17 +82,29 @@ export default function Userregistration() {
       <input
           value={userRegister.password}
           placeholder='Password...'
-          type='text'
+          type={showpass ? "text":"password"}
           className='ip1'
           onChange={(e)=>handleChange("password",e.target.value)}
       />
+       <div className='check-parent'>
+          <label style={{
+            color:"white"
+          }}>Show Password</label>
+        <input className='checks' type='checkbox' onChange={()=>setShowpass(!showpass)} />
+        </div>
           <input
            value={userRegister.confirmpassword}
           placeholder='Confirmpassword...'
-          type='text'
+          type={showpass1 ? "text":"password"}
           className='ip1'
           onChange={(e)=>handleChange("confirmpassword",e.target.value)}
       />
+       <div className='check-parent'>
+          <label style={{
+            color:"white"
+          }}>Show Password</label>
+        <input className='checks' type='checkbox' onChange={()=>setShowpass1(!showpass1)} />
+        </div>
       <div className='hover-grp'>
      <div><label className='hover'>
        <FaCloudUploadAlt/> Upload File

@@ -15,7 +15,6 @@ import { useCookies } from "react-cookie";
 import Spinner from 'react-bootstrap/Spinner';
 import Getprofile from "./Hooks/Getprofile";
 import GetID from "./Hooks/GetId";
-import Editproduct from "./Editproduct";
 export default function Profile() {
   const {
     userRegister,
@@ -762,7 +761,7 @@ export default function Profile() {
                     <img className="img-profile" src={product.photourl} />
                   </div>
                   <div>
-                    <mark className="pname">{product.brandname}</mark>
+                    {product.brandname}
                   </div>
                   <div>
                     <p className="ps">{product.productname}</p>

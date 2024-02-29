@@ -87,3 +87,10 @@ cursor: pointer;
     
     gap: 10px;
   }
+  .check-parent{
+   display: flex;
+   gap: 12px;
+  }
+  .checks{
+  width: 20px;
+  }

@@ -84,9 +84,13 @@ flex-grow: 1
  
 
 }
+.lu{
+    margin-bottom: 10px;
+}
 .lks{
     color: rgb(237, 229, 229);
     text-decoration: none;
+    
 }
 
 
@@ -104,7 +108,7 @@ border: 3.2px solid rgb(213, 213, 213);
 .img-contains-logout{
     width: 50px; /* Adjust this value based on your design */
     border: 2px solid rgb(255, 255, 255);
-        margin: 2px 0px 2px 0px;
+        margin: 0px 0px 2px 0px;
         padding: 1.9px;
         height: 50px;
         border-radius: 130px;
@@ -166,11 +170,16 @@ border: 3.2px solid rgb(213, 213, 213);
 .qs{
    text-align: center;
    color:rgb(0, 0, 0);
-   
+  
 }
 .ic{
-   font-size: 58px;
+   font-size: 30px;
+   margin-bottom: 10px;
   color: rgb(193, 187, 187);
+}
+.ics{
+    font-size: 57px;
+    color: rgb(193, 187, 187);
 }
 .search{
     display: flex;

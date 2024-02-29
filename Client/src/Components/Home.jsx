@@ -9,13 +9,12 @@ import { BsSortDown, BsSortUp } from "react-icons/bs";
 import Stack from "react-bootstrap/Stack";
 import { toast, Flip } from "react-toastify";
 import { IoIosArrowForward } from "react-icons/io";
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
-import SplitButton from "react-bootstrap/SplitButton";
+import Accordion from 'react-bootstrap/Accordion';
 import { IoSend } from "react-icons/io5";
 import { IoIosClose } from "react-icons/io";
 import { useCookies } from "react-cookie";
 import { CgUser } from "react-icons/cg";
+import { MdOutlineSell } from "react-icons/md";
 export default function Home() {
   const [selectedMaterial, setSelectedMaterial] = useState(null);
   const [selectedCapacity, setSelectedCapacity] = useState(null);
@@ -399,7 +398,7 @@ export default function Home() {
       <div className="home-parent">
         <div className="sub-pr-parent">
           <div className="srt-parent-home">
-            <Stack direction="horizontal" gap={2}>
+            <Stack direction="horizontal" gap={2}className="stck">
               <Badge
                 style={{
                   boxShadow: "0px 0px 2px 0px grey",
@@ -635,7 +634,7 @@ export default function Home() {
                   </div>
                   <div className="pnam">{product.description}</div>
                   <div className="pprice">
-                    ₹ {product.price}{" "}
+                  <label><MdOutlineSell /> ₹ {product.price}{" "}</label>
                     {product.prevprice > product.price ? (
                       <div className="position-r">
                         {product.prevprice}
@@ -849,7 +848,7 @@ export default function Home() {
                   </div>
                   <div className="pnam">{product.description}</div>
                   <div className="pprice">
-                    ₹ {product.price}{" "}
+                  <label><MdOutlineSell /> ₹ {product.price}{" "}</label>
                     {product.prevprice > product.price ? (
                       <div className="position-r">
                         {product.prevprice}
@@ -865,19 +864,17 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="mb-2">
-        {["end"].map((direction) => (
-          <DropdownButton
-            id={`dropdown-button-drop-${direction}`}
-            drop={direction}
-            variant="secondary"
-            title={` Drop ${direction} `}
-            style={{
-              color: "black",
-              borderRadius: "0px 0px 0px 0px",
-            }}
-          >
-            <div className="report-parent">
+      <Accordion flush  style={{
+        backgroundColor:"green"
+      }}>
+      <Accordion.Item eventKey="1">
+        <Accordion.Header ><label style={{
+          fontSize:"20px",
+          color:"grey",
+       
+        }}>Kindly Specify your comments/reports</label></Accordion.Header>
+        <Accordion.Body>
+        <div className="report-parent">
               <label className="t"></label>
               <div className="report-child">
                 {toggle === 1 ? (
@@ -910,9 +907,12 @@ export default function Home() {
                 )}
               </div>
             </div>
-          </DropdownButton>
-        ))}
-      </div>
+        </Accordion.Body>
+      </Accordion.Item>
+    </Accordion>
+            
+     
+
     </>
   );
 }

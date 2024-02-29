@@ -97,7 +97,6 @@ function App() {
       <ToastContainer
        position="bottom-right"
        style={customToastStyle}
-      //  toastStyle={{backgroundColor:"rgb(0,0,0,0.5"}}
        autoClose={3000}
        theme="light"
        />

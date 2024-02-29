@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import GetID from './Hooks/GetId'
+import { FaSellcast } from "react-icons/fa6";
 import "../Styles/Sellerform.css"
 import { useCookies } from 'react-cookie'
+import Spinner from 'react-bootstrap/Spinner';
 import {  toast,Flip} from 'react-toastify';
 export default function Sellerform() {
   const userID = GetID()
@@ -59,12 +61,18 @@ catch(error)
 
   return (
     <div className='seller-parent'>
+      <h3 style={{
+        color:"grey"
+      }}>Fill Your Seller Data <FaSellcast /> </h3>
+      <div className='s-frm'>
       <input
+      className='i1'
       placeholder='username...'
       value={sellerform.username}
       onChange={(e)=>handleChange("username",e.target.value)}
       />
        <input
+       className='i1'
        placeholder='email...'
       value={sellerform.email}
       onChange={(e)=>handleChange("email",e.target.value)}
@@ -74,34 +82,40 @@ catch(error)
       value={sellerform.category}
       onChange={(e)=>handleChange("category",e.target.value)}
       /> */}
-      category:
-      <select value={sellerform.category} onChange={(e)=>handleChange("category",e.target.value)}>
+      <select className='slt-req' value={sellerform.category} onChange={(e)=>handleChange("category",e.target.value)}>
       <option value="" disabled  >select</option>
         <option value="watch">Watches</option>
         <option value="bags">Bags</option>
       </select>
        <input
+       className='i1'
        placeholder='address...'
       value={sellerform.address}
       onChange={(e)=>handleChange("address",e.target.value)}
       />
        <input
+       className='i1'
        placeholder='description...'
       value={sellerform.description}
       onChange={(e)=>handleChange("description",e.target.value)}
       />
        <input
+       className='i1'
        placeholder='phonenumber...'
       value={sellerform.phno}
       type='number'
       onChange={(e)=>handleChange("phno",e.target.value)}
       />
+      <label className='fl-req'>
+Choose File
         <input
+        className='fl'
         type='file'
       onChange={HandleFile}
       />
-     <button onClick={submitRequest}>Submit_request</button>
-   
+      </label>
+     <button className='req-s' onClick={submitRequest}><span> Submit-request</span> <Spinner animation="grow" variant="white" size="sm"/></button>
+     </div>
     </div>
   )
 }

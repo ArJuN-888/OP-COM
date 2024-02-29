@@ -4,6 +4,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { FaSignInAlt } from "react-icons/fa";
 import { FaSignOutAlt } from "react-icons/fa";
 import { AiOutlineLogin } from "react-icons/ai";
+import { AiOutlineLogout } from "react-icons/ai";
 import { FaCartPlus } from "react-icons/fa";
 import GetID from "./Hooks/GetId";
 import { LiaUserSolid } from "react-icons/lia";
@@ -111,13 +112,13 @@ export default function Navbar() {
                     handleLog();
                   }}
                 >
-                  <AiOutlineLogin className="cart-ic" />
+                  <AiOutlineLogout className="cart-ic" />
                 </Link>
               </li>
             </>
           ) : (
             <>
-            <li>
+            <li className="lu">
               <NavLink to="/Adminlogin" activeclassname="active"  className="lks">
                 {/* <RiAdminFill className="icon" /> */}Admin
                
@@ -125,7 +126,7 @@ export default function Navbar() {
               </li>
               <li>
               <Link to="/userlogin" activeclassname="active" className="lk" >
-                <FaSignInAlt className="ico" />
+              <AiOutlineLogin className="ic" />
               </Link>
               </li>
             </>
@@ -170,7 +171,7 @@ export default function Navbar() {
                   />
                 ) : (
                   <div className="qs">
-                    <FaUserCircle className="ic" />
+                    <FaUserCircle className="ics" />
                   </div>
                 )}
               </div>
@@ -230,7 +231,7 @@ export default function Navbar() {
                 <>
                   <li className="n">
                     <NavLink className="l" to="/userlogin">
-                      <FaSignInAlt className="icon" />
+                    <AiOutlineLogin className="ic" />
                     </NavLink>
                   </li>
                   <li className="n">

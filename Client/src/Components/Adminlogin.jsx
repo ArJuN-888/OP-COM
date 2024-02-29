@@ -7,6 +7,7 @@ import {  toast,Flip} from 'react-toastify';
 export default function Adminlogin() {
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
+  const [showpass,setShowpass] = useState(0)
   const [,setCookie] = useCookies(["admintoken"])
   const nav = useNavigate()
   const handleSubmit = async () =>{
@@ -42,9 +43,16 @@ export default function Adminlogin() {
       <input
       placeholder='Password...'
       className='ip2'
+      type={showpass? "text":"password"}
       value={password}
       onChange={(e)=>setPassword(e.target.value)}
       />
+       <div className='check-parent'>
+          <label style={{
+            color:"white"
+          }}>Show Password</label>
+        <input className='checks' type='checkbox' onChange={()=>setShowpass(!showpass)} />
+        </div>
       <button className='login-ad-bt' onClick={handleSubmit}>Login</button>
       </div>
     </div>

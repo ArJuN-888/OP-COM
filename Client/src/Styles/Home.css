@@ -332,5 +332,11 @@ color: rgb(118, 122, 122);
  .link-cat-parent{
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 15px;
+ }
+ .stck{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
  }

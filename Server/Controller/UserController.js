@@ -6,8 +6,7 @@ const bcrypt = require("bcryptjs");
 const JWT = require("jsonwebtoken");
 const { response } = require("express");
 require("dotenv").config();
-const mailformat =
-  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+const mailformat = /^[a-zA-Z0-9.!#$%&’*+\/=?^_`{|}~-]+\.[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 const passformat = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
 const txt = /.com/;
 const registerUser = async (req, res) => {
