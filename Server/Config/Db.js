@@ -4,3 +4,4 @@ const DB = mongoose
   .then(() => console.log("Database connected"))
   .catch((error) => console.log("Unable to establish a connection", error));
 module.exports = DB;
+//db
