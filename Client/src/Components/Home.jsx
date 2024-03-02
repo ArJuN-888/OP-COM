@@ -69,11 +69,13 @@ export default function Home() {
         }
       );
       setallProducts(response.data.products);
+      
     } catch (error) {
       toast(error.response.data.message, {
         transition: Flip,
       });
     }
+ 
   };
   const fetchliked = async () => {
     try {

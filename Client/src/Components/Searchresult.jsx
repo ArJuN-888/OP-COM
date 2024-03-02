@@ -144,7 +144,7 @@ setSearchresult(data)
   if(searchresult.length === 0)
   {
     return(
-      <div className='Search-parent'><h3 style={{color:"grey"}}>Un-available</h3>
+      <div className='Search-parent-1'><h3 style={{color:"grey"}}>Un-available</h3>
       <img src={empty} width="50px" height="50px"/>
       </div>
     )
@@ -155,7 +155,7 @@ setSearchresult(data)
   return (
   <div className='srch-main-container'>
  
-     <div className='srt-parent-home'>
+     <div className='Search-parent'>
       <Stack direction="horizontal" gap={2}>
       <Badge style={{
         boxShadow:"0px 0px 2px 0px grey",

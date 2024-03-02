@@ -86,10 +86,10 @@ function App() {
             </>
             
             :<> <Route path="/" element={<Initial />} /></>}
-            {!userID &&  <Route path="/Adminlogin" element={<Adminlogin />} />}
+            <Route path="/Adminlogin" element={<Adminlogin />} />
            
            
-          {!userID &&  <Route path="/userlogin" element={<Userlogin />} />}
+         <Route path="/userlogin" element={<Userlogin />} />
             <Route path="/userregister" element={<Userregistration />} />
           </Routes>
         </Context.Provider>
