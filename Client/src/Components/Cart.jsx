@@ -75,7 +75,7 @@ const updateQuantity = async (id, quantity) => {
     setstate(response.data.quantity)
     
   } catch (error) {
-    toast(error.response.data.message,{
+    toast.warning(error.response.data.message,{
       transition: Flip
     })
   }

@@ -300,11 +300,7 @@ z-index: 1;
   right: 0;
 } 
 .caro{
-  padding-top: 90px;
- display: flex;
- align-items: center;
- background-color: white;
- margin: 0px 5px 5px 5px;
+
 
  }
  .position-r{
@@ -339,4 +335,14 @@ color: rgb(118, 122, 122);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+ }
+ .img-caro{
+  width: 100%;
+  display: block;
+  object-fit: cover;
+ }
+ .img-caro-2{
+  width: 100%;
+  display: block;
+  object-fit: cover;
  }

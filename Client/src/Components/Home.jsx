@@ -9,6 +9,8 @@ import { BsSortDown, BsSortUp } from "react-icons/bs";
 import Stack from "react-bootstrap/Stack";
 import { toast, Flip } from "react-toastify";
 import { IoIosArrowForward } from "react-icons/io";
+import caro from "./background/caro.png"
+import Carousel from 'react-bootstrap/Carousel';
 import Accordion from 'react-bootstrap/Accordion';
 import { IoSend } from "react-icons/io5";
 import { IoIosClose } from "react-icons/io";
@@ -388,6 +390,7 @@ export default function Home() {
   };
   return (
     <>
+   
       {/* <div className='side-menu'>
       <ul className='side-ul'>
         <li className='side-li'><Link to="/Titan" className='side-lnk'><img src="https://logos-download.com/wp-content/uploads/2016/06/Titan_Watches_logo.png" width="110px"  /></Link></li>
@@ -650,6 +653,22 @@ export default function Home() {
               </div>
             ))}
           </div>
+          <div className="caro">
+     <Carousel fade>
+      <Carousel.Item>
+   <img className="img-caro" src="https://www.sonatawatches.in/dw/image/v2/BKDD_PRD/on/demandware.static/-/Library-Sites-SonataSharedLibrary/default/dw9a40b6ca/images/homepage/desktop/NewArrivals-D.jpg"/>
+      
+      </Carousel.Item>
+      <Carousel.Item>
+        <img className="img-caro-2" src={caro}/>
+
+      </Carousel.Item>
+      <Carousel.Item>
+      <img className="img-caro" src="https://www.sonatawatches.in/dw/image/v2/BKDD_PRD/on/demandware.static/-/Library-Sites-SonataSharedLibrary/default/dw8b64a755/images/homepage/desktop/Hum-Na-Rukenge-D.jpg"/>
+      
+      </Carousel.Item>
+    </Carousel>
+    </div>
           <div className="srt-parent-home">
             <Stack direction="horizontal" gap={2}>
               {togglewatch === 1 ? (
