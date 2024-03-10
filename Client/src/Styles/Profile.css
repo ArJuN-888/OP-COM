@@ -55,7 +55,7 @@ max-width: 100%;
     box-sizing: border-box;
     /* Styles for WebKit browsers (Chrome, Safari, etc.) */
     scrollbar-width: thin; /* For Firefox */
-    scrollbar-color: rgb(0,0,0,0) rgb(0, 0, 0, 0); /* For Firefox */
+    scrollbar-color: rgb(0,0,0,0) rgb(0, 0, 0, 0); 
 
     /* Styles for WebKit browsers (Chrome, Safari, etc.) */
     &::-webkit-scrollbar {
