@@ -11,6 +11,8 @@ import { toast, Flip } from "react-toastify";
 import { IoIosArrowForward } from "react-icons/io";
 import caro from "./background/caro.png"
 import caro1 from "./background/caro1.png"
+import caro2 from "./background/caro2.png"
+import caro3 from "./background/caro3.png"
 import Carousel from 'react-bootstrap/Carousel';
 import Accordion from 'react-bootstrap/Accordion';
 import { IoSend } from "react-icons/io5";
@@ -391,7 +393,7 @@ export default function Home() {
   };
   return (
     <>
-   
+
       {/* <div className='side-menu'>
       <ul className='side-ul'>
         <li className='side-li'><Link to="/Titan" className='side-lnk'><img src="https://logos-download.com/wp-content/uploads/2016/06/Titan_Watches_logo.png" width="110px"  /></Link></li>
@@ -400,6 +402,7 @@ export default function Home() {
         <li className='side-li'><Link to="/Sonata" className='side-lnk'><img src="https://vectorseek.com/wp-content/uploads/2023/08/Hyundai-Sonata-Logo-Vector.svg-.png" width="110px"/></Link></li>
       </ul>
       </div>   */}
+    
 
       <div className="home-parent">
         
@@ -411,11 +414,11 @@ export default function Home() {
       
       </Carousel.Item>
       <Carousel.Item>
-        <img className="img-caro-2" src={caro}/>
+        <img className="img-caro-2" src={caro2}/>
 
       </Carousel.Item>
       <Carousel.Item>
-      <img className="img-caro" src="https://www.sonatawatches.in/dw/image/v2/BKDD_PRD/on/demandware.static/-/Library-Sites-SonataSharedLibrary/default/dw8b64a755/images/homepage/desktop/Hum-Na-Rukenge-D.jpg"/>
+      <img className="img-caro" src={caro3}/>
       
       </Carousel.Item>
     </Carousel>
@@ -671,7 +674,10 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <div className="caro">
+          <div>
+        <img src="https://wildcraft.com/media/catalog/category/CB-1920x300-2.jpg" width="100%"/>
+      </div>
+          <div className="caro mt-5">
      <Carousel fade>
       <Carousel.Item>
    <img className="img-caro" src="https://www.sonatawatches.in/dw/image/v2/BKDD_PRD/on/demandware.static/-/Library-Sites-SonataSharedLibrary/default/dw9a40b6ca/images/homepage/desktop/NewArrivals-D.jpg"/>
