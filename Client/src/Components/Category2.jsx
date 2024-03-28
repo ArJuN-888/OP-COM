@@ -11,6 +11,7 @@ import GetID from './Hooks/GetId'
 import { IoIosClose } from "react-icons/io";
 import { useParams } from 'react-router-dom';
 import { useCookies } from 'react-cookie'
+import nol from "./background/nol.png"
 export default function Category2() {
     const [Cookies,] = useCookies(["token"])
     const [selectedMaterial, setSelectedMaterial] = useState(null);
@@ -211,9 +212,14 @@ export default function Category2() {
       const handleCapacityChange = (capacity) => {
         setSelectedCapacity(capacity);
       };
+      const uniquematerial = Array.from(new Set(Filteredk.map(u => u.material)));
+      const uniquecapacity = Array.from(new Set(Filteredk.map(u => u.capacity)));
   return (
     <>
-    <div className='srt-parent'>
+         {Filteredk.length===0 &&   <div className='srt-parent '><h3 style={{color:"grey"}}>Product Un-available</h3>
+  <img src={nol} className='ms-2 ' width="40px" height="40px"/>
+  </div>}
+   {Filteredk.length !== 0 && <><div className='srt-parent'>
       <Stack direction="horizontal" gap={2}>
       <Badge style={{
         boxShadow:"0px 0px 5px 0px grey",
@@ -234,14 +240,17 @@ export default function Category2() {
         {mctog===1 ? <>
         
         {opmattog===1 && (<>
-        <input  value="leather"
-      checked={selectedMaterial === "leather"}
-      onChange={() => handleMaterialChange("leather")} type='radio'/>
-        <label>Leather</label>
-        <input  value="Polyester"
-      checked={selectedMaterial === "polyester"}
-      onChange={() => handleMaterialChange("polyester")} type='radio'/>
-        <label>Polyester</label>
+          {uniquematerial && uniquematerial.map((data,index)=>(
+<>
+<label>{data}</label>
+                          <input
+                         
+                            checked={selectedMaterial === `${data}`}
+                            onChange={() => handleMaterialChange(data)}
+                            type="radio"
+                          />
+</>
+                        ))}
         <button onClick={Close} style={{
          border:"none",
          backgroundColor:"transparent"
@@ -251,14 +260,16 @@ export default function Category2() {
         }}/></button>
         </>)}
         {opcattog===1 && (<>
-          <input value={16}      checked={selectedCapacity === 16} onChange={() => handleCapacityChange(16)} type='radio'/>
-          <label>16 L</label>
-          <input value={30}      checked={selectedCapacity === 30}  onChange={() => handleCapacityChange(30)} type='radio'/>
-          <label>30 L</label>
-          <input  value={40}      checked={selectedCapacity === 40} onChange={() => handleCapacityChange(40)} type='radio'/>
-          <label>40 L</label>
-          <input  value={36}      checked={selectedCapacity === 36} onChange={() => handleCapacityChange(36)} type='radio'/>
-          <label>36 L</label>
+          {uniquecapacity && uniquecapacity.map((data,index)=>(
+                          <>
+                        <label>{data}</label>
+                        <input
+                          checked={selectedCapacity === `${data}`}
+                          onChange={() => handleCapacityChange(data)}
+                          type="radio"
+                        />
+                        </>
+                        ))}
           <button onClick={Close} style={{
                 border:"none",
                 backgroundColor:"transparent"
@@ -285,7 +296,8 @@ export default function Category2() {
      
       }} /></Badge>}
       </Stack>
-      </div>
+      </div></>
+}
     <div className='srt-sub-parent'>
      
   

@@ -113,6 +113,10 @@ export default function Home() {
             },
           }
         );
+        setFiltertog(0);
+        setOpstraptog(0)
+        setOpbodytog(0)
+        setToggle(0)
         fetchProduct();
         toast.success(response.data.message, {
           transition: Flip,
@@ -135,6 +139,9 @@ export default function Home() {
             },
           }
         );
+        setOpstraptog(0)
+        setOpbodytog(0)
+        setFiltertog(0);
         toast.success(response.data.message, {
           transition: Flip,
         });
@@ -391,6 +398,11 @@ export default function Home() {
     settoggleWatch(0);
     setselectedGender2(null);
   };
+  const uniquematerial = Array.from(new Set(filterbag.map(u => u.material)));
+  const uniquecapacity = Array.from(new Set(filterbag.map(u => u.capacity)));
+  const uniquebody = Array.from(new Set(filterwatch.map(u => u.body)));
+  const uniquestrapcolor = Array.from(new Set(filterwatch.map(u => u.strapcolor)));
+  console.log("FILLTERBAGS",filterbag,uniquematerial)
   return (
     <>
 
@@ -458,26 +470,26 @@ export default function Home() {
               {togglebag === 1 ? (
                 <>
                   <input
-                    value="men"
-                    checked={selectedgender1 === "men"}
-                    onChange={() => handlegb("men")}
+                    value="Male"
+                    checked={selectedgender1 === "Male"}
+                    onChange={() => handlegb("Male")}
                     type="radio"
                   />
-                  <label>men</label>
+                  <label>Male</label>
                   <input
-                    value="women"
-                    checked={selectedgender1 === "women"}
-                    onChange={() => handlegb("women")}
+                    value="Female"
+                    checked={selectedgender1 === "Female"}
+                    onChange={() => handlegb("Female")}
                     type="radio"
                   />
-                  <label>women</label>
+                  <label>Female</label>
                   <input
-                    value="unisex"
-                    checked={selectedgender1 === "unisex"}
-                    onChange={() => handlegb("unisex")}
+                    value="Universal"
+                    checked={selectedgender1 === "Universal"}
+                    onChange={() => handlegb("Universal")}
                     type="radio"
                   />
-                  <label>unisex</label>
+                  <label>Universal</label>
                   <button
                     onClick={Close1}
                     style={{
@@ -516,20 +528,32 @@ export default function Home() {
                     <>
                       {opmattog === 1 && (
                         <>
-                          <input
+
+                          {/* <input
                             value="leather"
                             checked={selectedMaterial === "leather"}
                             onChange={() => handleMaterialChange("leather")}
                             type="radio"
+                          /> */}
+                                                  {uniquematerial && uniquematerial.map((data,index)=>(
+<>
+<label>{data}</label>
+                          <input
+                         
+                            checked={selectedMaterial === `${data}`}
+                            onChange={() => handleMaterialChange(data)}
+                            type="radio"
                           />
-                          <label>Leather</label>
+</>
+                        ))}
+                          {/* <label>Leather</label>
                           <input
                             value="Polyester"
                             checked={selectedMaterial === "polyester"}
                             onChange={() => handleMaterialChange("polyester")}
                             type="radio"
                           />
-                          <label>Polyester</label>
+                          <label>Polyester</label> */}
                           <button
                             onClick={Close}
                             style={{
@@ -548,34 +572,19 @@ export default function Home() {
                       )}
                       {opcattog === 1 && (
                         <>
-                          <input
-                            value={16}
-                            checked={selectedCapacity === 16}
-                            onChange={() => handleCapacityChange(16)}
-                            type="radio"
-                          />
-                          <label>16 L</label>
-                          <input
-                            value={30}
-                            checked={selectedCapacity === 30}
-                            onChange={() => handleCapacityChange(30)}
-                            type="radio"
-                          />
-                          <label>30 L</label>
-                          <input
-                            value={40}
-                            checked={selectedCapacity === 40}
-                            onChange={() => handleCapacityChange(40)}
-                            type="radio"
-                          />
-                          <label>40 L</label>
-                          <input
-                            value={36}
-                            checked={selectedCapacity === 36}
-                            onChange={() => handleCapacityChange(36)}
-                            type="radio"
-                          />
-                          <label>36 L</label>
+                        {uniquecapacity && uniquecapacity.map((data,index)=>(
+                          <>
+                        <label>{data}</label>
+                        <input
+                          checked={selectedCapacity === `${data}`}
+                          onChange={() => handleCapacityChange(data)}
+                          type="radio"
+                        />
+                        </>
+                        ))}
+                        
+                        
+                       
                           <button
                             onClick={Close}
                             style={{
@@ -698,26 +707,26 @@ export default function Home() {
               {togglewatch === 1 ? (
                 <>
                   <input
-                    value="men"
-                    checked={selectedgender2 === "men"}
-                    onChange={() => handlegw("men")}
+                    value="Male"
+                    checked={selectedgender2 === "Male"}
+                    onChange={() => handlegw("Male")}
                     type="radio"
                   />
-                  <label>men</label>
+                  <label>Male</label>
                   <input
-                    value="women"
-                    checked={selectedgender2 === "women"}
-                    onChange={() => handlegw("women")}
+                    value="Female"
+                    checked={selectedgender2 === "Female"}
+                    onChange={() => handlegw("Female")}
                     type="radio"
                   />
-                  <label>women</label>
+                  <label>Female</label>
                   <input
-                    value="unisex"
-                    checked={selectedgender2 === "unisex"}
-                    onChange={() => handlegw("unisex")}
+                    value="Universal"
+                    checked={selectedgender2 === "Universal"}
+                    onChange={() => handlegw("Universal")}
                     type="radio"
                   />
-                  <label>unisex</label>
+                  <label>Universal</label>
                   <button
                     onClick={Close2}
                     style={{
@@ -756,20 +765,21 @@ export default function Home() {
                     <>
                       {opstraptog === 1 && (
                         <>
+                        {uniquestrapcolor && uniquestrapcolor.map((data,index)=>(
+                          <>
+                               <label>{data}</label>
                           <input
-                            value="black"
-                            checked={selectedstrapcolor === "black"}
-                            onChange={() => handlestrapChange("black")}
+                          
+                            checked={selectedstrapcolor === `${data}`}
+                            onChange={() => handlestrapChange(data)}
                             type="radio"
                           />
-                          <label>black</label>
-                          <input
-                            value="blue"
-                            checked={selectedstrapcolor === "blue"}
-                            onChange={() => handlestrapChange("blue")}
-                            type="radio"
-                          />
-                          <label>blue</label>
+                          </>
+
+                        ))}
+                     
+                        
+                      
                           <button
                             onClick={Closew}
                             style={{
@@ -788,27 +798,20 @@ export default function Home() {
                       )}
                       {opbodytog === 1 && (
                         <>
-                          <input
-                            value="resin"
-                            checked={selectedbody === "resin"}
-                            onChange={() => handlebodyChange("resin")}
+                        {uniquebody && uniquebody.map((data,index)=>(
+                          <>
+                           <label>{data}</label>
+                             <input
+                        
+                            checked={selectedbody ===`${data}`}
+                            onChange={() => handlebodyChange(data)}
                             type="radio"
                           />
-                          <label>resin</label>
-                          <input
-                            value="leather"
-                            checked={selectedbody === "leather"}
-                            onChange={() => handlebodyChange("leather")}
-                            type="radio"
-                          />
-                          <label>leather</label>
-                          <input
-                            value="metal"
-                            checked={selectedbody === "metal"}
-                            onChange={() => handlebodyChange("metal")}
-                            type="radio"
-                          />
-                          <label>metal</label>
+                         
+                          </>
+                        ))}
+                       
+                       
                           <button
                             onClick={Closew}
                             style={{

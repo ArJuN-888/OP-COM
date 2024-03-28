@@ -689,37 +689,77 @@ export default function Profile() {
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
                 />
-                 <input
-        className="inputs"
+     <select       className="inputs"
         placeholder="Gender preference..."
         value={genderprefer}
-        onChange={(e) => setGenderprefer(e.target.value)}
-      />
+        onChange={(e) => setGenderprefer(e.target.value)}>
+ <option value="Gender">gender Preference</option>
+ <option value="Male">Male</option>
+ <option value="Female">Female</option>
+ <option value="Universal">Universal</option>
+     </select>
       
-      {category === "watch" && (<>  <input
-        className="inputs"
+      {category === "watch" && (<>    <select      className="inputs"
         placeholder="Strap color..."
         value={strapcolor}
-        onChange={(e) => setStrapcolor(e.target.value)}
-      />
-       <input
-        className="inputs"
-        placeholder="body..."
+        onChange={(e) => setStrapcolor(e.target.value)}>
+ <option value="Stap Color">Strap Color</option>
+ <option value="Brown">Brown</option>
+ <option value="Black">Black</option>
+ <option value="White">White</option>
+ <option value="Blue">Blue</option>
+ <option value="Green">Green</option>
+ <option value="Red">Red</option>
+ <option value="Yellow">Orange</option>
+ <option value="Grey">Grey</option>
+ <option value="Beige">Biege</option>
+ <option value="Silver">Silver</option>
+ <option value="Gold">Gold</option>
+     </select>
+     <select       className="inputs"
+        placeholder="Body..."
         value={body}
-        onChange={(e) => setBody(e.target.value)}
-      /></>)}
-       {category === "bag" && (  <> <input
-      className="inputs"
+        onChange={(e) => setBody(e.target.value)}>
+ <option value="Body">Body</option>
+ <option value="Steel">Steel</option>
+ <option value="Rubber">Rubber</option>
+ <option value="Plastic">Plastic</option>
+ <option value="Carbon Fiber">Carbon Fiber</option>
+     </select></>)}
+       {category === "bag" && (  <> 
+       <select  className="inputs"
       placeholder="material..."
       value={material}
-      onChange={(e) => setMaterial(e.target.value)}
-    />
-    <input
-      className="inputs"
+      onChange={(e) => setMaterial(e.target.value)}>
+<option value="Materials">Materials</option>
+<option value="Polyester">Polyester</option>
+<option value="Nylon">Nylon</option>
+<option value="Canvas">Canvas</option>
+<option value="Leather">Leather</option>
+<option value="Polyurethane">Polyurethane</option>
+<option value="Vinyl">Vinyl</option>
+<option value="Cotton">Cotton</option>
+<option value="Denim">Denim</option>
+<option value="Resin">Resin</option>
+       </select>
+   <select   className="inputs"
       placeholder="capacity..."
       value={capacity}
-      onChange={(e) => setCapacity(e.target.value)}
-    /></>)}
+      onChange={(e) => setCapacity(e.target.value)}>
+        <option value="">Capacity</option>
+        <option value="5L">5L</option>
+        <option value="10L" >10L</option>
+        <option value="15L" >15L</option>
+        <option value="20L" >20L</option>
+        <option value="25L" >25L</option>
+        <option value="30L" >30L</option>
+        <option value="35L" >35L</option>
+        <option value="40L" >40L</option>
+        <option value="45L" >45L</option>
+        <option value="50L" >50L</option>
+        <option></option>
+      </select>
+   </>)}
     
      
                 {edittoggle ? (
