@@ -912,15 +912,12 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <Accordion flush  style={{
-        backgroundColor:"green"
-      }}>
+      <Accordion flush >
       <Accordion.Item eventKey="1">
-        <Accordion.Header ><label style={{
+        <Accordion.Header  ><label style={{
           fontSize:"20px",
           color:"grey",
-       
-        }}>Kindly Specify your comments/reports</label></Accordion.Header>
+        }}>Kindly Specify your comments/reports, please provide the id of  product if you have any Query regarding that item</label></Accordion.Header>
         <Accordion.Body>
         <div className="report-parent">
               <label className="t"></label>

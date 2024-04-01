@@ -3,11 +3,13 @@ import axios from 'axios'
 import "../Styles/Details.css"
 import {  toast,Flip} from 'react-toastify';
 import GetID from './Hooks/GetId';
-import { GoHeart } from "react-icons/go";
 import { IoHeartSharp } from "react-icons/io5";
 import {useNavigate} from "react-router-dom"
 import { useCookies } from "react-cookie";
 import { useParams } from 'react-router-dom'
+import {Button} from "react-bootstrap"
+import { FaRegCopy } from "react-icons/fa6";
+import { MdOutlineSell } from "react-icons/md";
 export default function Details() {
     const {productId} = useParams()
     const[Cart,setCart]= useState([])
@@ -151,6 +153,12 @@ catch(error)
           }
    
       }
+      const handleCopy = (id) =>{
+       navigator.clipboard.writeText(id)
+       toast("Copied to Clipboard",{
+        transition: Flip
+      })
+      }
   return (
     <div className='Details-parent'>
       
@@ -169,7 +177,8 @@ catch(error)
       </div>
       <div className='details-contain'>
       <div className='brand'><mark className='brand-sub'>{Details.brandname}</mark></div>
-    <div className='pn'>{Details.productname}</div>
+      <div className='fs-6'>Id : {Details._id}<Button style={{boxShadow:"0px 0px 5px 0px grey ",border:"none",borderRadius:"0.2rem",backgroundColor:"transparent"}} className='ms-2 fs-6 ps-2 pe-2 pt-1 pb-1' onClick={()=>handleCopy(Details._id)} ><FaRegCopy className='fs-6' color='black'/></Button></div>
+    <div className='pn'>Model :  {Details.productname}</div>
     <div className='pd'>{Details.description}</div>
     <div className='pd'>Ideal for : {Details.genderprefer}</div>
     
@@ -178,8 +187,8 @@ catch(error)
     <div className='pd'>Body : {Details.body}</div></>}
   
     <div>{bannedid.includes(Details.loginid) ? <label className='out-st'>Currently Out of Stock</label>:""}</div>
-    <div className='sto'>Available-Stoke-{Details.stoke}</div>
-     <div className='pp'>₹ {Details.price}</div>
+    <div className='sto'>Stoke-left  : {Details.stoke}</div>
+     <div className='pp'><MdOutlineSell/> ₹ {Details.price}</div>
       </div>
     </div>
   )
