@@ -100,11 +100,11 @@ function App() {
        autoClose={3000}
        theme="light"
        />
-       <div className="d-flex justify-content-center gap-3 mb-3 m-2" style={{
+       <div className="footer d-flex p-1 justify-content-center flex-wrap gap-3 mb-0  " style={{
         backgroundColor:"ButtonFace",
      
        }}>
-       <div className="img"><img src="https://cdn-icons-png.flaticon.com/128/10829/10829119.png" width="40px" className="me-2" alt="image"/><label className="fs-5">opcomcounterpart23@gmail.com</label></div>
+       <div className="img"><img src="https://cdn-icons-png.flaticon.com/128/10829/10829119.png" width="40px" className="me-2" alt="image"/><label className="ft">opcomcounterpart23@gmail.com</label></div>
   <div className="img"><img src="https://cdn-icons-png.flaticon.com/128/2111/2111463.png" width="40px" alt="image"/></div>
   <div className="img"><img src="https://cdn-icons-png.flaticon.com/128/5968/5968764.png" width="40px" alt="image"/></div>
   <div className="img"><img src="https://cdn-icons-png.flaticon.com/128/5969/5969020.png" width="40px" alt="image"/></div>

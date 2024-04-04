@@ -11,6 +11,7 @@ import { BsSortDown,BsSortUp } from "react-icons/bs";
 import { IoHeartSharp } from "react-icons/io5";
 import {  toast,Flip} from 'react-toastify';
 import { useCookies } from "react-cookie";
+import { MdOutlineSell } from "react-icons/md";
 export default function Liked() {
   const [likedid,setlikedid] = useState([])
   const [Likedproduct,setLikedproduct] = useState([])
@@ -204,7 +205,7 @@ return(
 <div className='imgs-container'><img className='imgs' src={product.photourl} /></div>
 <div className='pnames'><label  style={{color:"black"}}>{product.brandname}</label></div>
 <div className='pnam'>{product.description}</div>
-<div className='pprice'>₹ {product.price}</div>
+<div className='pprice'>  <label><MdOutlineSell /> ₹ {product.price}{" "}</label></div>
 <div>{bannedid.includes(product.loginid) ? <label className='out-st'>Out of Stock</label>:""}</div>
 </Link>
   </div>
