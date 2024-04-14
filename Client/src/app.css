@@ -6,14 +6,14 @@
     background-attachment: fixed;
  
 } */
-.footer{
-margin: 4px;
+.footer {
+  margin: 4px;
 }
-.ft{
-    font-size:20px;
+.ft {
+  font-size: 20px;
 }
-@media screen and (max-width:369px) {
-    .ft{
-        font-size:4vw;
-    } 
+@media screen and (max-width: 369px) {
+  .ft {
+    font-size: 4vw;
+  }
 }
