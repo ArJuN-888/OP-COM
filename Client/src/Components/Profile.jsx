@@ -15,6 +15,8 @@ import { useCookies } from "react-cookie";
 import Spinner from 'react-bootstrap/Spinner';
 import Getprofile from "./Hooks/Getprofile";
 import GetID from "./Hooks/GetId";
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 export default function Profile() {
   const {
     userRegister,
@@ -512,7 +514,26 @@ export default function Profile() {
         setMaterial("")
         setCapacity("")
   };
-
+  const renderTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      By Clicking this ,you will permanently delete the item from your Collection
+    </Tooltip>
+  );
+  const renderEdit  = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Edit Product
+    </Tooltip>
+  );
+  const renderAdd = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+     Add Product
+    </Tooltip>
+  );
+  const editProfile = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+     Edit Profile
+    </Tooltip>
+  );
   return (
     <div className="main">
       <div className="Parent">
@@ -576,13 +597,25 @@ export default function Profile() {
               </div>
             ) : (
               <div>
+                   <OverlayTrigger
+                                 placement="right"
+                                 delay={{ show: 250, hide: 400 }}
+                                 overlay={editProfile}
+                               >
                 <button className="Edit" onClick={() => handleEdit()}>
                   <FaPen />
                 </button>
+                </OverlayTrigger>
                 {sellerstat && (
+                                 <OverlayTrigger
+                                 placement="right"
+                                 delay={{ show: 250, hide: 400 }}
+                                 overlay={renderAdd}
+                               >
                   <button className="Edits" onClick={() => handleAddProduct()}>
                     <FaRegPlusSquare className="plus" />
                   </button>
+                  </OverlayTrigger>
                 )}
               </div>
             )}
@@ -808,6 +841,11 @@ export default function Profile() {
                   </div>
 
                   <div className="map-p-grp">
+                  <OverlayTrigger
+      placement="right"
+      delay={{ show: 250, hide: 400 }}
+      overlay={renderEdit}
+    >
                     <button
                       className="Editp"
                       onClick={() => {
@@ -816,7 +854,13 @@ export default function Profile() {
                     >
                       <FaPen />
                     </button>
-                    <button
+                    </OverlayTrigger>
+                    <OverlayTrigger
+      placement="right"
+      delay={{ show: 250, hide: 400 }}
+      overlay={renderTooltip}
+    >
+       <button
                       className="Delete"
                       onClick={() => {
                         deleteItem(product._id);
@@ -824,6 +868,8 @@ export default function Profile() {
                     >
                       <FontAwesomeIcon icon={faTimes} />
                     </button>
+    </OverlayTrigger>
+                 
                   </div>
                 </div>
               ))}

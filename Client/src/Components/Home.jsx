@@ -912,16 +912,16 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <Accordion flush >
+      <Accordion className="custom-header" flush >
       <Accordion.Item eventKey="1">
-        <Accordion.Header className="" ><label style={{
+        <Accordion.Header className="custom-header" ><label style={{
           fontSize:"20px",
           color:"grey",
-          backgroundColor:"ButtonFace",
+      
           padding:"10px 10px",
-          boxShadow:"0px 0px 2px 0px"
-        }}>Kindly Specify your comments/reports, please provide the id of  product if you have any Query regarding that item</label></Accordion.Header>
-        <Accordion.Body>
+          
+        }}><marquee>Kindly Specify your comments/reports, please provide the id of  product if you have any Query regarding that item</marquee></label></Accordion.Header>
+        <Accordion.Body className="custom-header">
         <div className="report-parent">
               <label className="t"></label>
               <div className="report-child">

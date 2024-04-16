@@ -9,6 +9,7 @@ require("dotenv").config();
 const mailformat = /^[a-zA-Z0-9.!#$%&’*+\/=?^_`{|}~-]+\.[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 const passformat = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
 const txt = /.com/;
+const phoneregex = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/
 const registerUser = async (req, res) => {
   try {
     const { username, email, password, confirmpassword } = req.body;
@@ -165,8 +166,13 @@ const editPic = async (req, res) => {
   try {
     const { userID } = req.params;
     const reportuser = await report.findOne({userID:userID})
-    const id =reportuser._id
-    const updatereport = await report.findByIdAndUpdate(id,{filename:req.file.filename})
+    console.log("Reported")
+    if(reportuser)
+    {
+      const id =reportuser._id
+      const updatereport = await report.findByIdAndUpdate(id,{filename:req.file.filename})
+    }
+   
     console.log("report",reportuser)
     const user = await Users.findById(userID);
    
@@ -293,20 +299,19 @@ const sellerregister = async (req, res) => {
       fs.unlink(`public/uploads/${req.file.filename}`, callback);
       return res.status(400).json({ message: "Empty fields" });
     }
+    if (!phno.match(phoneregex)) {
+      const callback = () => {
+          console.log("Removed profile due to invalid registration credentials");
+        };
+        fs.unlink(`public/uploads/${req.file.filename}`, callback);
+      return res.status(400).json({ message: "Enter a 10 digit valid Phone number!!! !!!" });
+    }
     if (!req.file) {
       const callback = () => {
         console.log("Removed profile due to invalid registration credentials");
       };
       fs.unlink(`public/uploads/${req.file.filename}`, callback);
       return res.status(400).json({ message: "Please select a file" });
-    }
-    const users = await Seller.findOne({ username });
-    if (users) {
-      const callback = () => {
-        console.log("Removed profile due to invalid registration credentials");
-      };
-      fs.unlink(`public/uploads/${req.file.filename}`, callback);
-      return res.status(400).json({ message: "seller data already initiated" });
     }
     const user = await Users.findById(userID);
     console.log("user", user);
@@ -331,6 +336,15 @@ const sellerregister = async (req, res) => {
       fs.unlink(`public/uploads/${req.file.filename}`, callback);
       return res.status(400).json({ message: "invalid email" });
     }
+    const users = await Seller.findOne({ email });
+    if (users) {
+      const callback = () => {
+        console.log("Removed profile due to invalid registration credentials");
+      };
+      fs.unlink(`public/uploads/${req.file.filename}`, callback);
+      return res.status(400).json({ message: "seller data already exists" });
+    }
+ 
     console.log("filename", req.file.filename);
     const userrequpdate = await Users.findByIdAndUpdate(userID,{req:true})
     const data = new Seller({

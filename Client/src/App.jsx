@@ -23,7 +23,7 @@ import Usermanagement from "./Components/Usermanagement";
 import { useCookies } from "react-cookie";
 import Adminnav from "./Components/Adminnav";
 
-
+import Payment from "./Components/Payment";
 import Addproduct from "./Components/Addproduct";
 import Adminlogin from "./Components/Adminlogin";
 import Userlogin from "./Components/Userlogin";
@@ -83,6 +83,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/WatchCategory/:brandname" element={<Category1 />} />
             <Route path="/BagCategory/:brandname" element={<Category2/>}/>
+            <Route path="/Payment" element={<Payment />} />
             </>
             
             :<> <Route path="/" element={<Initial />} /></>}
@@ -100,6 +101,7 @@ function App() {
        autoClose={3000}
        theme="light"
        />
+       {/* <footer>
        <div className="footer d-flex p-1 justify-content-center flex-wrap gap-3 mb-0  " style={{
         backgroundColor:"ButtonFace",
      
@@ -110,6 +112,7 @@ function App() {
   <div className="img"><img src="https://cdn-icons-png.flaticon.com/128/5969/5969020.png" width="40px" alt="image"/></div>
   <div className="img"><img src="https://cdn-icons-png.flaticon.com/128/2111/2111646.png" width="40px" alt="image"/></div>
        </div>
+       </footer> */}
     </>
   );
 }

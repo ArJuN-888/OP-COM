@@ -25,3 +25,22 @@ justify-content: end;
 font-size: 25px;
 color: rgb(161, 2, 254);
 }
+
+  .form-control:hover,
+  .form-control:focus {
+    box-shadow: none !important;
+  }
+  .frmpay::after{
+   content: "*";
+   color: rgb(255, 0, 0);
+  }
+  /* Remove box shadow on hover */
+.custom-header:hover {
+    box-shadow: none !important;
+  }
+  
+  /* Remove box shadow on focus */
+  .custom-header:focus {
+    box-shadow: none !important;
+  }
+  

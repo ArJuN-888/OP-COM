@@ -208,20 +208,22 @@ box-shadow: 0px 0px 2px 0px;
 /*report*/
 .report-parent{
   display: grid;
-  justify-content: center;
   align-items: center;
-  text-align: center;
+ 
   box-shadow: 0px 0px 0px 1px rgb(209, 206, 206);
   margin:5px 5px;
 }
 .report-child{
 padding: 5px;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 .input-report{
 font-size: 20px;
 border: none;
 outline: none;
-
+width: 100%;
 }
 .report-btn-Proceed{
 font-size: 20px;
@@ -231,6 +233,10 @@ color: green;
 border: 1px solid green;
 border-radius: 2px;
 background-color: transparent;
+display: flex;
+justify-content: center;
+align-items: center;
+gap:2px
 }
 .report-btn-cancel{
   font-size: 20px;
@@ -346,3 +352,14 @@ color: rgb(118, 122, 122);
   display: block;
   object-fit: cover;
  }
+ .custom-header .accordion-button:focus {
+  --bs-accordion-active-color: none !important;
+  --bs-accordion-btn-focus-box-shadow: none !important;
+  --bs-accordion-active-bg: white !important;
+  background-color: white;
+  
+}
+.custom-header .accordion-button:not(.collapsed) {
+  color: inherit !important;
+  background-color: inherit !important;
+}
