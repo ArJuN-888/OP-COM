@@ -916,12 +916,14 @@ export default function Home() {
       <Accordion.Item eventKey="1">
         <Accordion.Header className="custom-header" ><label style={{
           fontSize:"20px",
-          color:"grey",
-      
-          padding:"10px 10px",
+          
+      backgroundColor:"rgb(0,0,0,0.9)",
+      color:"white",
+      borderRadius:"3px",
+          padding:"2px 10px",
           
         }}><marquee>Kindly Specify your comments/reports, please provide the id of  product if you have any Query regarding that item</marquee></label></Accordion.Header>
-        <Accordion.Body className="custom-header">
+        <Accordion.Body className="custom-header border-none">
         <div className="report-parent">
               <label className="t"></label>
               <div className="report-child">

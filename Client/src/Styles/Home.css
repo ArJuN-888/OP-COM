@@ -209,12 +209,12 @@ box-shadow: 0px 0px 2px 0px;
 .report-parent{
   display: grid;
   align-items: center;
- 
-  box-shadow: 0px 0px 0px 1px rgb(209, 206, 206);
+
   margin:5px 5px;
 }
 .report-child{
 padding: 5px;
+border:none;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -362,4 +362,15 @@ color: rgb(118, 122, 122);
 .custom-header .accordion-button:not(.collapsed) {
   color: inherit !important;
   background-color: inherit !important;
+}
+@media screen and (max-width:850px) {
+  .payim{
+    max-width: 100%;
+    margin: auto;
+    display: block;
+  }
+  .img-c{
+    margin: 2px;
+    width: 100%;
+  }
 }
