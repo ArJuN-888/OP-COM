@@ -65,7 +65,7 @@ catch(error)
     <div className='seller-parent'>
       <h3 style={{
         color:"grey"
-      }}>Fill Your Seller Data <FaSellcast /> </h3>
+      }}>Fill Your Seller Identity <FaSellcast /> </h3>
       <div className='s-frm'>
       <input
       className='i1'
@@ -97,7 +97,7 @@ catch(error)
       />
        <input
        className='i1'
-       placeholder='description...'
+       placeholder='Sales entity title...'
       value={sellerform.description}
       onChange={(e)=>handleChange("description",e.target.value)}
       />
@@ -109,8 +109,8 @@ catch(error)
       onChange={(e)=>handleChange("phno",e.target.value)}
       />
      <div className='d-flex gap-4'>
-     <div><label className=''>
-       <FaCloudUploadAlt/> Upload File
+     <div><label className='mt-2'>
+       <FaCloudUploadAlt/> ID Proof (jpg,png)
        
       <input
       type='file'
@@ -119,7 +119,7 @@ catch(error)
      />
      </label>
      </div> 
-     <p className=''>{!filename ? "No file choosen...": filename}</p>
+     <p className='mt-2'>{!filename ? "No file choosen...": filename}</p>
      </div>
      <button className='req-s' onClick={submitRequest}><span> Submit-request</span> <Spinner animation="grow" variant="white" size="sm"/></button>
      </div>

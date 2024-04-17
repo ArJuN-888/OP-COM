@@ -4,6 +4,8 @@ import { CiLock } from "react-icons/ci";
 import { useNavigate } from 'react-router-dom';
 import { toast, Flip } from "react-toastify";
 import easyinvoice from "easyinvoice"
+import axios from "axios"
+import nolike from "./background/nolike.png"
 export default function Payment() {
     const nav = useNavigate()
     const phoneregex = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/
@@ -114,7 +116,10 @@ const Proceed =  async () =>{
 console.log("Invoice Data:", data);
 //Create your invoice! Easy!
 const result = await easyinvoice.createInvoice(data);
-easyinvoice.print(result);
+console.log("result",result.pdf)
+easyinvoice.print(result.pdf, {
+  fileName: "invoice.pdf" // Specify a valid filename here
+});
   
   
 }

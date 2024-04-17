@@ -283,7 +283,10 @@ const sellerregister = async (req, res) => {
       notify,
     } = req.body;
     console.log("dsjhg", req.body);
-
+    if (!req.file) {
+   
+      return res.status(400).json({ message: "Please select a file" });
+    }
     if (
       !userID ||
       !username ||
@@ -306,13 +309,7 @@ const sellerregister = async (req, res) => {
         fs.unlink(`public/uploads/${req.file.filename}`, callback);
       return res.status(400).json({ message: "Enter a 10 digit valid Phone number!!! !!!" });
     }
-    if (!req.file) {
-      const callback = () => {
-        console.log("Removed profile due to invalid registration credentials");
-      };
-      fs.unlink(`public/uploads/${req.file.filename}`, callback);
-      return res.status(400).json({ message: "Please select a file" });
-    }
+
     const user = await Users.findById(userID);
     console.log("user", user);
     if (!user) {
