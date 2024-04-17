@@ -3,6 +3,7 @@ import {Form,Row,Button, Col} from "react-bootstrap"
 import { CiLock } from "react-icons/ci";
 import { useNavigate } from 'react-router-dom';
 import { toast, Flip } from "react-toastify";
+import easyinvoice from "easyinvoice"
 export default function Payment() {
     const nav = useNavigate()
     const phoneregex = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/
@@ -27,7 +28,7 @@ const navback = () =>{
       });
 }
 
-const Proceed = () =>{
+const Proceed =  async () =>{
     if(!pay.holder || !pay.dno || !pay.date || !pay.cvv || !pay.daddress || !pay.zip || !pay.phno)
     {
       return  toast.warn("All Specified fields are mandatory", {
@@ -60,10 +61,65 @@ const Proceed = () =>{
            unique: true
          });
     }
-  
+  //invoice generation 
+  var data = {
+    "images": {
+        "background": "",
+        logo: "https://public.budgetinvoice.com/img/logo_en_original.png",
+      },
+      "sender": {
+        "company": "Sample Corp",
+        "address": "Sample Street 123",
+        "zip": "1234 AB",
+        "city": "Sampletown",
+        "country": "Samplecountry"
+      },
+      "client": {
+        "company": "Client Corp",
+        "address": "Clientstreet 456",
+        "zip": "4567 CD",
+        "city": "Clientcity",
+        "country": "Clientcountry"
+      },
+      "information": {
+        "number": "2022.0001",
+        "date": "1.1.2022",
+        "due-date": "15.1.2022"
+      },
+      "products": [
+        {
+          "quantity": "2",
+          "description": "Test1",
+          "tax-rate": 6,
+          "price": 33.87
+        },
+        {
+          "quantity": "4",
+          "description": "Test2",
+          "tax-rate": 21,
+          "price": 10.45
+        }
+      ],
+      "bottom-notice": "Kindly pay your invoice within 15 days.",
+      "settings": {
+        "currency": "INR",
+        "tax-notation": "vat",
+        "margin-top": 50,
+        "margin-right": 50,
+        "margin-left": 50,
+        "margin-bottom": 25
+      }
+    
+};
+console.log("Invoice Data:", data);
+//Create your invoice! Easy!
+const result = await easyinvoice.createInvoice(data);
+easyinvoice.print(result);
   
   
 }
+
+
   return (
     <div className='parent-pay d-flex flex-wrap justify-content-center align-items-center fs-5 
      ' style={{
@@ -278,7 +334,7 @@ Phone no
             </Col>
         </Form.Group>
    <div className='d-flex gap-2'>
- <Button onClick={()=>Proceed()} className='d-flex gap-2'  variant='outline-success  mt-4' style={{borderRadius:"0.2rem",boxShadow:"0px 0px 5px 0px grey"}}><CiLock  className='fs-4'/> Proceed</Button>  
+ <Button onClick={()=>{Proceed()}} className='d-flex gap-2'  variant='outline-success  mt-4' style={{borderRadius:"0.2rem",boxShadow:"0px 0px 5px 0px grey"}}><CiLock  className='fs-4'/> Proceed</Button>  
  <Button onClick={navback} className='d-flex gap-2' variant='outline-danger mt-4' style={{borderRadius:"0.2rem",boxShadow:"0px 0px 5px 0px grey"}}> Cancel Payment</Button>    
  </div>
        </Form>
