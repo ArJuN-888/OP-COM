@@ -65,7 +65,7 @@ const fetchpaypro = async() =>{
    }
 
 }
-//fetching target seller
+//fetching target  seller
 const fetchtargetseller = async()=>{
   const response = await axios.get(`http://localhost:5000/User/sellerRegistration/uniqueseller/${id}`,{
     headers:{
