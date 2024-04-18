@@ -62,7 +62,7 @@ const fetchpaypro = async() =>{
     const filterproduct = response.data.products.filter(element=>element._id === id)
     // console.log("filteredpay",filtertobepayed)
     setPro(filterproduct)
-  }
+   }
 
 }
 //fetching target seller
