@@ -1,13 +1,30 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {Form,Row,Button, Col} from "react-bootstrap"
 import { CiLock } from "react-icons/ci";
 import { useNavigate } from 'react-router-dom';
 import { toast, Flip } from "react-toastify";
 import easyinvoice from "easyinvoice"
 import axios from "axios"
-import nolike from "./background/nolike.png"
+import { useCookies } from "react-cookie";
+import { useParams } from 'react-router-dom';
+import GetID from './Hooks/GetId';
+// import nolike from "./background/nolike.png"
 export default function Payment() {
+  useEffect(()=>{
+    fetchpaypro()
+    fetchtargetseller();
+  },[])
     const nav = useNavigate()
+    const {id} = useParams()
+    const userID = GetID()
+    const [tog1,setTog1] = useState(false)
+    const [tog2,setTog2] = useState(false)
+    const [paypro,setPaypro] = useState([])
+    const [seller,setSeller] = useState([])
+    const [Cookies] = useCookies(["token"]);
+    console.log("IDjhjjg",id)
+    console.log("paypro",paypro)
+    console.log("seller",seller)
     const phoneregex = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/
     const [pay,setPay] = useState({
         holder:"",
@@ -17,7 +34,6 @@ export default function Payment() {
  daddress:"",
  zip:"",
  phno:""
-
     })
     console.log("jdhgfjgjgh",pay)
 const handleChange = (key,value) =>{
@@ -29,7 +45,27 @@ const navback = () =>{
         transition: Flip,
       });
 }
-
+//fetch product to be payed
+const fetchpaypro = async() =>{
+  const response = await axios.get(`http://localhost:5000/User/Cart/items/${userID}`,{
+    headers:{
+      Authorization:`${Cookies.token}`
+    }
+  }) 
+  const filtertobepayed = response.data.cart.filter(element=>element.productID._id === id)
+  // console.log("filteredpay",filtertobepayed)
+  setPaypro(filtertobepayed)
+}
+//fetching target seller
+const fetchtargetseller = async()=>{
+  const response = await axios.get(`http://localhost:5000/User/sellerRegistration/uniqueseller/${id}`,{
+    headers:{
+      Authorization:`${Cookies.token}`
+    }
+  }) 
+  console.log("resposeseller",response.data)
+  setSeller(response.data)
+}
 const Proceed =  async () =>{
     if(!pay.holder || !pay.dno || !pay.date || !pay.cvv || !pay.daddress || !pay.zip || !pay.phno)
     {
@@ -64,68 +100,70 @@ const Proceed =  async () =>{
          });
     }
   //invoice generation 
-  var data = {
-    "images": {
-        "background": "",
-        logo: "https://public.budgetinvoice.com/img/logo_en_original.png",
-      },
-      "sender": {
-        "company": "Sample Corp",
-        "address": "Sample Street 123",
-        "zip": "1234 AB",
-        "city": "Sampletown",
-        "country": "Samplecountry"
-      },
-      "client": {
-        "company": "Client Corp",
-        "address": "Clientstreet 456",
-        "zip": "4567 CD",
-        "city": "Clientcity",
-        "country": "Clientcountry"
-      },
-      "information": {
-        "number": "2022.0001",
-        "date": "1.1.2022",
-        "due-date": "15.1.2022"
-      },
-      "products": [
-        {
-          "quantity": "2",
-          "description": "Test1",
-          "tax-rate": 6,
-          "price": 33.87
-        },
-        {
-          "quantity": "4",
-          "description": "Test2",
-          "tax-rate": 21,
-          "price": 10.45
-        }
-      ],
-      "bottom-notice": "Kindly pay your invoice within 15 days.",
-      "settings": {
-        "currency": "INR",
-        "tax-notation": "vat",
-        "margin-top": 50,
-        "margin-right": 50,
-        "margin-left": 50,
-        "margin-bottom": 25
-      }
+//   var data = {
+//     "images": {
+//         "background": "",
+//         logo: "https://public.budgetinvoice.com/img/logo_en_original.png",
+//       },
+//       "sender": {
+//         "company": "Sample Corp",
+//         "address": "Sample Street 123",
+//         "zip": "1234 AB",
+//         "city": "Sampletown",
+//         "country": "Samplecountry"
+//       },
+//       "client": {
+//         "company": "Client Corp",
+//         "address": "Clientstreet 456",
+//         "zip": "4567 CD",
+//         "city": "Clientcity",
+//         "country": "Clientcountry"
+//       },
+//       "information": {
+//         "number": "2022.0001",
+//         "date": "1.1.2022",
+//         "due-date": "15.1.2022"
+//       },
+//       "products": [
+//         {
+//           "quantity": "2",
+//           "description": "Test1",
+//           "tax-rate": 6,
+//           "price": 33.87
+//         },
+//         {
+//           "quantity": "4",
+//           "description": "Test2",
+//           "tax-rate": 21,
+//           "price": 10.45
+//         }
+//       ],
+//       "bottom-notice": "Kindly pay your invoice within 15 days.",
+//       "settings": {
+//         "currency": "INR",
+//         "tax-notation": "vat",
+//         "margin-top": 50,
+//         "margin-right": 50,
+//         "margin-left": 50,
+//         "margin-bottom": 25
+//       }
     
-};
-console.log("Invoice Data:", data);
-//Create your invoice! Easy!
-const result = await easyinvoice.createInvoice(data);
-console.log("result",result.pdf)
-easyinvoice.print(result.pdf, {
-  fileName: "invoice.pdf" // Specify a valid filename here
-});
-  
+// };
+// console.log("Invoice Data:", data);
+// //Create your invoice! Easy!
+// const result = await easyinvoice.createInvoice(data);
+// console.log("result",result.pdf)
+// easyinvoice.print(result.pdf, {
+//   fileName: "invoice.pdf" // Specify a valid filename here
+// });
+  setTog1(true)
   
 }
 
 
   return (
+    <>
+    {tog1 === true ? <div className='pt-5' style={{paddingTop:"500px"}}><h1 className='mt-5'>fdjgukdhgkihr</h1></div> : 
     <div className='parent-pay d-flex flex-wrap justify-content-center align-items-center fs-5 
      ' style={{
         paddingTop:"100px",
@@ -346,5 +384,7 @@ Phone no
        </div>
        </div>
     </div>
+}
+    </>
   )
 }

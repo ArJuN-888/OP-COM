@@ -5,6 +5,7 @@ const fs = require("fs");
 const bcrypt = require("bcryptjs");
 const JWT = require("jsonwebtoken");
 const { response } = require("express");
+const { Admin } = require("../Model/AdminSchema");
 require("dotenv").config();
 const mailformat = /^[a-zA-Z0-9.!#$%&’*+\/=?^_`{|}~-]+\.[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 const passformat = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
@@ -376,6 +377,33 @@ const getsellerdata = async (req, res) => {
     return res.status(400).json({ message: "Unable to fetch seller data" });
   }
 };
+//getseller data while purchasing
+const getsellerforpay = async (req, res) => {
+  try {
+    const { id } = req.params; //id - target product 
+    const targetproduct = await Products.findById(id)
+    console.log("typeoftarget",targetproduct)
+    const sellerdata = await Seller.find({
+     userID: { $in: targetproduct.loginid },
+    });
+    console.log("dcdc",sellerdata)
+    const admindata = await Admin.find({
+      _id: { $in: targetproduct.loginid },
+     });
+    console.log("dhjdv",admindata)
+    if(sellerdata.length!==0)
+    {
+     return res.status(200).send(sellerdata);
+    }
+    else {
+     return res.status(200).send(admindata);
+    }
+   
+  
+  } catch (error) {
+    return res.status(400).json({ message: "Unable to fetch seller data" });
+  }
+};
 //admin approves seller status and updating pending true to false
 const updatesellerpending = async (req, res) => {
   try {
@@ -733,5 +761,6 @@ module.exports = {
   removefromcart,
   updatequantity,
   onlynotify,
-  getbannedusers
+  getbannedusers,
+  getsellerforpay
 };

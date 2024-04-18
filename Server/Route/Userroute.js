@@ -33,4 +33,5 @@ router.get("/Cart/items/:userID",Middleware,userController.getuserCartitem)
 router.put("/Cart/remove/:userID",Middleware,userController.removefromcart)
 router.put("/Cart/updateQuantity/:userID",Middleware,userController.updatequantity)
 router.get("/UserRegistration/banned",Middleware,userController.getbannedusers)
+router.get("/sellerRegistration/uniqueseller/:id",Middleware,userController.getsellerforpay)
 module.exports = router

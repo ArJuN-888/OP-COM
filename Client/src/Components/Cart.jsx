@@ -8,12 +8,11 @@ import nol from "./background/nol.png"
 import {  toast,Flip} from 'react-toastify';
 import { useCookies } from "react-cookie";
 import GetID from './Hooks/GetId';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 export default function Cart() {
   const [state,setstate] = useState("")
   const[Cart,setCart]= useState([])
   const [bannedid,setbannedID] = useState([])
-  const nav = useNavigate()
   console.log("bannedid",bannedid)
   console.log("cart",Cart)
   useEffect(()=>{
@@ -89,9 +88,9 @@ const total = () =>{
   })
   return total
 }
-const GotoPayment = () =>{
-  nav("/Payment")
-}
+// const GotoPayment = () =>{
+//   nav("/Payment")
+// }
 if(Cart.length===0)
 {
   return(
@@ -121,7 +120,7 @@ else{
 <input readOnly={bannedid.includes(product.productID.loginid)}  className='inp-qty' type='number' value={product.quantity} required />
   </label></div>
 <div className='c5'><button  className='cart-b' onClick={()=>{remove(product.productID._id)}}>Remove<TfiTrash  className='i'/></button>
-<button onClick={GotoPayment}  disabled={bannedid.includes(product.productID.loginid)} className='cart-buy'>Buy now</button>
+<Link to={`/Payment/${product.productID._id}`}  disabled={bannedid.includes(product.productID.loginid)} className='cart-buy ps-2'>Buy now</Link>
 </div>
 
 </div>

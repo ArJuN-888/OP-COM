@@ -83,7 +83,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/WatchCategory/:brandname" element={<Category1 />} />
             <Route path="/BagCategory/:brandname" element={<Category2/>}/>
-            <Route path="/Payment" element={<Payment />} />
+            <Route path="/Payment/:id" element={<Payment />} />
             </>
             
             :<> <Route path="/" element={<Initial />} /></>}
