@@ -10,7 +10,13 @@ const BillSchema = new mongoose.Schema({
     clientphno:{type:String,required:true},
     sellercompany:{type:String,required:true},
     clientcompany:{type:String,required:true},
-    productname:{type:Array},
+    product:{type:Array},
+   
+    
+},
+{
+    
+        timestamps:true
     
 })
 const Bill = mongoose.model("Bill",BillSchema)
