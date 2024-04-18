@@ -91,6 +91,7 @@ const total = () =>{
 // const GotoPayment = () =>{
 //   nav("/Payment")
 // }
+const isProductBanned = (productId) => bannedid.includes(productId);
 if(Cart.length===0)
 {
   return(
@@ -120,7 +121,13 @@ else{
 <input readOnly={bannedid.includes(product.productID.loginid)}  className='inp-qty' type='number' value={product.quantity} required />
   </label></div>
 <div className='c5'><button  className='cart-b' onClick={()=>{remove(product.productID._id)}}>Remove<TfiTrash  className='i'/></button>
-<Link to={`/Payment/${product.productID._id}`}  disabled={bannedid.includes(product.productID.loginid)} className='cart-buy ps-2'>Buy now</Link>
+<Link 
+    to={isProductBanned(product.productID.loginid) ? '#' : `/Payment/${product.productID._id}`} 
+    className={`cart-buy ps-2 ${isProductBanned(product.productID.loginid) ? 'disabled-link' : ''}`}
+    onClick={(e) => isProductBanned(product.productID.loginid) && e.preventDefault()}
+>
+    Buy now
+</Link>
 </div>
 
 </div>

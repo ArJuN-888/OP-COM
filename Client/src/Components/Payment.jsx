@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import {Form,Row,Button, Col} from "react-bootstrap"
 import { CiLock } from "react-icons/ci";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import { toast, Flip } from "react-toastify";
-import easyinvoice from "easyinvoice"
 import axios from "axios"
 import { useCookies } from "react-cookie";
 import { useParams } from 'react-router-dom';
@@ -11,8 +10,9 @@ import GetID from './Hooks/GetId';
 // import nolike from "./background/nolike.png"
 export default function Payment() {
   useEffect(()=>{
-    fetchpaypro()
+    fetchpaypro();
     fetchtargetseller();
+    fetchallusers();
   },[])
     const nav = useNavigate()
     const {id} = useParams()
@@ -21,40 +21,49 @@ export default function Payment() {
     const [tog2,setTog2] = useState(false)
     const [paypro,setPaypro] = useState([])
     const [seller,setSeller] = useState([])
+    const [currentuser,setCurrentuser] = useState([])
     const [Cookies] = useCookies(["token"]);
+    const [pro,setPro] = useState([])
     console.log("IDjhjjg",id)
     console.log("paypro",paypro)
-    console.log("seller",seller)
+    console.log("seller", seller)
+    console.log("currentuser",currentuser)
+  
     const phoneregex = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/
     const [pay,setPay] = useState({
         holder:"",
  dno:"",
  date:"",
  cvv:"",
- daddress:"",
- zip:"",
- phno:""
+
     })
-    console.log("jdhgfjgjgh",pay)
-const handleChange = (key,value) =>{
-setPay({...pay,[key]:value})
-}
-const navback = () =>{
-    nav("/Cart")
-    toast.success("Successfully cancelled ", {
-        transition: Flip,
-      });
-}
-//fetch product to be payed
+    //fetch product to be payed
 const fetchpaypro = async() =>{
   const response = await axios.get(`http://localhost:5000/User/Cart/items/${userID}`,{
     headers:{
       Authorization:`${Cookies.token}`
     }
   }) 
-  const filtertobepayed = response.data.cart.filter(element=>element.productID._id === id)
-  // console.log("filteredpay",filtertobepayed)
-  setPaypro(filtertobepayed)
+
+    const filtertobepayed = response.data.cart.filter(element=>element.productID._id === id)
+    // console.log("filteredpay",filtertobepayed)
+   
+  if(filtertobepayed.length!==0)
+  {
+    setPaypro(filtertobepayed)
+  }
+  else{
+    const response = await axios.get(`http://localhost:5000/Product/getProduct/idforstat/${userID}`,{
+      headers:{
+        Authorization:`${Cookies.token}`
+      }
+    }) 
+    console.log("allpro",response.data.products)
+    const filterproduct = response.data.products.filter(element=>element._id === id)
+    // console.log("filteredpay",filtertobepayed)
+    setPro(filterproduct)
+  }
+
 }
 //fetching target seller
 const fetchtargetseller = async()=>{
@@ -65,9 +74,59 @@ const fetchtargetseller = async()=>{
   }) 
   console.log("resposeseller",response.data)
   setSeller(response.data)
+  setBillobj((prev) => ({
+    ...prev,
+    sellerphno: response.data[0].phno,
+    sellercompany: response.data[0].description,
+    selleraddress: response.data[0].address,
+    selleremail: response.data[0].email,
+    sellername: response.data[0].username,
+}));
 }
+const fetchallusers = async() =>{
+  const response = await axios.get("http://localhost:5000/User/UserRegistration/getall",{
+    headers:{
+      Authorization:`${Cookies.token}`
+    }
+  }) 
+  const filteruserbyid = response.data.filter(element=>element._id === userID)
+  setCurrentuser(filteruserbyid)
+  setBillobj((prev) => ({
+    ...prev,
+    clientname: filteruserbyid[0].username,
+    clientemail: filteruserbyid[0].email,
+}));
+}
+    const [billObj,setBillobj] = useState({
+      clientname:"",
+      sellername:"",
+      selleremail:"",
+      clientemail:"",
+      selleraddress:"",
+      clientaddress:"",
+      sellerphno:"",
+      clientphno:"",
+      sellercompany:"",
+      productid:id,
+      cpincode:""
+    })
+    console.log("billobj",billObj)
+    console.log("jdhgfjgjgh",pay)
+const handleChange = (key,value) =>{
+setPay({...pay,[key]:value})
+}
+const handleChange1 = (key,value) =>{
+  setBillobj({...billObj,[key]:value})
+  }
+const navback = () =>{
+    nav("/Cart")
+    toast.success("Successfully cancelled ", {
+        transition: Flip,
+      });
+}
+
 const Proceed =  async () =>{
-    if(!pay.holder || !pay.dno || !pay.date || !pay.cvv || !pay.daddress || !pay.zip || !pay.phno)
+    if(!pay.holder && !pay.dno && !pay.date && !pay.cvv)
     {
       return  toast.warn("All Specified fields are mandatory", {
             transition: Flip,
@@ -86,84 +145,48 @@ const Proceed =  async () =>{
               unique: true
             });
       }
-      if(pay.zip && pay.zip.length<6){
-        return  toast.warn("Please provide a 6 digit valid  Zip code ", {
+      if(pay.cpincode && pay.cpincode.length<6){
+        return  toast.warn("Please provide a 6 digit valid  cpincode code ", {
               transition: Flip,
               unique: true
             });
       }
-    if(pay.phno && !pay.phno.match(phoneregex))
+    if(pay.clientphno && !pay.clientphno.match(phoneregex))
     {
       return toast.warn("Please provide a 10 digit valid phone number ", {
            transition: Flip,
            unique: true
          });
     }
-  //invoice generation 
-//   var data = {
-//     "images": {
-//         "background": "",
-//         logo: "https://public.budgetinvoice.com/img/logo_en_original.png",
-//       },
-//       "sender": {
-//         "company": "Sample Corp",
-//         "address": "Sample Street 123",
-//         "zip": "1234 AB",
-//         "city": "Sampletown",
-//         "country": "Samplecountry"
-//       },
-//       "client": {
-//         "company": "Client Corp",
-//         "address": "Clientstreet 456",
-//         "zip": "4567 CD",
-//         "city": "Clientcity",
-//         "country": "Clientcountry"
-//       },
-//       "information": {
-//         "number": "2022.0001",
-//         "date": "1.1.2022",
-//         "due-date": "15.1.2022"
-//       },
-//       "products": [
-//         {
-//           "quantity": "2",
-//           "description": "Test1",
-//           "tax-rate": 6,
-//           "price": 33.87
-//         },
-//         {
-//           "quantity": "4",
-//           "description": "Test2",
-//           "tax-rate": 21,
-//           "price": 10.45
-//         }
-//       ],
-//       "bottom-notice": "Kindly pay your invoice within 15 days.",
-//       "settings": {
-//         "currency": "INR",
-//         "tax-notation": "vat",
-//         "margin-top": 50,
-//         "margin-right": 50,
-//         "margin-left": 50,
-//         "margin-bottom": 25
-//       }
-    
-// };
-// console.log("Invoice Data:", data);
-// //Create your invoice! Easy!
-// const result = await easyinvoice.createInvoice(data);
-// console.log("result",result.pdf)
-// easyinvoice.print(result.pdf, {
-//   fileName: "invoice.pdf" // Specify a valid filename here
-// });
-  setTog1(true)
+try{
+  const response = await axios.post("http://localhost:5000/Bill/Billregistration",billObj,{
+    headers:{
+      Authorization:`${Cookies.token}`
+    }
+  })
+  const resp = await axios.put(`http://localhost:5000/User/Cart/remove/${userID}`,{id},{
+    headers:{
+      Authorization:`${Cookies.token}`
+    }
+  })
+  toast.success(response.data.message, {
+    transition: Flip,
+  });
+ 
+    setTog1(true)
+}
+catch(error)
+{
+  console.log(error)
+}
+
   
 }
 
 
   return (
     <>
-    {tog1 === true ? <div className='pt-5' style={{paddingTop:"500px"}}><h1 className='mt-5'>fdjgukdhgkihr</h1></div> : 
+    {tog1 === true ? <div className='pt-5 d-grid justify-content-center align-items-center' ><h1 className='mt-5'>Purchase Completed</h1><p className='mt-2'>Reciept <Link>Tap to view</Link><Link to="/Home">Back to Home</Link></p></div> : 
     <div className='parent-pay d-flex flex-wrap justify-content-center align-items-center fs-5 
      ' style={{
         paddingTop:"100px",
@@ -308,10 +331,10 @@ Delivery address
                 style={{
                     borderRadius:"0.2rem"
                 }}
-                value={pay.daddress}
+                value={billObj.clientaddress}
                 onChange={(e)=> {
               
-                     handleChange("daddress",e.target.value)
+                     handleChange1("clientaddress",e.target.value)
                  
                 }}
                 />
@@ -322,7 +345,7 @@ Delivery address
         </Form.Group>
         <Form.Group as={Row}>
         <Form.Label   className='frmpay' column>
-Zipcode
+Pincode
         </Form.Label>
             <Col sm="12" className='d-flex gap-2 '>
 
@@ -333,7 +356,7 @@ Zipcode
                 style={{
                     borderRadius:"0.2rem"
                 }}
-                value={pay.zip}
+                value={billObj.cpincode}
                 onChange={(e)=> {
                  if(e.target.value.length >6)
                  {
@@ -341,7 +364,7 @@ Zipcode
                  }
                  else
                  {
-                     handleChange("zip",e.target.value)
+                     handleChange1("cpincode",e.target.value)
                  }
                 }}
                 
@@ -364,10 +387,10 @@ Phone no
                 style={{
                     borderRadius:"0.2rem"
                 }}
-                value={pay.phno}
+                value={billObj.clientphno}
                 onChange={(e)=> {
               
-                     handleChange("phno",e.target.value)
+                     handleChange1("clientphno",e.target.value)
                  
                 }}
                 />
@@ -377,7 +400,7 @@ Phone no
             </Col>
         </Form.Group>
    <div className='d-flex gap-2'>
- <Button onClick={()=>{Proceed()}} className='d-flex gap-2'  variant='outline-success  mt-4' style={{borderRadius:"0.2rem",boxShadow:"0px 0px 5px 0px grey"}}><CiLock  className='fs-4'/> Proceed</Button>  
+ <Button onClick={()=>{Proceed()}} className='d-flex gap-2'  variant='outline-success  mt-4' style={{borderRadius:"0.2rem",boxShadow:"0px 0px 5px 0px grey"}}><CiLock  className='fs-4'/><b className='fs-6'>₹ {paypro&&paypro[0]?.productID.price || pro[0]?.price }</b> Proceed</Button>  
  <Button onClick={navback} className='d-flex gap-2' variant='outline-danger mt-4' style={{borderRadius:"0.2rem",boxShadow:"0px 0px 5px 0px grey"}}> Cancel Payment</Button>    
  </div>
        </Form>

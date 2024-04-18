@@ -4,7 +4,7 @@ import "../Styles/Details.css"
 import {  toast,Flip} from 'react-toastify';
 import GetID from './Hooks/GetId';
 import { IoHeartSharp } from "react-icons/io5";
-import {useNavigate} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import { useCookies } from "react-cookie";
 import { useParams } from 'react-router-dom'
 import {Button} from "react-bootstrap"
@@ -159,6 +159,7 @@ catch(error)
         transition: Flip
       })
       }
+      const isProductBanned = (productId) => bannedid.includes(productId);
   return (
     <div className='Details-parent'>
       
@@ -172,7 +173,14 @@ catch(error)
       <div className='imgs-details'>   <button onClick={()=>{checkLike(Details._id)}} className='likes'>{likedid.includes(Details._id) ? <IoHeartSharp className='likeicons'/>:<IoHeartSharp className='likeiconf'/>}</button><img className='im-d' src={Details.photourl} /></div>
       <div className='btn-grps'>
         <button onClick={()=>{Cartcheck(Details._id)}} className='cart-btn'>{Cart.find(item=> item.productID === Details._id )? "Go-to-Cart" : "Add-To-Cart"}</button>
-        <button disabled={bannedid.includes(Details.loginid)} className='buy-btn'>Buy-Now</button>
+        <Link 
+        style={{paddingLeft:"32px"}}
+    to={isProductBanned(Details.loginid) ? '#' : `/Payment/${Details._id}`} 
+    className={`buy-btn  ${isProductBanned(Details.loginid) ? 'disabled-link' : ''}`}
+    onClick={(e) => isProductBanned(Details.loginid) && e.preventDefault()}
+>
+    Buy now
+</Link>
       </div>
       </div>
       <div className='details-contain'>

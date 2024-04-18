@@ -9,8 +9,8 @@ const BillSchema = new mongoose.Schema({
     sellerphno:{type:String,required:true},
     clientphno:{type:String,required:true},
     sellercompany:{type:String,required:true},
-    clientcompany:{type:String,required:true},
-    product:{type:Array},
+    productid:{type:mongoose.Schema.Types.ObjectId,ref:"Product"},
+    cpincode:{type:Number,required:true}
    
     
 },

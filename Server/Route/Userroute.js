@@ -13,6 +13,7 @@ router.get("/SellerRegistartion/pendingstatus/:userID",Middleware,userController
 router.get("/SellerRegistartion/notify/:userID",Middleware,userController.onlynotify)
 router.delete("/SellerRegistartion/:id",AdminverifyToken,userController.deletesellerpending)
 router.get("/UserRegistration",AdminverifyToken,userController.getUsers)
+router.get("/UserRegistration/getall",Middleware,userController.getallUsers)
 router.delete("/UserRegistration/:userID",AdminverifyToken,userController.deleteUsers)
 router.post("/Login",userController.loginuser)
 router.post("/Login/passwordConfirm/:userID",Middleware,userController.passConfirm)

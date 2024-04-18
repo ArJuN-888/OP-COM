@@ -84,6 +84,10 @@ const getUsers = async (req, res) => {
   const data = await Users.find({});
   res.status(200).send(data);
 };
+const getallUsers  = async (req, res) => {
+  const data = await Users.find({});
+  res.status(200).send(data);
+};
 const loginuser = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -762,5 +766,6 @@ module.exports = {
   updatequantity,
   onlynotify,
   getbannedusers,
-  getsellerforpay
+  getsellerforpay,
+  getallUsers
 };
