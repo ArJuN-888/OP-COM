@@ -16,9 +16,12 @@ export default function Payment() {
   },[])
     const nav = useNavigate()
     const {id} = useParams()
+    console.log("id",id)
     const userID = GetID()
     const [tog1,setTog1] = useState(false)
-    const [tog2,setTog2] = useState(false)
+    // const [tog2,setTog2] = useState(false)
+    const [allproducts,setAllproducts] = useState([])
+    console.log("Cartproall",allproducts)
     const [paypro,setPaypro] = useState([])
     const [seller,setSeller] = useState([])
     const [currentuser,setCurrentuser] = useState([])
@@ -45,9 +48,11 @@ const fetchpaypro = async() =>{
     }
   }) 
 
-    const filtertobepayed = response.data.cart.filter(element=>element.productID._id === id)
+    
     // console.log("filteredpay",filtertobepayed)
-   
+   if(id !== "allproducts")
+   {
+    const filtertobepayed = response.data.cart.filter(element=>element.productID._id === id)
   if(filtertobepayed.length!==0)
   {
     setPaypro(filtertobepayed)
@@ -64,6 +69,11 @@ const fetchpaypro = async() =>{
     setPro(filterproduct)
    }
 
+}
+else{
+  setAllproducts(response.data.cart)
+
+}
 }
 //fetching target seller
 const fetchtargetseller = async()=>{
@@ -108,7 +118,8 @@ const fetchallusers = async() =>{
       clientphno:"",
       sellercompany:"",
       productid:id,
-      cpincode:""
+      cpincode:"",
+      stat:`${id==="allproducts" ? "multiple" : "single" }`
     })
     console.log("billobj",billObj)
     console.log("jdhgfjgjgh",pay)
@@ -126,49 +137,54 @@ const navback = () =>{
 }
 
 const Proceed =  async () =>{
-    if(!pay.holder && !pay.dno && !pay.date && !pay.cvv)
-    {
-      return  toast.warn("All Specified fields are mandatory", {
+ 
+try{
+  if(!pay.holder && !pay.dno && !pay.date && !pay.cvv && !billObj.clientphno && !billObj.clientaddress && !billObj.cpincode)
+  {
+    return  toast.warn("All Specified fields are mandatory", {
+          transition: Flip,
+          unique: true
+        });
+  }
+  if(pay.dno && pay.dno.length<16){
+      return  toast.warn("Please provide a 16 digit valid Debit card number ", {
             transition: Flip,
             unique: true
           });
     }
-    if(pay.dno && pay.dno.length<16){
-        return  toast.warn("Please provide a 16 digit valid Debit card number ", {
-              transition: Flip,
-              unique: true
-            });
-      }
-    if(pay.cvv && pay.cvv.length<3){
-        return  toast.warn("Please provide a 3 digit valid  cvv ", {
-              transition: Flip,
-              unique: true
-            });
-      }
-      if(pay.cpincode && pay.cpincode.length<6){
-        return  toast.warn("Please provide a 6 digit valid  cpincode code ", {
-              transition: Flip,
-              unique: true
-            });
-      }
-    if(pay.clientphno && !pay.clientphno.match(phoneregex))
-    {
-      return toast.warn("Please provide a 10 digit valid phone number ", {
-           transition: Flip,
-           unique: true
-         });
+  if(pay.cvv && pay.cvv.length<3){
+      return  toast.warn("Please provide a 3 digit valid  cvv ", {
+            transition: Flip,
+            unique: true
+          });
     }
-try{
+    if(billObj.cpincode && billObj.cpincode.length<6){
+      return  toast.warn("Please provide a 6 digit valid  cpincode code ", {
+            transition: Flip,
+            unique: true
+          });
+    }
+  if(billObj.clientphno && !billObj.clientphno.match(phoneregex))
+  {
+    return toast.warn("Please provide a 10 digit valid phone number ", {
+         transition: Flip,
+         unique: true
+       });
+  }
   const response = await axios.post("http://localhost:5000/Bill/Billregistration",billObj,{
     headers:{
       Authorization:`${Cookies.token}`
     }
   })
-  const resp = await axios.put(`http://localhost:5000/User/Cart/remove/${userID}`,{id},{
-    headers:{
-      Authorization:`${Cookies.token}`
-    }
-  })
+  if(id !== "allproducts")
+  {
+    const resp = await axios.put(`http://localhost:5000/User/Cart/remove/${userID}`,{id},{
+      headers:{
+        Authorization:`${Cookies.token}`
+      }
+    })
+  }
+
   toast.success(response.data.message, {
     transition: Flip,
   });
@@ -182,8 +198,15 @@ catch(error)
 
   
 }
-
-
+//if total cart is selected we need to calculate the total sum
+const totalSum = () =>{
+  let total = 0
+  allproducts.forEach((data)=>{
+    total += data.productID.price * data.quantity
+  })
+  return total
+}
+  
   return (
     <>
     {tog1 === true ? <div className='pt-5 d-grid justify-content-center align-items-center' ><h1 className='mt-5'>Purchase Completed</h1><p className='mt-2'>Reciept <Link>Tap to view</Link><Link to="/Home">Back to Home</Link></p></div> : 
@@ -400,7 +423,7 @@ Phone no
             </Col>
         </Form.Group>
    <div className='d-flex gap-2'>
- <Button onClick={()=>{Proceed()}} className='d-flex gap-2'  variant='outline-success  mt-4' style={{borderRadius:"0.2rem",boxShadow:"0px 0px 5px 0px grey"}}><CiLock  className='fs-4'/><b className='fs-6'>₹ {paypro&&(paypro[0]?.productID.price * paypro[0]?.quantity) || pro&&pro[0]?.price }</b> Proceed</Button>  
+ <Button onClick={()=>{Proceed()}} className='d-flex gap-2'  variant='outline-success  mt-4' style={{borderRadius:"0.2rem",boxShadow:"0px 0px 5px 0px grey"}}><CiLock  className='fs-4'/><b className='fs-6'>₹ {paypro&&(paypro[0]?.productID.price * paypro[0]?.quantity) || pro&&pro[0]?.price || allproducts&&totalSum() }</b> Proceed</Button>  
  <Button onClick={navback} className='d-flex gap-2' variant='outline-danger mt-4' style={{borderRadius:"0.2rem",boxShadow:"0px 0px 5px 0px grey"}}> Cancel Payment</Button>    
  </div>
        </Form>

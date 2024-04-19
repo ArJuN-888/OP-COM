@@ -1,16 +1,17 @@
 const mongoose = require("mongoose")
 const BillSchema = new mongoose.Schema({
     clientname:{type:String,required:true},
-    sellername:{type:String,required:true},
-    selleremail:{type:String,required:true},
+    sellername:{type:String},
+    selleremail:{type:String},
     clientemail:{type:String,required:true},
-    selleraddress:{type:String,required:true},
+    selleraddress:{type:String},
     clientaddress:{type:String,required:true},
-    sellerphno:{type:String,required:true},
+    sellerphno:{type:String},
     clientphno:{type:String,required:true},
-    sellercompany:{type:String,required:true},
+    sellercompany:{type:String},
     productid:{type:mongoose.Schema.Types.ObjectId,ref:"Product"},
-    cpincode:{type:Number,required:true}
+    cpincode:{type:Number,required:true},
+    stat:{type:String,required:true}
    
     
 },

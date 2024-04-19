@@ -12,25 +12,44 @@ try{
     clientphno,
     sellercompany,
     productid,
-    cpincode
+    cpincode,
+    stat
 
 
 } = req.body
- const data = new Bill({
-    clientname,
-    sellername,
-    selleremail,
-    clientemail,
-    selleraddress,
-    clientaddress,
-    sellerphno,
-    clientphno:`+91 ${clientphno}`,
-    sellercompany,
-    productid,
-    cpincode
- })
- await data.save()
- res.status(200).json({message:"Payment Successfull"})
+if(stat === "single")
+{
+    const data = new Bill({
+        clientname,
+        sellername,
+        selleremail,
+        clientemail,
+        selleraddress,
+        clientaddress,
+        sellerphno,
+        clientphno:`+91 ${clientphno}`,
+        sellercompany,
+        productid,
+        cpincode,
+        stat
+     })
+     await data.save()
+    return res.status(200).json({message:"Payment Successfull"})
+}
+else(stat === "multiple")
+{
+    const data = new Bill({
+        clientname,
+        clientemail,
+        clientaddress,
+        clientphno:`+91 ${clientphno}`,
+        cpincode,
+        stat
+     })
+     await data.save()
+    return res.status(200).json({message:"Payment Successfull"})  
+}
+
 }
 catch(error){
    res.status(400).json({message:"Unable to proceed",error})

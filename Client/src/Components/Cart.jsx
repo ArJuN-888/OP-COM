@@ -8,8 +8,10 @@ import nol from "./background/nol.png"
 import {  toast,Flip} from 'react-toastify';
 import { useCookies } from "react-cookie";
 import GetID from './Hooks/GetId';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
+
 export default function Cart() {
+  const nav = useNavigate()
   const [state,setstate] = useState("")
   const[Cart,setCart]= useState([])
   const [bannedid,setbannedID] = useState([])
@@ -91,6 +93,9 @@ const total = () =>{
 // const GotoPayment = () =>{
 //   nav("/Payment")
 // }
+const Totalcart = () =>{
+  nav("/Payment/allproducts")
+}
 const isProductBanned = (productId) => bannedid.includes(productId);
 if(Cart.length===0)
 {
@@ -136,7 +141,7 @@ else{
 </div>
 
 <div className='totals'><p className='ts'>₹ {total()}</p>
-<button className='buy'>Place Order<PiShoppingCart className='i'/></button>
+<button onClick={()=>Totalcart()} className='buy'>Place Order<PiShoppingCart className='i'/></button>
 </div>
 
 

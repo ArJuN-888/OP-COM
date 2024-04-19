@@ -980,7 +980,7 @@ export default function Home() {
         emptyIcon={<StarIcon className="fs-1" style={{ opacity: 0.55 }} fontSize="inherit" />}
       />
       {value !== null && (
-        <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
+        <Box fontSize={25} sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
       )}
      
     </Box>
