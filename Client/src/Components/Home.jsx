@@ -10,6 +10,8 @@ import Stack from "react-bootstrap/Stack";
 import { toast, Flip } from "react-toastify";
 import { IoIosArrowForward } from "react-icons/io";
 import caro from "./background/caro.png"
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import caro1 from "./background/caro1.png"
 import caro2 from "./background/caro2.png"
 import caro3 from "./background/caro3.png"
@@ -419,11 +421,66 @@ export default function Home() {
       <div className="home-parent">
         
         <div className="sub-pr-parent">
-        <div className="caro">
-     <Carousel fade>
-      <Carousel.Item>
+        <div className="caro" >
+     <Carousel fade >
+      <Carousel.Item className="d-flex gap-3" >
    <img className="img-caro-2" src={caro1}/>
-      
+
+    {/* <Card style={{ width: '18rem' }}>
+      <Card.Img variant="top" src="holder.js/100px180" />
+      <Card.Body>
+        <Card.Title>Card Title</Card.Title>
+        <Card.Text>
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </Card.Text>
+        <Button variant="primary">Go somewhere</Button>
+      </Card.Body>
+    </Card>
+    <Card style={{ width: '18rem' }}>
+      <Card.Img variant="top" src="holder.js/100px180" />
+      <Card.Body>
+        <Card.Title>Card Title</Card.Title>
+        <Card.Text>
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </Card.Text>
+        <Button variant="primary">Go somewhere</Button>
+      </Card.Body>
+    </Card>
+    <Card style={{ width: '18rem' }}>
+      <Card.Img variant="top" src="holder.js/100px180" />
+      <Card.Body>
+        <Card.Title>Card Title</Card.Title>
+        <Card.Text>
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </Card.Text>
+        <Button variant="primary">Go somewhere</Button>
+      </Card.Body>
+    </Card>
+    <Card style={{ width: '18rem' }}>
+      <Card.Img variant="top" src="holder.js/100px180" />
+      <Card.Body>
+        <Card.Title>Card Title</Card.Title>
+        <Card.Text>
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </Card.Text>
+        <Button variant="primary">Go somewhere</Button>
+      </Card.Body>
+    </Card>
+    <Card style={{ width: '18rem' }}>
+      <Card.Img variant="top" src="holder.js/100px180" />
+      <Card.Body>
+        <Card.Title>Card Title</Card.Title>
+        <Card.Text>
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </Card.Text>
+        <Button variant="primary">Go somewhere</Button>
+      </Card.Body>
+    </Card> */}
       </Carousel.Item>
       <Carousel.Item>
         <img className="img-caro-2" src={caro2}/>
