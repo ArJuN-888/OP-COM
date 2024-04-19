@@ -170,15 +170,10 @@ const editUser = async (req, res) => {
 const editPic = async (req, res) => {
   try {
     const { userID } = req.params;
-    const reportuser = await report.findOne({userID:userID})
-    console.log("Reported")
-    if(reportuser)
-    {
-      const id =reportuser._id
-      const updatereport = await report.findByIdAndUpdate(id,{filename:req.file.filename})
-    }
-   
-    console.log("report",reportuser)
+
+      const updatereport = await report.updateMany({userID:userID},{filename:req.file.filename})
+    
+  
     const user = await Users.findById(userID);
    
     console.log("user", user);

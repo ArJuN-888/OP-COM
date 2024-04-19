@@ -306,7 +306,7 @@ CVV
        </Form>
  
      </div>
-     <div className='d-flex  flex-wrap justify-content-center' style={{marginTop:"130px",marginBottom:"10px",gap:"80px"}}>
+     <div className='d-flex  flex-wrap justify-content-center' style={{marginTop:"180px",marginBottom:"10px",gap:"80px"}}>
      <div className='img-c'><img src='https://img.freepik.com/premium-vector/courier-deliver-goods-using-online-map-illustration_80802-1365.jpg?w=740' style={{boxShadow:"0px 0px 0px 0px"}} width="500px" className='payim'/></div>
      <div className='form-Container   p-3' style={{
         boxShadow:"0px 0px 0px 0px",

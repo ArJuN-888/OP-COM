@@ -10,19 +10,35 @@ import Stack from "react-bootstrap/Stack";
 import { toast, Flip } from "react-toastify";
 import { IoIosArrowForward } from "react-icons/io";
 import caro from "./background/caro.png"
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import caro1 from "./background/caro1.png"
-import caro2 from "./background/caro2.png"
-import caro3 from "./background/caro3.png"
 import Carousel from 'react-bootstrap/Carousel';
 import Accordion from 'react-bootstrap/Accordion';
 import { IoSend } from "react-icons/io5";
 import { IoIosClose } from "react-icons/io";
 import { useCookies } from "react-cookie";
 import { CgUser } from "react-icons/cg";
+import Rating from '@mui/material/Rating';
+import Box from '@mui/material/Box';
+import StarIcon from '@mui/icons-material/Star';
 import { MdOutlineSell } from "react-icons/md";
 export default function Home() {
+  const labels = {
+    0.5: 'Useless',
+    1: 'Useless+',
+    1.5: 'Poor',
+    2: 'Poor+',
+    2.5: 'Ok',
+    3: 'Ok+',
+    3.5: 'Good',
+    4: 'Good+',
+    4.5: 'Excellent',
+    5: 'Excellent+',
+  };
+  
+  function getLabelText(value) {
+    return `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
+  }
+  const [value, setValue] = React.useState(0);
+  const [hover, setHover] = React.useState(-1);
   const [selectedMaterial, setSelectedMaterial] = useState(null);
   const [selectedCapacity, setSelectedCapacity] = useState(null);
   const [selectedstrapcolor, setSelectedstrapcolor] = useState(null);
@@ -155,24 +171,27 @@ export default function Home() {
       }
     }
   };
-  const ToggleInput = () => {
-    setToggle(1);
-  };
+  // const ToggleInput = () => {
+  //   setToggle(1);
+  // };
   const ToggleCancel = () => {
     console.log("hai");
-    setToggle(0);
+   setReportstatement("")
   };
   const Reportproceed = async () => {
     try {
+     
       const response = await axios.post(
         "http://localhost:5000/Report/reports",
-        { userID: userID, reportstatement, dt },
+        { userID: userID, reportstatement, dt,rating:value },
         {
           headers: {
             Authorization: `${Cookies.token}`,
           },
         }
       );
+      setValue(0)
+      setHover(-1)
       setToggle(0);
       setReportstatement("");
       toast.success(response.data.message, {
@@ -422,75 +441,7 @@ export default function Home() {
         
         <div className="sub-pr-parent">
         <div className="caro" >
-     <Carousel fade >
-      <Carousel.Item className="d-flex gap-3" >
-   <img className="img-caro-2" src={caro1}/>
-
-    {/* <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
-      </Card.Body>
-    </Card>
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
-      </Card.Body>
-    </Card>
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
-      </Card.Body>
-    </Card>
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
-      </Card.Body>
-    </Card>
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
-      </Card.Body>
-    </Card> */}
-      </Carousel.Item>
-      <Carousel.Item>
-        <img className="img-caro-2" src={caro2}/>
-
-      </Carousel.Item>
-      <Carousel.Item>
-      <img className="img-caro" src={caro3}/>
-      
-      </Carousel.Item>
-    </Carousel>
+        <img src="https://wildcraft.com/media/catalog/category/CB-1920x300-2.jpg" width="100%"/>
     </div>
           <div className="srt-parent-home">
             <Stack direction="horizontal" gap={2}className="stck">
@@ -741,7 +692,7 @@ export default function Home() {
             ))}
           </div>
           <div>
-        <img src="https://wildcraft.com/media/catalog/category/CB-1920x300-2.jpg" width="100%"/>
+        
       </div>
           <div className="caro mt-5">
      <Carousel fade>
@@ -971,27 +922,27 @@ export default function Home() {
       </div>
       <Accordion className="custom-header" flush >
       <Accordion.Item eventKey="1">
-        <Accordion.Header className="custom-header" ><label style={{
+        <Accordion.Header className="custom-header " ><label className="fs-6" style={{
           fontSize:"20px",
           
-      backgroundColor:"rgb(0,0,0,0.9)",
-      color:"white",
+      backgroundColor:"rgb(0,0,0,0.1)",
+      color:"black",
       borderRadius:"3px",
           padding:"2px 10px",
           
-        }}><marquee>Kindly Specify your comments/reports, please provide the id of  product if you have any Query regarding that item</marquee></label></Accordion.Header>
+        }}><marquee >─── ⋆⋅☆⋅⋆ ── Kindly Specify your comments/reports, please provide the id of  product if you have any Query regarding that item ─── ⋆⋅☆⋅⋆ ──</marquee></label></Accordion.Header>
         <Accordion.Body className="custom-header border-none">
         <div className="report-parent">
               <label className="t"></label>
               <div className="report-child">
-                {toggle === 1 ? (
-                  <>
+               
                     <input
                       value={reportstatement}
                       onChange={(e) => setReportstatement(e.target.value)}
                       className="input-report"
                       placeholder="Specify here... "
                     />
+                    
                     <button
                       className="report-btn-Proceed"
                       onClick={Reportproceed}
@@ -1002,17 +953,38 @@ export default function Home() {
                       className="report-btn-cancel"
                       onClick={ToggleCancel}
                     >
-                      Cancel
+                      Clear
                     </button>
-                  </>
-                ) : (
-                  <div>
-                    <button className="report-btn-invoke" onClick={ToggleInput}>
-                      Comments/Reports
-                    </button>
-                  </div>
-                )}
+   
               </div>
+            <div className=" d-flex justify-content-center align-items-center mt-2  ">  <h5 className="me-3">Rate Us - </h5>             
+              <Box
+      sx={{
+        width: 200,
+        display: 'flex',
+        alignItems: 'center',
+      }}
+    >
+      <Rating
+        name="hover-feedback"
+        value={value}
+        className="fs-1" 
+        precision={0.5}
+        getLabelText={getLabelText}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+        onChangeActive={(event, newHover) => {
+          setHover(newHover);
+        }}
+        emptyIcon={<StarIcon className="fs-1" style={{ opacity: 0.55 }} fontSize="inherit" />}
+      />
+      {value !== null && (
+        <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
+      )}
+     
+    </Box>
+    </div>
             </div>
         </Accordion.Body>
       </Accordion.Item>

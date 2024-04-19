@@ -102,6 +102,7 @@ export default function Requests() {
 
   return (
     <div className='req-parent'>
+      {sellerdata.length === 0 && <div className='d-flex justify-content-center'><h4>No new Requests</h4></div>}
       {sellerdata.map((data) => (
         <div key={data._id} className='req-child'>
           <div>

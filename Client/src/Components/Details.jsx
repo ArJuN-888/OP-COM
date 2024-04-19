@@ -194,8 +194,8 @@ catch(error)
     <div className='pd'>Capacity : {Details.capacity}</div></> : <><div className='pd'>Strap color : {Details.strapcolor}</div>
     <div className='pd'>Body : {Details.body}</div></>}
   
-    <div>{bannedid.includes(Details.loginid) ? <label className='out-st'>Currently Out of Stock</label>:""}</div>
-    <div className='sto'>Stoke-left  : {Details.stoke}</div>
+    <div>{bannedid.includes(Details.loginid) ? <label className='out-st mt-4'>Currently Out of Stock</label>: <div className='sto'>Stoke-left  : {Details.stoke} </div>}</div>
+   
      <div className='pp'><MdOutlineSell/> ₹ {Details.price}</div>
       </div>
     </div>

@@ -2,14 +2,18 @@ const {report} =require("../Model/ReportSchema")
 const { Users} = require("../Model/UserSchema");
 const addreport = async (req,res)=>{
     try{
-        const {userID,reportstatement,dt} = req.body
+        const {userID,reportstatement,dt,rating} = req.body
         const user = await Users.findById(userID)
       
         if(!reportstatement)
         {
            return res.status(400).json({message:"Empty field"})
         }
-        const data = new report({userID,name:user.username,filename:user.filename,sellerstatus:user.sellerstatus,reportstatement,dt,email:user.email})
+        if(rating === 0)
+        {
+            return res.status(400).json({message:"State Your rating"})
+        }
+        const data = new report({userID,name:user.username,filename:user.filename,sellerstatus:user.sellerstatus,reportstatement,dt,email:user.email,rating})
         await data.save()
         res.status(200).json({message:"reported Successfully"})
     }

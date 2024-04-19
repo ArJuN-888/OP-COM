@@ -66,7 +66,7 @@ Role-{repo.sellerstatus===true ? "Seller":"user"}
    <div><button className='issue' onClick={()=>{Showissue(repo._id)}}><CgDanger className='is' /></button></div> } || 
   
   <div>{repo.dt}</div>||
-
+<div className='text-danger'>Rated : {repo.rating}/5</div>
     <button onClick={()=>{Deleterepo(repo._id)}} className='rsl'><TfiTrash /></button>
   
  

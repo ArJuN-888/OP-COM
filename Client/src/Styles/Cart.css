@@ -162,3 +162,7 @@ option {
 .cart-d {
   width: 200px;
 }
+.disabled-link{
+  background-color: rgb(197, 202, 204);
+  cursor:not-allowed;
+}
