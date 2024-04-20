@@ -19,6 +19,8 @@ import { CgUser } from "react-icons/cg";
 import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
 import StarIcon from '@mui/icons-material/Star';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 import { MdOutlineSell } from "react-icons/md";
 export default function Home() {
   const labels = {
@@ -424,6 +426,11 @@ export default function Home() {
   const uniquebody = Array.from(new Set(filterwatch.map(u => u.body)));
   const uniquestrapcolor = Array.from(new Set(filterwatch.map(u => u.strapcolor)));
   console.log("FILLTERBAGS",filterbag,uniquematerial)
+  const editProfile = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+     opcomlight888@gmail.com
+    </Tooltip>
+  );
   return (
     <>
 
@@ -957,7 +964,25 @@ export default function Home() {
                     </button>
    
               </div>
-            <div className=" d-flex justify-content-center align-items-center mt-2  ">  <h5 className="me-3">Rate Us - </h5>             
+            <div className=" d-flex justify-content-start align-items-center mt-2  ">               
+       <div className=" d-flex p-1 justify-content-center align-items-center   flex-wrap gap-3 mb-0  pe-5" style={{
+        
+     
+       }}>
+               <OverlayTrigger
+                                 placement="top"
+                                 delay={{ show: 250, hide: 400 }}
+                                 overlay={editProfile}
+                               >
+       <div className="img"><img src="https://cdn-icons-png.flaticon.com/128/10829/10829119.png" width="30px" className="me-2" alt="image"/></div></OverlayTrigger>
+  <div className="img"><img src="https://cdn-icons-png.flaticon.com/128/2111/2111463.png" width="30px" alt="image"/></div>
+  <div className="img"><img src="https://cdn-icons-png.flaticon.com/128/5968/5968764.png" width="30px" alt="image"/></div>
+  <div className="img"><img src="https://cdn-icons-png.flaticon.com/128/5969/5969020.png" width="30px" alt="image"/></div>
+  <div className="img"><img src="https://cdn-icons-png.flaticon.com/128/2111/2111646.png" width="30px" alt="image"/></div>
+       </div> 
+        <div><h5 className="me-3">Rate Us - </h5>  </div>
+  
+    
               <Box
       sx={{
         width: 200,

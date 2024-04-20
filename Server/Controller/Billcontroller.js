@@ -1,4 +1,5 @@
 const {Bill} = require("../Model/BillSchema")
+const phoneregex = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/
 const addBill = async(req,res) =>{
 try{
  const {
@@ -17,6 +18,19 @@ try{
 
 
 } = req.body
+ console.log("types",typeof clientaddress , typeof clientphno ,typeof cpincode)
+if( !clientphno || !cpincode || !clientaddress)
+{
+    return res.status(400).json({message:"Shipping information is mandatory"})
+}
+if(cpincode.length<6)
+{
+    return res.status(400).json({message:"Enter a valid 6 digit cvv"})
+}
+if(!clientphno.match(phoneregex))
+{
+    return res.status(400).json({message:"Enter a valid 10digit mobile number"})
+}
 if(stat === "single")
 {
     const data = new Bill({

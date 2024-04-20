@@ -32,7 +32,7 @@ export default function Payment() {
     console.log("seller", seller)
     console.log("currentuser",currentuser)
   
-    const phoneregex = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/
+
     const [pay,setPay] = useState({
         holder:"",
  dno:"",
@@ -139,7 +139,10 @@ const navback = () =>{
 const Proceed =  async () =>{
  
 try{
-  if(!pay.holder && !pay.dno && !pay.date && !pay.cvv && !billObj.clientphno && !billObj.clientaddress && !billObj.cpincode)
+  if(  pay.holder.trim() === '' || 
+  pay.dno.trim() === '' || 
+  pay.date.trim() === '' || 
+  pay.cvv.trim() === '' )
   {
     return  toast.warn("All Specified fields are mandatory", {
           transition: Flip,
@@ -158,24 +161,23 @@ try{
             unique: true
           });
     }
-    if(billObj.cpincode && billObj.cpincode.length<6){
-      return  toast.warn("Please provide a 6 digit valid  cpincode code ", {
-            transition: Flip,
-            unique: true
-          });
-    }
-  if(billObj.clientphno && !billObj.clientphno.match(phoneregex))
-  {
-    return toast.warn("Please provide a 10 digit valid phone number ", {
-         transition: Flip,
-         unique: true
-       });
-  }
-  const response = await axios.post("http://localhost:5000/Bill/Billregistration",billObj,{
-    headers:{
-      Authorization:`${Cookies.token}`
-    }
-  })
+   
+      if(pay.holder && pay.dno && pay.date && pay.cvv)
+      {
+        const response = await axios.post("http://localhost:5000/Bill/Billregistration",billObj,{
+          headers:{
+            Authorization:`${Cookies.token}`
+          }
+        })
+     
+        
+        toast.success(response.data.message, {
+          transition: Flip,
+        });
+
+      }
+ 
+
   if(id !== "allproducts")
   {
     const resp = await axios.put(`http://localhost:5000/User/Cart/remove/${userID}`,{id},{
@@ -185,15 +187,15 @@ try{
     })
   }
 
-  toast.success(response.data.message, {
-    transition: Flip,
-  });
- 
+
     setTog1(true)
 }
 catch(error)
 {
-  console.log(error)
+  toast.error(error.response.data.message,{
+   transition:Flip,
+   unique:"true"
+  })
 }
 
   
@@ -374,7 +376,7 @@ Pincode
 
                 <Form.Control
                 required
-             type='text'
+             type='number'
              placeholder='000000'
                 style={{
                     borderRadius:"0.2rem"
@@ -405,7 +407,7 @@ Phone no
 
                 <Form.Control
                 required
-             type='text'
+             type='number'
              placeholder='Phone no'
                 style={{
                     borderRadius:"0.2rem"
