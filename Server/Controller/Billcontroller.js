@@ -3,6 +3,7 @@ const phoneregex = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/
 const addBill = async(req,res) =>{
 try{
  const {
+    userid,
     clientname,
     sellername,
     selleremail,
@@ -14,7 +15,8 @@ try{
     sellercompany,
     productid,
     cpincode,
-    stat
+    stat,
+    dt
 
 
 } = req.body
@@ -34,6 +36,7 @@ if(!clientphno.match(phoneregex))
 if(stat === "single")
 {
     const data = new Bill({
+        userid,
         clientname,
         sellername,
         selleremail,
@@ -45,7 +48,8 @@ if(stat === "single")
         sellercompany,
         productid,
         cpincode,
-        stat
+        stat,
+        dt
      })
      await data.save()
     return res.status(200).json({message:"Payment Successfull"})
@@ -53,12 +57,14 @@ if(stat === "single")
 else(stat === "multiple")
 {
     const data = new Bill({
+        userid,
         clientname,
         clientemail,
         clientaddress,
         clientphno:`+91 ${clientphno}`,
         cpincode,
-        stat
+        stat,
+        dt
      })
      await data.save()
     return res.status(200).json({message:"Payment Successfull"})  
@@ -71,8 +77,9 @@ catch(error){
 }
 const getBill = async(req,res) =>{
     try{
-  
-     const data = await  Bill.find({})
+       
+        const data = await Bill.find({userid:req.params.userID});
+        console.log("dsdddfd",data)
    
      res.status(200).json({bill:data})
     }

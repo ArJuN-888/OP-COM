@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
 import "../Styles/Home.css";
 import GetID from "./Hooks/GetId";
 import { IoHeartSharp } from "react-icons/io5";
@@ -937,7 +938,7 @@ export default function Home() {
       borderRadius:"3px",
           padding:"2px 10px",
           
-        }}><marquee >─── ⋆⋅☆⋅⋆ ── Kindly Specify your comments/reports, please provide the id of  product if you have any Query regarding that item ─── ⋆⋅☆⋅⋆ ──</marquee></label></Accordion.Header>
+        }}><marquee >─── ⋆⋅☆⋅⋆ ── Kindly Specify your comments/reports, please provide the id of  product if you have any Query regarding that item , 12/7 Customer Support ─── ⋆⋅☆⋅⋆ ──</marquee></label></Accordion.Header>
         <Accordion.Body className="custom-header border-none">
         <div className="report-parent">
               <label className="t"></label>
@@ -950,18 +951,22 @@ export default function Home() {
                       placeholder="Specify here... "
                     />
                     
-                    <button
-                      className="report-btn-Proceed"
+                    <Button
+                  
+                    color="success"
+                      variant="outlined"
                       onClick={Reportproceed}
+                      className="me-1"
                     >
-                      Send <IoSend />
-                    </button>
-                    <button
-                      className="report-btn-cancel"
+                      Send <IoSend fontSize="25px" className="ms-1" />
+                    </Button>
+                    <Button
+                     color="error"
+                         variant="outlined"
                       onClick={ToggleCancel}
                     >
                       Clear
-                    </button>
+                    </Button>
    
               </div>
             <div className=" d-flex justify-content-start align-items-center mt-2  ">               
@@ -974,13 +979,13 @@ export default function Home() {
                                  delay={{ show: 250, hide: 400 }}
                                  overlay={editProfile}
                                >
-       <div className="img"><img src="https://cdn-icons-png.flaticon.com/128/10829/10829119.png" width="30px" className="me-2" alt="image"/></div></OverlayTrigger>
-  <div className="img"><img src="https://cdn-icons-png.flaticon.com/128/2111/2111463.png" width="30px" alt="image"/></div>
-  <div className="img"><img src="https://cdn-icons-png.flaticon.com/128/5968/5968764.png" width="30px" alt="image"/></div>
-  <div className="img"><img src="https://cdn-icons-png.flaticon.com/128/5969/5969020.png" width="30px" alt="image"/></div>
-  <div className="img"><img src="https://cdn-icons-png.flaticon.com/128/2111/2111646.png" width="30px" alt="image"/></div>
+       <div className="img"><img src="https://cdn-icons-png.flaticon.com/128/10829/10829119.png" width="28px" className="me-2" alt="image"/></div></OverlayTrigger>
+  <div className="img"><img src="https://cdn-icons-png.flaticon.com/128/2111/2111463.png" width="28px" alt="image"/></div>
+  <div className="img"><img src="https://cdn-icons-png.flaticon.com/128/5968/5968764.png" width="28px" alt="image"/></div>
+  <div className="img"><img src="https://cdn-icons-png.flaticon.com/128/5969/5969020.png" width="28px" alt="image"/></div>
+  <div className="img"><img src="https://cdn-icons-png.flaticon.com/128/2111/2111646.png" width="28px" alt="image"/></div>
        </div> 
-        <div><h5 className="me-3">Rate Us - </h5>  </div>
+        <div><h6 className="me-3">Rate Us - </h6>  </div>
   
     
               <Box
@@ -993,7 +998,8 @@ export default function Home() {
       <Rating
         name="hover-feedback"
         value={value}
-        className="fs-1" 
+        className="fs-2" 
+          style={{color:"black"}}
         precision={0.5}
         getLabelText={getLabelText}
         onChange={(event, newValue) => {
@@ -1002,10 +1008,10 @@ export default function Home() {
         onChangeActive={(event, newHover) => {
           setHover(newHover);
         }}
-        emptyIcon={<StarIcon className="fs-1" style={{ opacity: 0.55 }} fontSize="inherit" />}
+        emptyIcon={<StarIcon    className="fs-2" style={{ opacity: 0.55,color:"" }} fontSize="inherit" />}
       />
       {value !== null && (
-        <Box fontSize={25} sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
+        <Box fontSize={20} sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
       )}
      
     </Box>

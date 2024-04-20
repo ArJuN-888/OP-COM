@@ -32,7 +32,8 @@ export default function Payment() {
     console.log("seller", seller)
     console.log("currentuser",currentuser)
   
-
+    const [dateandtime] = useState(new Date());
+    const dt = dateandtime.toLocaleString();
     const [pay,setPay] = useState({
         holder:"",
  dno:"",
@@ -108,6 +109,7 @@ const fetchallusers = async() =>{
 }));
 }
     const [billObj,setBillobj] = useState({
+      userid:userID,
       clientname:"",
       sellername:"",
       selleremail:"",
@@ -119,6 +121,7 @@ const fetchallusers = async() =>{
       sellercompany:"",
       productid:id,
       cpincode:"",
+      dt:dt,
       stat:`${id==="allproducts" ? "multiple" : "single" }`
     })
     console.log("billobj",billObj)
@@ -178,14 +181,14 @@ try{
       }
  
 
-  if(id !== "allproducts")
-  {
-    const resp = await axios.put(`http://localhost:5000/User/Cart/remove/${userID}`,{id},{
-      headers:{
-        Authorization:`${Cookies.token}`
-      }
-    })
-  }
+  // if(id !== "allproducts")
+  // {
+  //   const resp = await axios.put(`http://localhost:5000/User/Cart/remove/${userID}`,{id},{
+  //     headers:{
+  //       Authorization:`${Cookies.token}`
+  //     }
+  //   })
+  // }
 
 
     setTog1(true)
@@ -211,7 +214,7 @@ const totalSum = () =>{
   
   return (
     <>
-    {tog1 === true ? <div className='pt-5 d-grid justify-content-center align-items-center' ><h1 className='mt-5'>Purchase Completed</h1><p className='mt-2'>Reciept <Link>Tap to view</Link><Link to="/Home">Back to Home</Link></p></div> : 
+    {tog1 === true ? <div className='pt-5 d-grid justify-content-center align-items-center' ><h1 className='mt-5'>Purchase Completed</h1><p className='mt-2'>Reciept <Link to="/Bill">Tap to view</Link><Link to="/Home">Back to Home</Link></p></div> : 
     <div className='parent-pay d-flex flex-wrap justify-content-center align-items-center fs-5 
      ' style={{
         paddingTop:"100px",
