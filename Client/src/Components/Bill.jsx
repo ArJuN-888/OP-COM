@@ -76,24 +76,32 @@ console.log(error)
     const billClose = () =>{
         setTog(new Array(tog.length).fill(false)); 
     }
+    const Total = () =>{
+      let total =0;
+      carted.forEach((element)=>{
+     total += (element.productID&&element.productID.price || element.price) * (element.quantity&&element.quantity || 1)
+      })
+      return total
+    }
   return (
     <div className='m-2 fs-5' style={{ paddingTop: "80px" }}>
        {allbill.length !==0 ?   <h4>Transaction Tickets</h4> : <h4>No tickets available</h4> }
     {allbill.map((data, index) => (
         <div key={index} className='p-3' style={{boxShadow:"0px 0px 1px 0px"}}>
            <Button variant='outlined' style={{letterSpacing:"2px"}}> Purchase Date : {data.dt}</Button>
-            <h5>Client data</h5>
-            {data.clientname}
-            {data.clientemail}
-            {data.clientaddress}
-            {data.clientphno}
-            {data.cpincode}
-            <h5>Seller data</h5>
+           <div> <Button variant='outlined' color='error'  className='mt-3'>Client data</Button></div>
+            <hr></hr>
+           <div>Name : {data.clientname}</div> 
+            <div>Email : {data.clientemail}</div>
+            <div>Address : {data.clientaddress}</div>
+            <div>Phno : {data.clientphno}</div>
+           <div> Pincode : {data.cpincode}</div>
+            {/* <h5>Seller data</h5>
             {data.sellername}
             {data.selleremail}
             {data.selleraddress}
             {data.sellerphno}
-            {data.sellercompany}<br></br>
+            {data.sellercompany}<br></br> */}
             <Button onClick={() => getpro(data.productid, data.stat, index)} className='' variant='contained' color='success'>Show more details</Button>
             {tog[index] && (
                 <div>
@@ -115,16 +123,17 @@ console.log(error)
         <div>quantity: {item.quantity || 1}</div>
         {item.brandname && <div>total ₹: {`${item.price}` * 1}</div>}
         {item.productID && <div>total ₹: {item.productID.price * (item.quantity || 1)}</div>}
-        <div className='d-flex gap-2'>Status: <Button variant='outlined' color="success">PAYMENT SUCCESSFUL</Button>
-        <Button onClick={()=>billClose()} variant='outlined' color='error'>Close</Button>
-        </div>
+     
     
     </div>
 ))}
-
+ <div className='d-flex gap-2'>Status: <Button variant='outlined' color="success">PAYMENT SUCCESSFUL</Button>
+        <Button onClick={()=>billClose()} variant='outlined' color='error'>Close</Button>
+        </div>
+       <div className='d-flex align-items-center gap-4'><h4>Grand Total - </h4> <label className='fs-2'>₹ {Total()}</label></div> 
                 </div>
             )}
-                <label className='mt-2'>Query as if you have confronted any Issues <b> Ph-no 9575756765</b></label>
+                <div><label className='mt-2'>Query as if you have confronted any Issues <label> Ph-no 9575756765</label></label></div>
         </div>
         
     ))}
