@@ -209,7 +209,7 @@ const totalSum = () =>{
   
   return (
     <>
-    {tog1 === true ? <div className='pt-5 d-grid justify-content-center align-items-center' ><h1 className='mt-5'>Purchase Completed</h1><p className='mt-2'>Reciept <Link to="/Bill">Tap to view</Link><Link to="/Home">Back to Home</Link></p></div> : 
+    {tog1 === true ? <div className='pt-5 d-grid justify-content-center align-items-center' ><h1 className='mt-5'>Purchase Completed <img src="https://media.tenor.com/40bYuytgRvYAAAAi/hedge-pay-hpay.gif" width="60px"/></h1><p className='mt-2'>Reciept <Link to="/Bill">Tap to view</Link><Link to="/Home">Back to Home</Link></p></div> : 
     <div className='parent-pay d-flex flex-wrap justify-content-center align-items-center fs-5 
      ' style={{
         paddingTop:"100px",

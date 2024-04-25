@@ -3,8 +3,7 @@ import axios from "axios"
 import { useCookies } from "react-cookie";
 import { Button } from '@mui/material';
 import GetID from './Hooks/GetId';
-import { IoClose } from 'react-icons/io5';
-import { FaUnderline } from 'react-icons/fa';
+import { MdOutlineSell } from "react-icons/md";
 export default function Bill() {
     const[allcartpro,setAllcartpro] = useState([])
     const [carted,setcarted] = useState([])
@@ -84,17 +83,18 @@ console.log(error)
       return total
     }
   return (
-    <div className='m-2 fs-5' style={{ paddingTop: "80px" }}>
-       {allbill.length !==0 ?   <h4>Transaction Tickets</h4> : <h4>No tickets available</h4> }
+    <div className='fs-5' style={{paddingTop:"80px"}} >
+       {allbill.length !==0 ?   <Button style={{letterSpacing:"3px"}} className='ms-2 text-black' variant='outlined'>Transaction History</Button> : <h4>No tickets available</h4> }
     {allbill.map((data, index) => (
-        <div key={index} className='p-3' style={{boxShadow:"0px 0px 1px 0px"}}>
+        <div key={index} className='m-2 p-3' style={{boxShadow:"0px 0px 1px 0px"}}>
+          <h3>Op-cOm</h3>
            <Button variant='outlined' style={{letterSpacing:"2px"}}> Purchase Date : {data.dt}</Button>
-           <div> <Button variant='outlined' color='error'  className='mt-3'>Client data</Button></div>
+           <div> <Button variant='outlined' color='error'  className='mt-3'>Client Purchase data</Button></div>
             <hr></hr>
-           <div>Name : {data.clientname}</div> 
+           <div>Consumer : {data.clientname}</div> 
             <div>Email : {data.clientemail}</div>
-            <div>Address : {data.clientaddress}</div>
-            <div>Phno : {data.clientphno}</div>
+            {/* <div>Address : {data.clientaddress}</div>
+            <div>Phno : {data.clientphno}</div> */}
            <div> Pincode : {data.cpincode}</div>
             {/* <h5>Seller data</h5>
             {data.sellername}
@@ -130,10 +130,10 @@ console.log(error)
  <div className='d-flex gap-2'>Status: <Button variant='outlined' color="success">PAYMENT SUCCESSFUL</Button>
         <Button onClick={()=>billClose()} variant='outlined' color='error'>Close</Button>
         </div>
-       <div className='d-flex align-items-center gap-4'><h4>Grand Total - </h4> <label className='fs-2'>₹ {Total()}</label></div> 
+       <div className='d-flex align-items-center gap-4'><h4>Grand Total - </h4> <label className='fs-2'><MdOutlineSell/> ₹ {Total()}</label></div> 
                 </div>
             )}
-                <div><label className='mt-2'>Query as if you have confronted any Issues <label> Ph-no 9575756765</label></label></div>
+                <div><label className='mt-2'> <label>For any Query E-mail opcomsupprt.12@gmail.com</label></label></div>
         </div>
         
     ))}

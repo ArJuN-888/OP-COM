@@ -11,10 +11,12 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FaRegPlusSquare } from "react-icons/fa";
 import { FaKey } from "react-icons/fa";
 import { IoSend } from 'react-icons/io5';
+
 import { useCookies } from "react-cookie";
 import Spinner from 'react-bootstrap/Spinner';
 import Getprofile from "./Hooks/Getprofile";
 import GetID from "./Hooks/GetId";
+import Bill from "./Bill";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 export default function Profile() {
@@ -535,6 +537,7 @@ export default function Profile() {
     </Tooltip>
   );
   return (
+    <>
     <div className="main">
       <div className="Parent">
         <div className="Childhold">
@@ -888,7 +891,9 @@ export default function Profile() {
           Click here
           </Link>
          </div>)}
-        
+      
     </div>
+    <Bill/>
+    </>
   );
 }
