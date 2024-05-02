@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios';
 import { PiShoppingCart } from "react-icons/pi";
 import "../Styles/Cart.css"
+import {Button} from "@mui/material"
 import { useEffect,useState } from 'react'
 import { TfiTrash } from "react-icons/tfi";
 import nol from "./background/nol.png"
@@ -125,10 +126,10 @@ else{
 <div className='c4'><label className='l'>Qty :</label> <label className="cart-select" onChange={(e) => updateQuantity(product.productID._id, Math.max(1, e.target.value))} value={product.quantity}>  
 <input readOnly={bannedid.includes(product.productID.loginid)}  className='inp-qty' type='number' value={product.quantity} required />
   </label></div>
-<div className='c5'><button  className='cart-b' onClick={()=>{remove(product.productID._id)}}>Remove<TfiTrash  className='i'/></button>
+<div className='c5'><Button className='d-flex justify-content-center align-items-center'   variant='contained' style={{letterSpacing:"2px",fontSize:"11px"}} color='error' onClick={()=>{remove(product.productID._id)}}>Remove<TfiTrash  fontSize={22}/></Button>
 <Link 
     to={isProductBanned(product.productID.loginid) ? '#' : `/Payment/${product.productID._id}`} 
-    className={`cart-buy ps-2 ${isProductBanned(product.productID.loginid) ? 'disabled-link' : ''}`}
+    className={`cart-buy ps-2 ${isProductBanned(product.productID.loginid) ? 'disabled-link ' : 'fs-5'}`}
     onClick={(e) => isProductBanned(product.productID.loginid) && e.preventDefault()}
 >
     Buy now
@@ -140,8 +141,8 @@ else{
 
 </div>
 
-<div className='totals'><p className='ts'>₹ {total()}</p>
-<button onClick={()=>Totalcart()} className='buy'>Place Order<PiShoppingCart className='i'/></button>
+<div className='totals'><p className='ts pt-3 me-3 fs-4 '>₹ {total()}</p>
+<Button variant='contained' style={{letterSpacing:"3px"}} onClick={()=>Totalcart()} >Place Order<PiShoppingCart className='i'/></Button>
 </div>
 
 

@@ -423,7 +423,7 @@ Phone no
             </Col>
         </Form.Group>
    <div className='d-flex gap-2'>
- <Button onClick={()=>{Proceed()}} className='d-flex gap-2'  variant='outline-success  mt-4' style={{borderRadius:"0.2rem",boxShadow:"0px 0px 5px 0px grey"}}><CiLock  className='fs-4'/><b className='fs-6'>₹ {paypro&&(paypro[0]?.productID.price * paypro[0]?.quantity) || pro&&pro[0]?.price || allproducts&&totalSum() }</b> Proceed</Button>  
+ <Button onClick={()=>{Proceed()}} className='d-flex gap-2'  variant='outline-success  mt-4' style={{borderRadius:"0.2rem",boxShadow:"0px 0px 5px 0px grey"}}><CiLock  className='fs-4'/><b className='fs-6'>₹ {paypro&&(paypro[0]?.productID.price * paypro[0]?.quantity) || pro&&pro[0]?.price  ||allproducts&&totalSum() }</b> Proceed</Button>  
  <Button onClick={navback} className='d-flex gap-2' variant='outline-danger mt-4' style={{borderRadius:"0.2rem",boxShadow:"0px 0px 5px 0px grey"}}> Cancel Payment</Button>    
  </div>
        </Form>

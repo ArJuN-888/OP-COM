@@ -1,5 +1,7 @@
 .cart-parent {
   padding-top: 90px;
+
+
 }
 .cart-sub-parent {
   padding-top: 90px;
@@ -40,37 +42,35 @@
   border-radius: 50px 10px 10px 50px;
 }
 
-option {
-  box-shadow: 0px 0px 0px 2px;
-}
-.l {
-  font-size: 20px;
-  color: grey;
-}
 .totals {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
   justify-content: end;
-  gap: 5px;
   align-items: center;
-  margin: 0px 4px 0px 4px;
-  padding: 5px;
-  border: 1px solid rgb(228, 220, 220);
+  background-color:transparent;
+  padding: 1px;
+  backdrop-filter: blur(0px);
 }
+
 .ts {
-  font-size: 30px;
-  letter-spacing: 3px;
-  margin: 0px 0px 0px 20px;
-}
-.buy {
-  border: none;
-  letter-spacing: 3px;
   font-size: 20px;
-  background-color: rgb(116, 115, 114);
-  color: white;
-  padding: 5px;
-  box-shadow: 0px 0px 4px 0px grey;
+
 }
+
+.buy {
+  font-size: 18px;
+  padding: 8px 16px;
+  background-color: rgb(115, 113, 111);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
 .inp-qty {
   width: min-content;
   text-align: center;
