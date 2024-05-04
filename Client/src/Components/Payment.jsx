@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import {Form,Row,Button, Col} from "react-bootstrap"
+import {Form,Row, Col} from "react-bootstrap"
+import {Button} from "@mui/material"
 import { CiLock } from "react-icons/ci";
 import { useNavigate,Link } from 'react-router-dom';
 import { toast, Flip } from "react-toastify";
@@ -50,33 +51,44 @@ const fetchpaypro = async() =>{
   }) 
 
     
-    // console.log("filteredpay",filtertobepayed)
-   if(id !== "allproducts")
-   {
-    const filterproduct = response.data.products.filter(element=>element._id === id)
 
-  if(filterproduct.length!==0)
-  {
-    setPro(filterproduct)
-   } 
-  else{
-    const response = await axios.get(`http://localhost:5000/User/Cart/items/${userID}`,{
+  //product
+    const filterproduct = response.data.products.filter(element=>element._id === id)
+    const fetchresponse = await axios.get(`http://localhost:5000/User/Cart/items/${userID}`,{
       headers:{
         Authorization:`${Cookies.token}`
       }
     }) 
     console.log("allpro",response.data.products)
-    const filtertobepayed = response.data.cart.filter(element=>element.productID._id === id)
-    // console.log("filteredpay",filtertobepayed)
-    setPaypro(filtertobepayed)
+    //cart
+    const filtertobepayed = fetchresponse.data.cart.filter(element=>element.productID._id === id)
     
-   }
+console.log("sadhsgjchgds",filtertobepayed)
 
-}
-else{
-  setAllproducts(response.data.cart)
 
-}
+    if(id !== "allproducts")
+    {
+      if(filterproduct.length!==0 && filtertobepayed.length === 0)
+      {
+        setPro(filterproduct)
+       } 
+      else if (filterproduct.length ===0 && filtertobepayed.length !== 0){
+       
+        setPaypro(filtertobepayed)
+       }
+       else if (filterproduct.length !==0 && filtertobepayed.length !== 0){
+        setPaypro(filtertobepayed)
+        
+       }
+    
+    }
+
+  else{
+    setAllproducts(fetchresponse.data.cart)
+  }
+
+
+
 }
 //fetching target seller
 const fetchtargetseller = async()=>{
@@ -424,7 +436,9 @@ Phone no
          
             </Col>
         </Form.Group>
+        <h6 className='pt-4'><b className='text-danger'> Note - </b> in case the preferred product is already <br></br> in cart the price (based on quantity) specified there should be reflected here,<br></br> you can either update the quantity or proceed buying from there if needed</h6>
    <div className='d-flex gap-2'>
+   
  <Button onClick={()=>{Proceed()}} className='d-flex gap-2'  variant='outline-success  mt-4' style={{borderRadius:"0.2rem",boxShadow:"0px 0px 5px 0px grey"}}><CiLock  className='fs-4'/><b className='fs-6'>₹ {paypro&&(paypro[0]?.productID.price * paypro[0]?.quantity) || pro&&pro[0]?.price  ||allproducts&&totalSum() }</b> Proceed</Button>  
  <Button onClick={navback} className='d-flex gap-2' variant='outline-danger mt-4' style={{borderRadius:"0.2rem",boxShadow:"0px 0px 5px 0px grey"}}> Cancel Payment</Button>    
  </div>
