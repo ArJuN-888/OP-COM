@@ -8,6 +8,8 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { useCookies } from 'react-cookie'
 import GetadminID from './Hooks/GetadminID';
 import { IoSend } from 'react-icons/io5';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 export default function Editproduct() {
   const [price,setPrice] = useState("")
   const [disableCategorySelect, setDisableCategorySelect] = useState(false);
@@ -162,6 +164,16 @@ export default function Editproduct() {
         setMaterial("")
         setCapacity("")
     }
+    const renderTooltip = (props) => (
+      <Tooltip id="button-tooltip" {...props}>
+        By Clicking this ,you will permanently delete the item from your Collection
+      </Tooltip>
+    );
+    const renderEdit  = (props) => (
+      <Tooltip id="button-tooltip" {...props}>
+        Edit Product
+      </Tooltip>
+    );
   return (
     <div className='Edit-parent'>
 {adminproduct.map((product)=>(
@@ -171,6 +183,11 @@ export default function Editproduct() {
 <div className='pdis'>{product.description}</div>
 <div className='pprice'>₹ {product.price}</div>
 <div>
+<OverlayTrigger
+      placement="right"
+      delay={{ show: 250, hide: 400 }}
+      overlay={renderEdit}
+    >
                   <button
                       className="Editp"
                       onClick={() => {
@@ -179,6 +196,12 @@ export default function Editproduct() {
                     >
                       <FaPen/>
                     </button>
+                    </OverlayTrigger>
+                    <OverlayTrigger
+      placement="right"
+      delay={{ show: 250, hide: 400 }}
+      overlay={renderTooltip}
+    >
                     <button
                       className="Delete"
                       onClick={() => {
@@ -187,7 +210,7 @@ export default function Editproduct() {
                     >
                      <FontAwesomeIcon icon={faTimes}/>
                     </button>
-                   
+                    </OverlayTrigger>
                   </div>
   </div>
 ))}

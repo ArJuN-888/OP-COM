@@ -43,7 +43,7 @@ export default function Payment() {
     })
     //fetch product to be payed
 const fetchpaypro = async() =>{
-  const response = await axios.get(`http://localhost:5000/User/Cart/items/${userID}`,{
+  const response = await axios.get(`http://localhost:5000/Product/getProduct/idforstat/${userID}`,{
     headers:{
       Authorization:`${Cookies.token}`
     }
@@ -53,21 +53,23 @@ const fetchpaypro = async() =>{
     // console.log("filteredpay",filtertobepayed)
    if(id !== "allproducts")
    {
-    const filtertobepayed = response.data.cart.filter(element=>element.productID._id === id)
-  if(filtertobepayed.length!==0)
+    const filterproduct = response.data.products.filter(element=>element._id === id)
+
+  if(filterproduct.length!==0)
   {
-    setPaypro(filtertobepayed)
+    setPro(filterproduct)
    } 
   else{
-    const response = await axios.get(`http://localhost:5000/Product/getProduct/idforstat/${userID}`,{
+    const response = await axios.get(`http://localhost:5000/User/Cart/items/${userID}`,{
       headers:{
         Authorization:`${Cookies.token}`
       }
     }) 
     console.log("allpro",response.data.products)
-    const filterproduct = response.data.products.filter(element=>element._id === id)
+    const filtertobepayed = response.data.cart.filter(element=>element.productID._id === id)
     // console.log("filteredpay",filtertobepayed)
-    setPro(filterproduct)
+    setPaypro(filtertobepayed)
+    
    }
 
 }
