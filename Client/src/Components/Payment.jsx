@@ -8,7 +8,6 @@ import axios from "axios"
 import { useCookies } from "react-cookie";
 import { useParams } from 'react-router-dom';
 import GetID from './Hooks/GetId';
-// import nolike from "./background/nolike.png"
 export default function Payment() {
   useEffect(()=>{
     fetchpaypro();
