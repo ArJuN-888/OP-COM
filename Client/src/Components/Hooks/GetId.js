@@ -1,4 +1,4 @@
-const GetID = ()=>{
-    return localStorage.getItem("userID")
-}
-export default GetID
+const GetID = () => {
+  return localStorage.getItem("userID");
+};
+export default GetID;

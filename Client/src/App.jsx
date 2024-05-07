@@ -22,8 +22,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Usermanagement from "./Components/Usermanagement";
 import { useCookies } from "react-cookie";
 import Adminnav from "./Components/Adminnav";
-
-
+import Bill from "./Components/Bill";
+import Payment from "./Components/Payment";
 import Addproduct from "./Components/Addproduct";
 import Adminlogin from "./Components/Adminlogin";
 import Userlogin from "./Components/Userlogin";
@@ -83,6 +83,8 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/WatchCategory/:brandname" element={<Category1 />} />
             <Route path="/BagCategory/:brandname" element={<Category2/>}/>
+            <Route path="/Payment/:id" element={<Payment />} />
+            <Route path="/Bill" element={<Bill />} />
             </>
             
             :<> <Route path="/" element={<Initial />} /></>}
@@ -100,6 +102,7 @@ function App() {
        autoClose={3000}
        theme="light"
        />
+  
     </>
   );
 }

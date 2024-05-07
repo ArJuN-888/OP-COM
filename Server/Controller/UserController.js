@@ -5,10 +5,12 @@ const fs = require("fs");
 const bcrypt = require("bcryptjs");
 const JWT = require("jsonwebtoken");
 const { response } = require("express");
+const { Admin } = require("../Model/AdminSchema");
 require("dotenv").config();
 const mailformat = /^[a-zA-Z0-9.!#$%&’*+\/=?^_`{|}~-]+\.[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 const passformat = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
 const txt = /.com/;
+const phoneregex = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/
 const registerUser = async (req, res) => {
   try {
     const { username, email, password, confirmpassword } = req.body;
@@ -79,6 +81,10 @@ const registerUser = async (req, res) => {
   }
 };
 const getUsers = async (req, res) => {
+  const data = await Users.find({});
+  res.status(200).send(data);
+};
+const getallUsers  = async (req, res) => {
   const data = await Users.find({});
   res.status(200).send(data);
 };
@@ -164,10 +170,10 @@ const editUser = async (req, res) => {
 const editPic = async (req, res) => {
   try {
     const { userID } = req.params;
-    const reportuser = await report.findOne({userID:userID})
-    const id =reportuser._id
-    const updatereport = await report.findByIdAndUpdate(id,{filename:req.file.filename})
-    console.log("report",reportuser)
+
+      const updatereport = await report.updateMany({userID:userID},{filename:req.file.filename})
+    
+  
     const user = await Users.findById(userID);
    
     console.log("user", user);
@@ -277,7 +283,10 @@ const sellerregister = async (req, res) => {
       notify,
     } = req.body;
     console.log("dsjhg", req.body);
-
+    if (!req.file) {
+   
+      return res.status(400).json({ message: "Please select a file" });
+    }
     if (
       !userID ||
       !username ||
@@ -293,21 +302,14 @@ const sellerregister = async (req, res) => {
       fs.unlink(`public/uploads/${req.file.filename}`, callback);
       return res.status(400).json({ message: "Empty fields" });
     }
-    if (!req.file) {
+    if (!phno.match(phoneregex)) {
       const callback = () => {
-        console.log("Removed profile due to invalid registration credentials");
-      };
-      fs.unlink(`public/uploads/${req.file.filename}`, callback);
-      return res.status(400).json({ message: "Please select a file" });
+          console.log("Removed profile due to invalid registration credentials");
+        };
+        fs.unlink(`public/uploads/${req.file.filename}`, callback);
+      return res.status(400).json({ message: "Enter a 10 digit valid Phone number!!! !!!" });
     }
-    const users = await Seller.findOne({ username });
-    if (users) {
-      const callback = () => {
-        console.log("Removed profile due to invalid registration credentials");
-      };
-      fs.unlink(`public/uploads/${req.file.filename}`, callback);
-      return res.status(400).json({ message: "seller data already initiated" });
-    }
+
     const user = await Users.findById(userID);
     console.log("user", user);
     if (!user) {
@@ -331,6 +333,15 @@ const sellerregister = async (req, res) => {
       fs.unlink(`public/uploads/${req.file.filename}`, callback);
       return res.status(400).json({ message: "invalid email" });
     }
+    const users = await Seller.findOne({ email });
+    if (users) {
+      const callback = () => {
+        console.log("Removed profile due to invalid registration credentials");
+      };
+      fs.unlink(`public/uploads/${req.file.filename}`, callback);
+      return res.status(400).json({ message: "seller data already exists" });
+    }
+ 
     console.log("filename", req.file.filename);
     const userrequpdate = await Users.findByIdAndUpdate(userID,{req:true})
     const data = new Seller({
@@ -361,6 +372,33 @@ const getsellerdata = async (req, res) => {
     const data = await Seller.find({ pending: true });
     console.log("data", data);
     res.status(200).send(data);
+  } catch (error) {
+    return res.status(400).json({ message: "Unable to fetch seller data" });
+  }
+};
+//getseller data while purchasing
+const getsellerforpay = async (req, res) => {
+  try {
+    const { id } = req.params; //id - target product 
+    const targetproduct = await Products.findById(id)
+    console.log("typeoftarget",targetproduct)
+    const sellerdata = await Seller.find({
+     userID: { $in: targetproduct.loginid },
+    });
+    console.log("dcdc",sellerdata)
+    const admindata = await Admin.find({
+      _id: { $in: targetproduct.loginid },
+     });
+    console.log("dhjdv",admindata)
+    if(sellerdata.length!==0)
+    {
+     return res.status(200).send(sellerdata);
+    }
+    else {
+     return res.status(200).send(admindata);
+    }
+   
+  
   } catch (error) {
     return res.status(400).json({ message: "Unable to fetch seller data" });
   }
@@ -722,5 +760,7 @@ module.exports = {
   removefromcart,
   updatequantity,
   onlynotify,
-  getbannedusers
+  getbannedusers,
+  getsellerforpay,
+  getallUsers
 };

@@ -208,20 +208,22 @@ box-shadow: 0px 0px 2px 0px;
 /*report*/
 .report-parent{
   display: grid;
-  justify-content: center;
   align-items: center;
-  text-align: center;
-  box-shadow: 0px 0px 0px 1px rgb(209, 206, 206);
+
   margin:5px 5px;
 }
 .report-child{
 padding: 5px;
+border:none;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 .input-report{
 font-size: 20px;
 border: none;
 outline: none;
-
+width: 100%;
 }
 .report-btn-Proceed{
 font-size: 20px;
@@ -231,6 +233,10 @@ color: green;
 border: 1px solid green;
 border-radius: 2px;
 background-color: transparent;
+display: flex;
+justify-content: center;
+align-items: center;
+gap:2px
 }
 .report-btn-cancel{
   font-size: 20px;
@@ -300,11 +306,7 @@ z-index: 1;
   right: 0;
 } 
 .caro{
-  padding-top: 90px;
- display: flex;
- align-items: center;
- background-color: white;
- margin: 0px 5px 5px 5px;
+
 
  }
  .position-r{
@@ -340,3 +342,35 @@ color: rgb(118, 122, 122);
   flex-wrap: wrap;
   justify-content: center;
  }
+ .img-caro{
+  width: 100%;
+  display: block;
+  object-fit: cover;
+ }
+ .img-caro-2{
+  width: 100%;
+  display: block;
+  object-fit: cover;
+ }
+ .custom-header .accordion-button:focus {
+  --bs-accordion-active-color: none !important;
+  --bs-accordion-btn-focus-box-shadow: none !important;
+  --bs-accordion-active-bg: white !important;
+  background-color: white;
+  
+}
+.custom-header .accordion-button:not(.collapsed) {
+  color: inherit !important;
+  background-color: inherit !important;
+}
+@media screen and (max-width:850px) {
+  .payim{
+    max-width: 100%;
+    margin: auto;
+    display: block;
+  }
+  .img-c{
+    margin: 2px;
+    width: 100%;
+  }
+}

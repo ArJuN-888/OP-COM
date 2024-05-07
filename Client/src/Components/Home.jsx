@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
 import "../Styles/Home.css";
 import GetID from "./Hooks/GetId";
 import { IoHeartSharp } from "react-icons/io5";
@@ -9,13 +10,38 @@ import { BsSortDown, BsSortUp } from "react-icons/bs";
 import Stack from "react-bootstrap/Stack";
 import { toast, Flip } from "react-toastify";
 import { IoIosArrowForward } from "react-icons/io";
+import caro from "./background/caro.png"
+import Carousel from 'react-bootstrap/Carousel';
 import Accordion from 'react-bootstrap/Accordion';
 import { IoSend } from "react-icons/io5";
 import { IoIosClose } from "react-icons/io";
 import { useCookies } from "react-cookie";
 import { CgUser } from "react-icons/cg";
+import Rating from '@mui/material/Rating';
+import Box from '@mui/material/Box';
+import StarIcon from '@mui/icons-material/Star';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 import { MdOutlineSell } from "react-icons/md";
 export default function Home() {
+  const labels = {
+    0.5: 'Useless',
+    1: 'Useless+',
+    1.5: 'Poor',
+    2: 'Poor+',
+    2.5: 'Ok',
+    3: 'Ok+',
+    3.5: 'Good',
+    4: 'Good+',
+    4.5: 'Excellent',
+    5: 'Excellent+',
+  };
+  
+  function getLabelText(value) {
+    return `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
+  }
+  const [value, setValue] = React.useState(0);
+  const [hover, setHover] = React.useState(-1);
   const [selectedMaterial, setSelectedMaterial] = useState(null);
   const [selectedCapacity, setSelectedCapacity] = useState(null);
   const [selectedstrapcolor, setSelectedstrapcolor] = useState(null);
@@ -108,6 +134,10 @@ export default function Home() {
             },
           }
         );
+        setFiltertog(0);
+        setOpstraptog(0)
+        setOpbodytog(0)
+        setToggle(0)
         fetchProduct();
         toast.success(response.data.message, {
           transition: Flip,
@@ -130,6 +160,9 @@ export default function Home() {
             },
           }
         );
+        setOpstraptog(0)
+        setOpbodytog(0)
+        setFiltertog(0);
         toast.success(response.data.message, {
           transition: Flip,
         });
@@ -141,24 +174,27 @@ export default function Home() {
       }
     }
   };
-  const ToggleInput = () => {
-    setToggle(1);
-  };
+  // const ToggleInput = () => {
+  //   setToggle(1);
+  // };
   const ToggleCancel = () => {
     console.log("hai");
-    setToggle(0);
+   setReportstatement("")
   };
   const Reportproceed = async () => {
     try {
+     
       const response = await axios.post(
         "http://localhost:5000/Report/reports",
-        { userID: userID, reportstatement, dt },
+        { userID: userID, reportstatement, dt,rating:value },
         {
           headers: {
             Authorization: `${Cookies.token}`,
           },
         }
       );
+      setValue(0)
+      setHover(-1)
       setToggle(0);
       setReportstatement("");
       toast.success(response.data.message, {
@@ -386,8 +422,19 @@ export default function Home() {
     settoggleWatch(0);
     setselectedGender2(null);
   };
+  const uniquematerial = Array.from(new Set(filterbag.map(u => u.material)));
+  const uniquecapacity = Array.from(new Set(filterbag.map(u => u.capacity)));
+  const uniquebody = Array.from(new Set(filterwatch.map(u => u.body)));
+  const uniquestrapcolor = Array.from(new Set(filterwatch.map(u => u.strapcolor)));
+  console.log("FILLTERBAGS",filterbag,uniquematerial)
+  const editProfile = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+     opcomlight888@gmail.com
+    </Tooltip>
+  );
   return (
     <>
+
       {/* <div className='side-menu'>
       <ul className='side-ul'>
         <li className='side-li'><Link to="/Titan" className='side-lnk'><img src="https://logos-download.com/wp-content/uploads/2016/06/Titan_Watches_logo.png" width="110px"  /></Link></li>
@@ -396,9 +443,14 @@ export default function Home() {
         <li className='side-li'><Link to="/Sonata" className='side-lnk'><img src="https://vectorseek.com/wp-content/uploads/2023/08/Hyundai-Sonata-Logo-Vector.svg-.png" width="110px"/></Link></li>
       </ul>
       </div>   */}
+    
 
       <div className="home-parent">
+        
         <div className="sub-pr-parent">
+        <div className="caro" >
+        <img src="https://wildcraft.com/media/catalog/category/CB-1920x300-2.jpg" width="100%"/>
+    </div>
           <div className="srt-parent-home">
             <Stack direction="horizontal" gap={2}className="stck">
               <Badge
@@ -434,26 +486,26 @@ export default function Home() {
               {togglebag === 1 ? (
                 <>
                   <input
-                    value="men"
-                    checked={selectedgender1 === "men"}
-                    onChange={() => handlegb("men")}
+                    value="Male"
+                    checked={selectedgender1 === "Male"}
+                    onChange={() => handlegb("Male")}
                     type="radio"
                   />
-                  <label>men</label>
+                  <label>Male</label>
                   <input
-                    value="women"
-                    checked={selectedgender1 === "women"}
-                    onChange={() => handlegb("women")}
+                    value="Female"
+                    checked={selectedgender1 === "Female"}
+                    onChange={() => handlegb("Female")}
                     type="radio"
                   />
-                  <label>women</label>
+                  <label>Female</label>
                   <input
-                    value="unisex"
-                    checked={selectedgender1 === "unisex"}
-                    onChange={() => handlegb("unisex")}
+                    value="Universal"
+                    checked={selectedgender1 === "Universal"}
+                    onChange={() => handlegb("Universal")}
                     type="radio"
                   />
-                  <label>unisex</label>
+                  <label>Universal</label>
                   <button
                     onClick={Close1}
                     style={{
@@ -492,20 +544,32 @@ export default function Home() {
                     <>
                       {opmattog === 1 && (
                         <>
-                          <input
+
+                          {/* <input
                             value="leather"
                             checked={selectedMaterial === "leather"}
                             onChange={() => handleMaterialChange("leather")}
                             type="radio"
+                          /> */}
+                                                  {uniquematerial && uniquematerial.map((data,index)=>(
+<>
+<label>{data}</label>
+                          <input
+                         
+                            checked={selectedMaterial === `${data}`}
+                            onChange={() => handleMaterialChange(data)}
+                            type="radio"
                           />
-                          <label>Leather</label>
+</>
+                        ))}
+                          {/* <label>Leather</label>
                           <input
                             value="Polyester"
                             checked={selectedMaterial === "polyester"}
                             onChange={() => handleMaterialChange("polyester")}
                             type="radio"
                           />
-                          <label>Polyester</label>
+                          <label>Polyester</label> */}
                           <button
                             onClick={Close}
                             style={{
@@ -524,34 +588,19 @@ export default function Home() {
                       )}
                       {opcattog === 1 && (
                         <>
-                          <input
-                            value={16}
-                            checked={selectedCapacity === 16}
-                            onChange={() => handleCapacityChange(16)}
-                            type="radio"
-                          />
-                          <label>16 L</label>
-                          <input
-                            value={30}
-                            checked={selectedCapacity === 30}
-                            onChange={() => handleCapacityChange(30)}
-                            type="radio"
-                          />
-                          <label>30 L</label>
-                          <input
-                            value={40}
-                            checked={selectedCapacity === 40}
-                            onChange={() => handleCapacityChange(40)}
-                            type="radio"
-                          />
-                          <label>40 L</label>
-                          <input
-                            value={36}
-                            checked={selectedCapacity === 36}
-                            onChange={() => handleCapacityChange(36)}
-                            type="radio"
-                          />
-                          <label>36 L</label>
+                        {uniquecapacity && uniquecapacity.map((data,index)=>(
+                          <>
+                        <label>{data}</label>
+                        <input
+                          checked={selectedCapacity === `${data}`}
+                          onChange={() => handleCapacityChange(data)}
+                          type="radio"
+                        />
+                        </>
+                        ))}
+                        
+                        
+                       
                           <button
                             onClick={Close}
                             style={{
@@ -650,31 +699,50 @@ export default function Home() {
               </div>
             ))}
           </div>
+          <div>
+        
+      </div>
+          <div className="caro mt-5">
+     <Carousel fade>
+      <Carousel.Item>
+   <img className="img-caro" src="https://www.sonatawatches.in/dw/image/v2/BKDD_PRD/on/demandware.static/-/Library-Sites-SonataSharedLibrary/default/dw9a40b6ca/images/homepage/desktop/NewArrivals-D.jpg"/>
+      
+      </Carousel.Item>
+      <Carousel.Item>
+        <img className="img-caro-2" src={caro}/>
+
+      </Carousel.Item>
+      <Carousel.Item>
+      <img className="img-caro" src="https://www.sonatawatches.in/dw/image/v2/BKDD_PRD/on/demandware.static/-/Library-Sites-SonataSharedLibrary/default/dw8b64a755/images/homepage/desktop/Hum-Na-Rukenge-D.jpg"/>
+      
+      </Carousel.Item>
+    </Carousel>
+    </div>
           <div className="srt-parent-home">
             <Stack direction="horizontal" gap={2}>
               {togglewatch === 1 ? (
                 <>
                   <input
-                    value="men"
-                    checked={selectedgender2 === "men"}
-                    onChange={() => handlegw("men")}
+                    value="Male"
+                    checked={selectedgender2 === "Male"}
+                    onChange={() => handlegw("Male")}
                     type="radio"
                   />
-                  <label>men</label>
+                  <label>Male</label>
                   <input
-                    value="women"
-                    checked={selectedgender2 === "women"}
-                    onChange={() => handlegw("women")}
+                    value="Female"
+                    checked={selectedgender2 === "Female"}
+                    onChange={() => handlegw("Female")}
                     type="radio"
                   />
-                  <label>women</label>
+                  <label>Female</label>
                   <input
-                    value="unisex"
-                    checked={selectedgender2 === "unisex"}
-                    onChange={() => handlegw("unisex")}
+                    value="Universal"
+                    checked={selectedgender2 === "Universal"}
+                    onChange={() => handlegw("Universal")}
                     type="radio"
                   />
-                  <label>unisex</label>
+                  <label>Universal</label>
                   <button
                     onClick={Close2}
                     style={{
@@ -713,20 +781,21 @@ export default function Home() {
                     <>
                       {opstraptog === 1 && (
                         <>
+                        {uniquestrapcolor && uniquestrapcolor.map((data,index)=>(
+                          <>
+                               <label>{data}</label>
                           <input
-                            value="black"
-                            checked={selectedstrapcolor === "black"}
-                            onChange={() => handlestrapChange("black")}
+                          
+                            checked={selectedstrapcolor === `${data}`}
+                            onChange={() => handlestrapChange(data)}
                             type="radio"
                           />
-                          <label>black</label>
-                          <input
-                            value="blue"
-                            checked={selectedstrapcolor === "blue"}
-                            onChange={() => handlestrapChange("blue")}
-                            type="radio"
-                          />
-                          <label>blue</label>
+                          </>
+
+                        ))}
+                     
+                        
+                      
                           <button
                             onClick={Closew}
                             style={{
@@ -745,27 +814,20 @@ export default function Home() {
                       )}
                       {opbodytog === 1 && (
                         <>
-                          <input
-                            value="resin"
-                            checked={selectedbody === "resin"}
-                            onChange={() => handlebodyChange("resin")}
+                        {uniquebody && uniquebody.map((data,index)=>(
+                          <>
+                           <label>{data}</label>
+                             <input
+                        
+                            checked={selectedbody ===`${data}`}
+                            onChange={() => handlebodyChange(data)}
                             type="radio"
                           />
-                          <label>resin</label>
-                          <input
-                            value="leather"
-                            checked={selectedbody === "leather"}
-                            onChange={() => handlebodyChange("leather")}
-                            type="radio"
-                          />
-                          <label>leather</label>
-                          <input
-                            value="metal"
-                            checked={selectedbody === "metal"}
-                            onChange={() => handlebodyChange("metal")}
-                            type="radio"
-                          />
-                          <label>metal</label>
+                         
+                          </>
+                        ))}
+                       
+                       
                           <button
                             onClick={Closew}
                             style={{
@@ -866,48 +928,94 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <Accordion flush  style={{
-        backgroundColor:"green"
-      }}>
+      <Accordion className="custom-header" flush >
       <Accordion.Item eventKey="1">
-        <Accordion.Header ><label style={{
+        <Accordion.Header className="custom-header " ><label className="fs-6" style={{
           fontSize:"20px",
-          color:"grey",
-       
-        }}>Kindly Specify your comments/reports</label></Accordion.Header>
-        <Accordion.Body>
+          
+      backgroundColor:"rgb(0,0,0,0.1)",
+      color:"black",
+      borderRadius:"3px",
+          padding:"2px 10px",
+          
+        }}><marquee >─── ⋆⋅☆⋅⋆ ── Kindly Specify your comments/reports, please provide the id of  product if you have any Query regarding that item , 12/7 Customer Support ─── ⋆⋅☆⋅⋆ ──</marquee></label></Accordion.Header>
+        <Accordion.Body className="custom-header border-none">
         <div className="report-parent">
               <label className="t"></label>
               <div className="report-child">
-                {toggle === 1 ? (
-                  <>
+               
                     <input
                       value={reportstatement}
                       onChange={(e) => setReportstatement(e.target.value)}
                       className="input-report"
                       placeholder="Specify here... "
                     />
-                    <button
-                      className="report-btn-Proceed"
+                    
+                    <Button
+                  
+                    color="success"
+                      variant="outlined"
                       onClick={Reportproceed}
+                      className="me-1"
                     >
-                      Send <IoSend />
-                    </button>
-                    <button
-                      className="report-btn-cancel"
+                      Send <IoSend fontSize="25px" className="ms-1" />
+                    </Button>
+                    <Button
+                     color="error"
+                         variant="outlined"
                       onClick={ToggleCancel}
                     >
-                      Cancel
-                    </button>
-                  </>
-                ) : (
-                  <div>
-                    <button className="report-btn-invoke" onClick={ToggleInput}>
-                      Comments/Reports
-                    </button>
-                  </div>
-                )}
+                      Clear
+                    </Button>
+   
               </div>
+            <div className=" d-flex justify-content-start align-items-center mt-2  ">               
+       <div className=" d-flex p-1 justify-content-center align-items-center   flex-wrap gap-3 mb-0  pe-5" style={{
+        
+     
+       }}>
+               <OverlayTrigger
+                                 placement="top"
+                                 delay={{ show: 250, hide: 400 }}
+                                 overlay={editProfile}
+                               >
+       <div className="img"><img src="https://cdn-icons-png.flaticon.com/128/10829/10829119.png" width="28px" className="me-2" alt="image"/></div></OverlayTrigger>
+  <div className="img"><img src="https://cdn-icons-png.flaticon.com/128/2111/2111463.png" width="28px" alt="image"/></div>
+  <div className="img"><img src="https://cdn-icons-png.flaticon.com/128/5968/5968764.png" width="28px" alt="image"/></div>
+  <div className="img"><img src="https://cdn-icons-png.flaticon.com/128/5969/5969020.png" width="28px" alt="image"/></div>
+  <div className="img"><img src="https://cdn-icons-png.flaticon.com/128/2111/2111646.png" width="28px" alt="image"/></div>
+       </div> 
+        <div><h6 className="me-3">Rate Us - </h6>  </div>
+  
+    
+              <Box
+      sx={{
+        width: 200,
+        display: 'flex',
+        alignItems: 'center',
+      }}
+    >
+      <Rating
+        name="hover-feedback"
+        value={value}
+        className="fs-2" 
+          style={{color:"black"}}
+        precision={0.5}
+        getLabelText={getLabelText}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+        onChangeActive={(event, newHover) => {
+          setHover(newHover);
+        }}
+        emptyIcon={<StarIcon    className="fs-2" style={{ opacity: 0.55,color:"" }} fontSize="inherit" />}
+      />
+      {value !== null && (
+        <Box fontSize={20} sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
+      )}
+     
+    </Box>
+    </div>
             </div>
         </Accordion.Body>
       </Accordion.Item>

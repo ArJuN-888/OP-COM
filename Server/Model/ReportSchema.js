@@ -7,6 +7,7 @@ const reportSchema = new mongoose.Schema({
     sellerstatus:{type:Boolean,default:false,required:true},
     reportstatement:{type:String,required:true},
     dt:{type:String,required:true},
+    rating:{type:Number,required:true}
 
 })
 const report = mongoose.model("Report",reportSchema)

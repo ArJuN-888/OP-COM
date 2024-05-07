@@ -11,6 +11,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import { IoIosClose } from "react-icons/io";
 import GetID from './Hooks/GetId'
 import { useCookies } from 'react-cookie'
+import nol from "./background/nol.png"
 export default function Category1() {
     const [Cookies,] = useCookies(["token"])
     const [Liked,setLiked] = useState([])
@@ -211,9 +212,11 @@ const [selectedbody, setSelectedbody] = useState(null);
       const handlestrapChange = (color) =>{
         setSelectedstrapcolor(color)
       }
+      const uniquebody = Array.from(new Set(Filteredk.map(u => u.body)));
+      const uniquestrapcolor = Array.from(new Set(Filteredk.map(u => u.strapcolor)));
   return (
     <>
-       <div className='srt-parent'>
+      {Filteredk.length !==0 && <><div className='srt-parent'>
       <Stack direction="horizontal" gap={2}>
       <Badge style={{
         boxShadow:"0px 0px 5px 0px grey",
@@ -237,14 +240,18 @@ const [selectedbody, setSelectedbody] = useState(null);
         {sbtog===1 ? <>
         
         {opstraptog===1 && (<>
-        <input  value="black"
-      checked={selectedstrapcolor === "black"}
-      onChange={() => handlestrapChange("black")} type='radio'/>
-        <label>black</label>
-        <input  value="blue"
-      checked={selectedstrapcolor === "blue"}
-      onChange={() => handlestrapChange("blue")} type='radio'/>
-        <label>blue</label>
+          {uniquestrapcolor && uniquestrapcolor.map((data,index)=>(
+                          <>
+                               <label>{data}</label>
+                          <input
+                          
+                            checked={selectedstrapcolor === `${data}`}
+                            onChange={() => handlestrapChange(data)}
+                            type="radio"
+                          />
+                          </>
+
+                        ))}
         <button onClick={Closew} style={{
          border:"none",
          backgroundColor:"transparent"
@@ -254,12 +261,19 @@ const [selectedbody, setSelectedbody] = useState(null);
         }}/></button>
         </>)}
         {opbodytog===1 && (<>
-          <input value="resin"      checked={selectedbody === "resin"} onChange={() => handlebodyChange("resin")} type='radio'/>
-          <label>resin</label>
-          <input value="leather"      checked={selectedbody === "leather"}  onChange={() => handlebodyChange("leather")} type='radio'/>
-          <label>leather</label>
-          <input  value="metal"      checked={selectedbody === "metal"} onChange={() => handlebodyChange("metal")} type='radio'/>
-          <label>metal</label>
+          {uniquebody && uniquebody.map((data,index)=>(
+                          <>
+                           <label>{data}</label>
+                             <input
+                        
+                            checked={selectedbody ===`${data}`}
+                            onChange={() => handlebodyChange(data)}
+                            type="radio"
+                          />
+                         
+                          </>
+                        ))}
+                         
           <button onClick={Closew} style={{
                 border:"none",
                 backgroundColor:"transparent"
@@ -286,7 +300,11 @@ const [selectedbody, setSelectedbody] = useState(null);
      
       }} /></Badge>}
       </Stack>
-      </div>
+      </div></> 
+      }
+      {Filteredk.length===0 &&   <div className='srt-parent '><h3 style={{color:"grey"}}>Product Un-available</h3>
+  <img src={nol} className='ms-2 ' width="40px" height="40px"/>
+  </div>}
     <div className='srt-sub-parent'>
     
   

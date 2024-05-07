@@ -6,6 +6,7 @@ import "../Styles/Sellerform.css"
 import { useCookies } from 'react-cookie'
 import Spinner from 'react-bootstrap/Spinner';
 import {  toast,Flip} from 'react-toastify';
+import { FaCloudUploadAlt } from 'react-icons/fa';
 export default function Sellerform() {
   const userID = GetID()
   
@@ -23,13 +24,14 @@ export default function Sellerform() {
 console.log("sellerfrm",sellerform)
     const [Cookies,] = useCookies(["token"]);
     const [File,setFile] = useState(null)
-  
+    const [filename,setFilename] = useState("")
     const handleChange = (key,value) =>{
       setSellerform({...sellerform,[key]:value})
      }
  
     const HandleFile = (e) =>{
       setFile(e.target.files[0])
+      setFilename(e.target.files[0].name)
     }
 const submitRequest = async() =>{
     try{
@@ -63,7 +65,7 @@ catch(error)
     <div className='seller-parent'>
       <h3 style={{
         color:"grey"
-      }}>Fill Your Seller Data <FaSellcast /> </h3>
+      }}>Fill Your Seller Identity <FaSellcast /> </h3>
       <div className='s-frm'>
       <input
       className='i1'
@@ -95,7 +97,7 @@ catch(error)
       />
        <input
        className='i1'
-       placeholder='description...'
+       placeholder='Sales entity title...'
       value={sellerform.description}
       onChange={(e)=>handleChange("description",e.target.value)}
       />
@@ -106,14 +108,19 @@ catch(error)
       type='number'
       onChange={(e)=>handleChange("phno",e.target.value)}
       />
-      <label className='fl-req'>
-Choose File
-        <input
-        className='fl'
-        type='file'
+     <div className='d-flex gap-4'>
+     <div><label className='mt-2'>
+       <FaCloudUploadAlt/> ID Proof (jpg,png)
+       
+      <input
+      type='file'
       onChange={HandleFile}
-      />
-      </label>
+      className='ipt'
+     />
+     </label>
+     </div> 
+     <p className='mt-2'>{!filename ? "No file choosen...": filename}</p>
+     </div>
      <button className='req-s' onClick={submitRequest}><span> Submit-request</span> <Spinner animation="grow" variant="white" size="sm"/></button>
      </div>
     </div>
