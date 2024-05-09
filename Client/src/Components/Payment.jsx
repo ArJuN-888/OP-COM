@@ -8,7 +8,7 @@ import axios from "axios"
 import { useCookies } from "react-cookie";
 import { useParams } from 'react-router-dom';
 import GetID from './Hooks/GetId';
-export default function Payment() {
+export default function Payment()  {
   useEffect(()=>{
     fetchpaypro();
     fetchtargetseller();
