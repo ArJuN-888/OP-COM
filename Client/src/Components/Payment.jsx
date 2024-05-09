@@ -21,7 +21,7 @@ export default function Payment()  {
     const userID = GetID()
     const [tog1,setTog1] = useState(false)
     // const [tog2,setTog2] = useState(false)
-    const [allproducts,setAllproducts] =  useState([])
+    const [allproducts,setAllproducts] =  useState( [])
     console.log("Cartproall",allproducts)
     const [paypro,setPaypro] = useState([])
     const [seller,setSeller] = useState([])
