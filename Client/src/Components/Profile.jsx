@@ -913,7 +913,7 @@ export default function Profile() {
     
      
         {(sellerstat === false && sellerreqstat===true) && (<div className="seller-link">
-        <Spinner animation="border" variant="black" /> Seller request Pending....
+        <Spinner animation="border" variant="black" /> Seller request Pending...
          </div>)}
          {(sellerstat === false && sellerreqstat===false) && (<div className="seller-link">
           Want to be a seller ?{" "}
