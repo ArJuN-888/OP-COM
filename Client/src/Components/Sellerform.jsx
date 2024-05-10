@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 import GetID from './Hooks/GetId'
 import { FaSellcast } from "react-icons/fa6";
 import "../Styles/Sellerform.css"
@@ -9,7 +10,7 @@ import {  toast,Flip} from 'react-toastify';
 import { FaCloudUploadAlt } from 'react-icons/fa';
 export default function Sellerform() {
   const userID = GetID()
-  
+  const nav = useNavigate()
   const [sellerform,setSellerform] = useState({
     userID:userID,
     username:"",
@@ -49,6 +50,7 @@ const submitRequest = async() =>{
                 Authorization:`${Cookies.token}`
             }
          })
+         nav("/Profile")
         toast.success(response.data.message,{
             transition:Flip
           })

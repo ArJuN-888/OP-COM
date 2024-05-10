@@ -11,7 +11,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FaRegPlusSquare } from "react-icons/fa";
 import { FaKey } from "react-icons/fa";
 import { IoSend } from 'react-icons/io5';
-
+import { Button } from "@mui/material";
 import { useCookies } from "react-cookie";
 import Spinner from 'react-bootstrap/Spinner';
 import Getprofile from "./Hooks/Getprofile";
@@ -585,17 +585,23 @@ export default function Profile() {
                 />
 
                 <div className="btn-grp">
-                  <button className="Update" onClick={() => HandleUpdate()}>
-                    Update <IoSend style={{
-                      padding:"0px 0px 2px 0px"
+                  <Button variant=""
+                  style={{letterSpacing:"3px"}}
+                     color="inherit" onClick={() => HandleUpdate()}>
+                    Update <IoSend className="ms-1" fontSize={28} style={{
+                      padding:"0px 0px 2px 0px",
+
                     }}/>
-                  </button>
-                  <button className="Cancel" onClick={() => HandleCancel()}>
+                  </Button>
+                  <Button variant=""
+                  style={{letterSpacing:"3px"}}
+                     color="primary" onClick={() => HandleCancel()}>
                     Cancel
-                  </button>
-                  <button className="Edit" onClick={() => UpdatePass()}>
-                    <FaKey />
-                  </button>
+                  </Button>
+                  <Button variant=""
+                     color="primary" onClick={() => UpdatePass()}>
+                    <FaKey fontSize={28} />
+                  </Button>
                 </div>
               </div>
             ) : (
@@ -605,9 +611,11 @@ export default function Profile() {
                                  delay={{ show: 250, hide: 400 }}
                                  overlay={editProfile}
                                >
-                <button className="Edit" onClick={() => handleEdit()}>
-                  <FaPen />
-                </button>
+                <Button variant=""
+                style={{letterSpacing:"3px"  }}
+                     color="primary" onClick={() => handleEdit()}>
+                  <FaPen fontSize={20} />
+                </Button>
                 </OverlayTrigger>
                 {sellerstat && (
                                  <OverlayTrigger
@@ -615,9 +623,11 @@ export default function Profile() {
                                  delay={{ show: 250, hide: 400 }}
                                  overlay={renderAdd}
                                >
-                  <button className="Edits" onClick={() => handleAddProduct()}>
-                    <FaRegPlusSquare className="plus" />
-                  </button>
+                  <Button variant=""
+                  style={{letterSpacing:"3px"}}
+                     color="primary" onClick={() => handleAddProduct()}>
+                    <FaRegPlusSquare className="plus"  fontSize={25}/>
+                  </Button>
                   </OverlayTrigger>
                 )}
               </div>
@@ -633,17 +643,21 @@ export default function Profile() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
                 <div>
-                  <button className="Req" onClick={() => HandlepassReq()}>
+                  <Button variant=""
+                  style={{letterSpacing:"3px"}}
+                     color="primary"onClick={() => HandlepassReq()}>
                     Request <IoSend style={{
                       padding:"0px 0px 2px 0px"
                     }}/>
-                  </button>
-                  <button
-                    className="passCancel"
+                  </Button>
+                  <Button
+                    variant=""
+                    style={{letterSpacing:"3px"}}
+                    color="primary"
                     onClick={() => HandlepassCancel()}
                   >
                     Cancel
-                  </button>
+                  </Button>
                 </div>
               </div>
             ) : (
@@ -664,17 +678,21 @@ export default function Profile() {
                   onChange={(e) => setpmatch(e.target.value)}
                 />
                 <div>
-                  <button className="Req" onClick={() => Handlepasspost()}>
+                  <Button variant=""
+                  style={{letterSpacing:"3px"}}
+                     color="primary" onClick={() => Handlepasspost()}>
                     Update <IoSend style={{
                       padding:"0px 0px 2px 0px"
                     }}/>
-                  </button>
-                  <button
-                    className="passCancel"
+                  </Button>
+                  <Button
+                   variant=""
+                   color="primary"
+                   style={{letterSpacing:"3px"}}
                     onClick={() => HandlepassActive()}
                   >
                     Cancel
-                  </button>
+                  </Button>
                 </div>
               </div>
             )}
@@ -801,25 +819,33 @@ export default function Profile() {
                 {edittoggle ? (
                   <div>
                     {" "}
-                    <button className="Req" onClick={updateProduct}>
+                    <Button variant=""
+                    style={{letterSpacing:"3px"}}
+                     color="primary" onClick={updateProduct}>
                       Update <IoSend style={{
                       padding:"0px 0px 2px 0px"
                     }}/>
-                    </button>
-                    <button className="passCancel" onClick={updateCancel}>
+                    </Button>
+                    <Button variant=""
+                    style={{letterSpacing:"3px"}}
+                     color="primary" onClick={updateCancel}>
                       Cancel
-                    </button>
+                    </Button>
                   </div>
                 ) : (
                   <div className="btn-add-grp">
-                    <button className="Req" onClick={addProduct}>
+                    <Button variant=""
+                    style={{letterSpacing:"3px"}}
+                     color="primary" onClick={addProduct}>
                       Create <IoSend style={{
                       padding:"0px 0px 2px 0px"
                     }}/>
-                    </button>
-                    <button className="passCancel" onClick={addCancel}>
+                    </Button>
+                    <Button variant=""
+                    style={{letterSpacing:"3px"}}
+                     color="primary" onClick={addCancel}>
                       Cancel
-                    </button>
+                    </Button>
                   </div>
                 )}
               </div>
@@ -849,28 +875,32 @@ export default function Profile() {
       delay={{ show: 250, hide: 400 }}
       overlay={renderEdit}
     >
-                    <button
-                      className="Editp"
+                    <Button
+                     variant=""
+                     
+                     style={{letterSpacing:"3px"}}
                       onClick={() => {
                         editItem(product._id);
                       }}
                     >
-                      <FaPen />
-                    </button>
+                      <FaPen fontSize={18} />
+                    </Button>
                     </OverlayTrigger>
                     <OverlayTrigger
       placement="right"
       delay={{ show: 250, hide: 400 }}
       overlay={renderTooltip}
     >
-       <button
-                      className="Delete"
+       <Button
+                     variant=""
+                     style={{letterSpacing:"3px"}}
+                     color="error"
                       onClick={() => {
                         deleteItem(product._id);
                       }}
                     >
-                      <FontAwesomeIcon icon={faTimes} />
-                    </button>
+                      <FontAwesomeIcon fontSize={22} icon={faTimes} />
+                    </Button>
     </OverlayTrigger>
                  
                   </div>

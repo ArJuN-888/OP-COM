@@ -84,7 +84,7 @@ console.log(error)
     }
   return (
     <div className='fs-5' style={{paddingTop:"80px"}} >
-       {allbill.length !==0 ?   <Button style={{letterSpacing:"3px"}} className='ms-2 text-black' variant='outlined'>Transaction History</Button> : <h4>No tickets available</h4> }
+       {allbill.length !==0 ?   <Button style={{letterSpacing:"3px"}} className='ms-2 text-black' variant='outlined'>Transaction History</Button> : <h4></h4> }
     {allbill.map((data, index) => (
         <div key={index} className='m-2 p-3' style={{boxShadow:"0px 0px 1px 0px"}}>
           <h3>Op-cOm</h3>

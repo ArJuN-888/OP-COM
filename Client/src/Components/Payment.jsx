@@ -26,6 +26,7 @@ export default function Payment()  {
     const [paypro,setPaypro] = useState([])
     const [seller,setSeller] = useState([])
     const [currentuser,setCurrentuser] = useState([])
+
     const [Cookies] = useCookies(["token"]);
     const [pro,setPro] = useState([])
     console.log("IDjhjjg",id)
