@@ -1,16 +1,18 @@
 .ini-parent{
-    background: url("https://r4.wallpaperflare.com/wallpaper/531/951/621/digital-digital-art-artwork-illustration-minimalism-hd-wallpaper-08869d3810a06c28a09cf1be487204ea.jpg");
+    background: url("    https://r4.wallpaperflare.com/wallpaper/531/951/621/digital-digital-art-artwork-illustration-minimalism-hd-wallpaper-08869d3810a06c28a09cf1be487204ea.jpg");
+
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
-
+   width: 100%;
 height: 100vh;
 display: flex;
 justify-content: start;
 align-items: center;
 
 }
+
 .e-front{
     
     margin-left: 10px;
